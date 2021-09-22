@@ -7,6 +7,7 @@ require_once '/xampp/htdocs/appAgro/application/negocio/clsOferta.php';
 require_once '/xampp/htdocs/appAgro/application/negocio/clsInversionista.php';
 require_once '/xampp/htdocs/appAgro/application/negocio/clsOrganizacion.php';
 require_once '/xampp/htdocs/appAgro/application/negocio/clsError.php';
+require_once '/xampp/htdocs/appAgro/application/controllers/GestionSesion.php';
 
 /**
  * BANDERAS DE RETORNO
@@ -31,6 +32,36 @@ class Prueba extends CI_Controller
     //el controlador por defecto debe tener una funcion index, pues esta sera buscada por la app
     public function index()
     {
+        //prueba de sesion
+        $this->pruebaSesion();
+    }
+    public function pruebaSesion(){
+        //parte 1: fijar una sesion
+        $usuario = new clsUsuario();
+        $usuario->setUsername("smert");
+        $insatanciasesion = new GestionSesion();
+        $insatanciasesion->fijarSesion($usuario);
+        echo "fijado <br>";
+        //mostrarSesiones
+        $insatanciasesion->mostrarSesion();
+        echo "mostrado <br>";
+        if($insatanciasesion->existeSesion()){
+            echo "hay sesion";
+        }else{
+            echo "no hay sesion";
+        }
+        //retirar sesion
+        $insatanciasesion->retirarSesion();
+        echo "retirado <br>";
+        $insatanciasesion->mostrarSesion();
+        echo "muestra <br>";
+        if($insatanciasesion->existeSesion()){
+            echo "hay sesion";
+        }else{
+            echo "no hay sesion";
+        }
+    }
+    public function pruebasModelo(){
         //PRUEBAS USUARIO
         //PRUEBA 1
         //$this->pruebaObtenerUsuario("loco");
@@ -82,7 +113,7 @@ class Prueba extends CI_Controller
         //$this->pListarCarrito();
         //$this->pTotal();
         //$this->pRetirarDelCarrito();
-        $this->pAgregarCarrito();
+        //$this->pAgregarCarrito();
     }
 
     //PRUEBAS USUARIO
