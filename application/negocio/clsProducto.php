@@ -4,6 +4,7 @@ class clsProducto{
     private $nombre;
     private $cantidad;
     private $precio;
+    private $imagen;
     public function __construct()
     {
     }
@@ -19,6 +20,9 @@ class clsProducto{
     public function setPrecio($prmPrecio){
         $this->precio=$prmPrecio;
     }
+    public function setImagen($prmImagen){
+        $this->imagen=$prmImagen;
+    }
     public function getId(){
         return $this->id;
     }
@@ -30,6 +34,9 @@ class clsProducto{
     }
     public function getPrecio(){
         return $this->precio;
+    }
+    public function getImagen(){
+        return $this->imagen;
     }
 }
 ?>

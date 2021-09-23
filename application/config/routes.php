@@ -51,6 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //EL CONTROLADOR POR DEFECTO SERA EL QUE HABRA LA APLICACION AL INICIAR
 //CAMBIA PARA PERSONALIZAR TU CONTROLADOR POR DEFECTO
-$route['default_controller'] = 'Principal';
+$route['default_controller'] = 'Prueba';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

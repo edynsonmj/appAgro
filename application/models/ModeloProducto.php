@@ -22,6 +22,7 @@ class ModeloProducto extends CI_model
                 $producto->setNombre($obj->proNombre);
                 $producto->setPrecio($obj->proPrecio);
                 $producto->setCantidad($obj->proCantidad);
+                $producto->setImagen($obj->proImagen);
             }
             return $producto;
         }catch(Exception $e){
@@ -49,6 +50,7 @@ class ModeloProducto extends CI_model
                 $producto->setNombre($obj->proNombre);
                 $producto->setPrecio($obj->proPrecio);
                 $producto->setCantidad($obj->proCantidad);
+                $producto->setImagen($obj->proImagen);
                 array_push($productos, $producto);
             }
             return $productos;
@@ -85,7 +87,7 @@ class ModeloProducto extends CI_model
                     return 3;
                 }
             }
-            $this->db->insert("producto",["proNombre"=> $prmProducto->getNombre(),"proPrecio" => $prmProducto->getPrecio(), "proCantidad" => $prmProducto->getCantidad()]);
+            $this->db->insert("producto",["proNombre"=> $prmProducto->getNombre(),"proPrecio" => $prmProducto->getPrecio(), "proCantidad" => $prmProducto->getCantidad(), "proImagen"=>$prmProducto->getImagen()]);
             return ($this->db->affected_rows() != 1)? 2: 1;
         }catch(Exception $e){
             echo "SE HA PRODUCIDO UN ERRO AL EJECUTAR LA OPERACION AGREGAR".$e->getMessage();
@@ -104,7 +106,7 @@ class ModeloProducto extends CI_model
                 return 2;
             }
             $this->db->where('proId',$prmProducto->getId());
-            $this->db->update('producto',["proNombre"=> $prmProducto->getNombre(),"proPrecio" => $prmProducto->getPrecio(), "proCantidad" => $prmProducto->getCantidad()]);
+            $this->db->update('producto',["proNombre"=> $prmProducto->getNombre(),"proPrecio" => $prmProducto->getPrecio(), "proCantidad" => $prmProducto->getCantidad(), "proImagen"=> $prmProducto->getImagen()]);
             return 1;
         }catch(Exception $e){
             echo "SE HA PRODUCIDO UN ERRO AL EJECUTAR LA OPERACION ACTUALIZAR PRODUCTO".$e->getMessage();

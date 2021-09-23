@@ -22,6 +22,7 @@ class ModeloOrganizacion extends CI_model
                 $Organizacion->setNombre($obj->orgNombre);
                 $Organizacion->setImagen($obj->orgImagen);
                 $Organizacion->setUbicacion($obj->orgUbicacion);
+                $Organizacion->setTelefono($obj->orgTelefono);
             }
             return $Organizacion;
         }catch(Exception $e){
@@ -49,6 +50,7 @@ class ModeloOrganizacion extends CI_model
                 $Organizacion->setNombre($obj->orgNombre);
                 $Organizacion->setImagen($obj->orgImagen);
                 $Organizacion->setUbicacion($obj->orgUbicacion);
+                $Organizacion->setTelefono($obj->orgTelefono);
                 array_push($Organizacions, $Organizacion);
             }
             return $Organizacions;
@@ -85,7 +87,7 @@ class ModeloOrganizacion extends CI_model
                     return 3;
                 }
             }
-            $this->db->insert("organizacion",["orgNombre"=> $prmOrganizacion->getNombre(),"orgImagen"=>$prmOrganizacion->getImagen(),"orgUbicacion"=>$prmOrganizacion->getUbicacion()]);
+            $this->db->insert("organizacion",["orgNombre"=> $prmOrganizacion->getNombre(),"orgImagen"=>$prmOrganizacion->getImagen(),"orgUbicacion"=>$prmOrganizacion->getUbicacion(),"orgTelefono"=>$prmOrganizacion->getTelefono()]);
             return ($this->db->affected_rows() != 1)? 2: 1;
         }catch(Exception $e){
             echo "SE HA PRODUCIDO UN ERRO AL EJECUTAR LA OPERACION AGREGAR".$e->getMessage();
@@ -104,7 +106,7 @@ class ModeloOrganizacion extends CI_model
                 return 2;
             }
             $this->db->where('orgId',$prmOrganizacion->getId());
-            $this->db->update('organizacion',["orgNombre"=> $prmOrganizacion->getNombre(),"orgImagen"=>$prmOrganizacion->getImagen(),"orgUbicacion"=>$prmOrganizacion->getUbicacion()]);
+            $this->db->update('organizacion',["orgNombre"=> $prmOrganizacion->getNombre(),"orgImagen"=>$prmOrganizacion->getImagen(),"orgUbicacion"=>$prmOrganizacion->getUbicacion(),"orgTelefono"=>$prmOrganizacion->getTelefono()]);
             return 1;
         }catch(Exception $e){
             echo "SE HA PRODUCIDO UN ERRO AL EJECUTAR LA OPERACION ACTUALIZAR Organizacion".$e->getMessage();

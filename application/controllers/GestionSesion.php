@@ -50,6 +50,7 @@ class GestionSesion extends CI_Controller
      * verifica si existe una sesion instanciada, no ace el proceso de autenticacion
      */
     public function existeSesion(){
+        echo "entro";
         return isset($_SESSION['username']);
     }
     /**

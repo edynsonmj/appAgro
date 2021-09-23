@@ -6,10 +6,11 @@ class Principal extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $sesion = new GestionSesion();
+        $this->sesion = new GestionSesion();
     }
     public function index(){
         if($this->sesion->existeSesion()){
+            echo "hay sesion";
             //validar roll
             //rol admin?
                 //vista admin
@@ -17,6 +18,7 @@ class Principal extends CI_Controller
                 //vista usuario con datos de sesion.
         }else if(/*verificar datos de la vista*/true){
             //ventana usuario generico.
+            echo "no hay sesion";
         }
     }
 }

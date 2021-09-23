@@ -16,6 +16,10 @@ class clsInversionista{
      * @var string
      */
     private $descripcion;
+    /**
+     * @var array;
+     */
+    private $telefono;
     public function __construct()
     {
     }
@@ -31,6 +35,9 @@ class clsInversionista{
     public function setDescripcion($prmDescripcion){
         $this->descripcion = $prmDescripcion;
     }
+    public function setTelefono($prmTelefono){
+        $this->telefono=$prmTelefono;
+    }
     public function getId(){
         return $this->id;
     }
@@ -42,6 +49,9 @@ class clsInversionista{
     }
     public function getDescripcion(){
         return $this->descripcion;
+    }
+    public function getTelefono(){
+        return $this->telefono;
     }
 }
 ?>

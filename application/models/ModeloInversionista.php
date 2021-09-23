@@ -22,6 +22,7 @@ class Modeloinversionista extends CI_model
                 $inversionista->setNombre($obj->invNombre);
                 $inversionista->setImagen($obj->invImagen);
                 $inversionista->setDescripcion($obj->invDescripcion);
+                $inversionista->setTelefono($obj->invTelefono);
             }
             return $inversionista;
         }catch(Exception $e){
@@ -29,7 +30,6 @@ class Modeloinversionista extends CI_model
             return null;
         }
     }
-    
     /**
      * Retorna la lista de inversionistas existentes en la base de datos
      * @return array array de tipo clsinversionista o null si no se encuentran datos o existe un error
@@ -49,6 +49,7 @@ class Modeloinversionista extends CI_model
                 $inversionista->setNombre($obj->invNombre);
                 $inversionista->setImagen($obj->invImagen);
                 $inversionista->setDescripcion($obj->invDescripcion);
+                $inversionista->setTelefono($obj->invTelefono);
                 array_push($inversionistas, $inversionista);
             }
             return $inversionistas;
@@ -85,7 +86,7 @@ class Modeloinversionista extends CI_model
                     return 3;
                 }
             }
-            $this->db->insert("inversionista",["invNombre"=> $prminversionista->getNombre(),"invImagen"=>$prminversionista->getImagen(),"invDescripcion"=>$prminversionista->getDescripcion()]);
+            $this->db->insert("inversionista",["invNombre"=> $prminversionista->getNombre(),"invImagen"=>$prminversionista->getImagen(),"invDescripcion"=>$prminversionista->getDescripcion(),"invTelefono"=>$prminversionista->getTelefono()]);
             return ($this->db->affected_rows() != 1)? 2: 1;
         }catch(Exception $e){
             echo "SE HA PRODUCIDO UN ERRO AL EJECUTAR LA OPERACION AGREGAR".$e->getMessage();
@@ -104,7 +105,7 @@ class Modeloinversionista extends CI_model
                 return 2;
             }
             $this->db->where('invId',$prminversionista->getId());
-            $this->db->update('inversionista',["invNombre"=> $prminversionista->getNombre(),"invImagen"=>$prminversionista->getImagen(),"invDescripcion"=>$prminversionista->getDescripcion()]);
+            $this->db->update('inversionista',["invNombre"=> $prminversionista->getNombre(),"invImagen"=>$prminversionista->getImagen(),"invDescripcion"=>$prminversionista->getDescripcion(),"invTelefono"=>$prminversionista->getTelefono()]);
             return 1;
         }catch(Exception $e){
             echo "SE HA PRODUCIDO UN ERRO AL EJECUTAR LA OPERACION ACTUALIZAR inversionista".$e->getMessage();

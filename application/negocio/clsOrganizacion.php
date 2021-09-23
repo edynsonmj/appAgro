@@ -16,6 +16,10 @@ class clsOrganizacion{
      * @var string
      */
     private $ubicacion;
+    /**
+     * @var string
+     */
+    private $telefono;
     public function __construct()
     {
     }
@@ -31,6 +35,9 @@ class clsOrganizacion{
     public function setUbicacion($prmUbicacion){
         $this->ubicacion = $prmUbicacion;
     }
+    public function setTelefono($prmTelefono){
+        $this->telefono = $prmTelefono;
+    }
     public function getId(){
         return $this->id;
     }
@@ -42,6 +49,9 @@ class clsOrganizacion{
     }
     public function getUbicacion(){
         return $this->ubicacion;
+    }
+    public function getTelefono(){
+        return $this->telefono;
     }
 }
 ?>

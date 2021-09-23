@@ -33,7 +33,37 @@ class Prueba extends CI_Controller
     public function index()
     {
         //prueba de sesion
-        $this->pruebaSesion();
+        //$this->pruebaSesion();
+        //$this->pruebaImagenProducto();
+        $this->pruebasModelo();
+    }
+    public function pruebaImagenProducto(){
+        $this->load->view("pruebaImagen");
+    }
+    public function insertImagenProducto(){
+        $nombre = $this->input->post("nombre");
+        $cantidad = $this->input->post("cantidad");
+        $precio = $this->input->post("precio");
+        $imagen = $this->input->post("imagen");
+        echo $nombre."<br>";
+        echo $cantidad."<br>";
+        echo $precio."<br>";
+        if($imagen!=null){
+            echo "imagen cargada <br>";
+        }else{
+            echo "imagen nula <br>";
+        }
+        $producto = new clsProducto();
+        $producto->setNombre($nombre);
+        $producto->setCantidad($cantidad);
+        $producto->setPrecio($precio);
+        $producto->setImagen($imagen);
+        echo "datos encapsulados <br>";
+        if($this->ModeloProducto->agregarProducto($producto)==1){
+            echo "exito <br>";
+        }else{
+            echo "fracaso <br>";
+        }
     }
     public function pruebaSesion(){
         //parte 1: fijar una sesion
@@ -107,7 +137,7 @@ class Prueba extends CI_Controller
         //$this->pActualizarOrganizacion();
         //$this->pListarOrganizacion();
         //$this->pObtenerOrganizacion();
-        //$this->pEliminarOrganizacion();
+        $this->pEliminarOrganizacion();
 
         //PRUEBAS CARRITO
         //$this->pListarCarrito();
@@ -409,9 +439,10 @@ class Prueba extends CI_Controller
     {
         $inversionista = new clsInversionista();
         $inversionista->setId(3);
-        $inversionista->setNombre("inversor 1");
+        $inversionista->setNombre("inversor 2");
         $inversionista->setImagen(null);
         $inversionista->setDescripcion("descripcionanado");
+        $inversionista->setTelefono("123456789");
         $resultado = $this->ModeloInversionista->agregarInversionista($inversionista);
         echo $resultado;
         if ($resultado == 1) {
@@ -425,10 +456,11 @@ class Prueba extends CI_Controller
     public function pActualizarInversionista()
     {
         $inversionista = new clsInversionista();
-        $inversionista->setId(1);
-        $inversionista->setNombre("inversor modificado");
+        $inversionista->setId(6);
+        $inversionista->setNombre("inversor modificado2");
         $inversionista->setImagen(null);
         $inversionista->setDescripcion("descripcionanado");
+        $inversionista->setTelefono("987654321");
         $resultado = $this->ModeloInversionista->actualizarInversionista($inversionista);
         echo $resultado;
         if ($resultado == 1) {
@@ -443,17 +475,18 @@ class Prueba extends CI_Controller
     {
         $inversionistas = $this->ModeloInversionista->listarInversionistas();
         for ($i = 0; $i < sizeof($inversionistas); $i++) {
-            echo $inversionistas[$i]->getId() . "-";
-            echo $inversionistas[$i]->getNombre() . "-";
-            echo $inversionistas[$i]->getImagen() . "-";
-            echo $inversionistas[$i]->getDescripcion();
+            echo $inversionistas[$i]->getId() . "<br>";
+            echo $inversionistas[$i]->getNombre() . "<br>";
+            echo $inversionistas[$i]->getImagen() . "<br>";
+            echo $inversionistas[$i]->getDescripcion(). "<br>";
+            echo $inversionistas[$i]->getTelefono(). "<br>";
             echo "^^^^";
         }
     }
     public function pObtenerInversionista()
     {
         $inversionista = new clsInversionista();
-        $inversionista = $this->ModeloInversionista->obtenerInversionista(3);
+        $inversionista = $this->ModeloInversionista->obtenerInversionista(6);
         if ($inversionista == null) {
             echo "vaccio";
         } else {
@@ -461,12 +494,13 @@ class Prueba extends CI_Controller
             echo $inversionista->getId() . "-";
             echo $inversionista->getNombre() . "-";
             echo $inversionista->getImagen() . "-";
-            echo $inversionista->getDescripcion();
+            echo $inversionista->getDescripcion()."<br>";
+            echo $inversionista->getTelefono();
         }
     }
     public function pEliminarInversionista()
     {
-        $resultado = $this->ModeloInversionista->eliminarInversionista(3);
+        $resultado = $this->ModeloInversionista->eliminarInversionista(6);
         if ($resultado == 1) {
             echo "eliminacion exitosa";
         } else {
@@ -477,10 +511,11 @@ class Prueba extends CI_Controller
     //PRUEBAS ORGANIZACION
     public function pAgregarOrganizacion(){
         $organizacion = new clsOrganizacion();
-        $organizacion->setId(3);
+        //$organizacion->setId(3);
         $organizacion->setNombre("organizacion 1");
         $organizacion->setImagen(null);
         $organizacion->setUbicacion("descripcionanado");
+        $organizacion->setTelefono(12345678);
         $resultado = $this->ModeloOrganizacion->agregarOrganizacion($organizacion);
         echo $resultado;
         if ($resultado == 1) {
@@ -493,10 +528,11 @@ class Prueba extends CI_Controller
     }
     public function pActualizarOrganizacion(){
         $organizacion = new clsOrganizacion();
-        $organizacion->setId(2);
+        $organizacion->setId(1);
         $organizacion->setNombre("oragnizaicon modificado");
         $organizacion->setImagen(null);
         $organizacion->setUbicacion("descripcionanado");
+        $organizacion->setTelefono("00000000");
         $resultado = $this->ModeloOrganizacion->actualizarOrganizacion($organizacion);
         echo $resultado;
         if ($resultado == 1) {
@@ -513,13 +549,14 @@ class Prueba extends CI_Controller
             echo $organizacions[$i]->getId() . "-";
             echo $organizacions[$i]->getNombre() . "-";
             echo $organizacions[$i]->getImagen() . "-";
-            echo $organizacions[$i]->getUbicacion();
+            echo $organizacions[$i]->getUbicacion()."<br>";
+            echo $organizacions[$i]->getTelefono();
             echo "^^^^";
         }
     }
     public function pObtenerOrganizacion(){
         $organizacion = new clsOrganizacion();
-        $organizacion = $this->ModeloOrganizacion->obtenerOrganizacion(2);
+        $organizacion = $this->ModeloOrganizacion->obtenerOrganizacion(1);
         if ($organizacion == null) {
             echo "vaccio";
         } else {
@@ -528,10 +565,11 @@ class Prueba extends CI_Controller
             echo $organizacion->getNombre() . "-";
             echo $organizacion->getImagen() . "-";
             echo $organizacion->getUbicacion();
+            echo $organizacion->getTelefono();
         }
     }
     public function pEliminarOrganizacion(){
-        $resultado = $this->ModeloOrganizacion->eliminarOrganizacion(3);
+        $resultado = $this->ModeloOrganizacion->eliminarOrganizacion(4);
         if ($resultado == 1) {
             echo "eliminacion exitosa";
         } else {
