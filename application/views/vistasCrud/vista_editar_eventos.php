@@ -27,29 +27,23 @@
     <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <button style=" background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link"
-            href="#">productos Canasta</button>
+          <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_principal.html">Productos Agricolas</a> </button>
         </li>
-        <li class="nav-item">
-          <button style=" background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link"
-            href="#">Organizaciones</button>
-        </li>
-        <li class="nav-item">
-          <button style=" background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link"
-            href="#">Ofertas</button>
-        </li>
-        <li class="nav-item">
-          <button style=" background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link"
-            href="#">Inversionistas</button>
-        </li>
-        <li class="nav-item">
-          <button style=" background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link"
-            href="#">Eventos</button>
-        </li>
-        <li class="nav-item">
-          <button style=" background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link"
-            href="#">Iniciar sesion</button>
-        </li>
+      <li class="nav-item">
+          <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_organizacion.html">Organizacion</a> </button>
+      </li>
+      <li class="nav-item">
+          <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_ofertas.html">Ofertas</a></button>
+      </li>    
+      <li class="nav-item">
+          <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_inversionistas.html">Inversionistas</a></button>
+      </li>  
+      <li class="nav-item">
+          <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_eventos.html">Eventos</a></button>
+      </li>  
+      <li class="nav-item">
+          <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Cerrar sesion</button>
+      </li>  
       </ul>
     </div>
   </nav>

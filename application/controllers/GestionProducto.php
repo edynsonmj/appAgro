@@ -10,6 +10,20 @@ class GestionProducto extends CI_Controller
 
     public function agregarProducto(clsProducto $prmProducto){
         //tu codigo posiblemente aqui
+            $idPro = $this->input->post("id");
+            $nombreProducto =$this->input->post("nombrePro");
+            $cantidaProducto = $this->input->post("cantidadPro");
+            $precioProducto = $this->input->post("precioPro");
+            $newproducto = new clsProducto();
+            $newproducto->setNombre($nombreProducto);
+            $newproducto->setCantidad($cantidaProducto);
+            $newproducto->setPrecio($precioProducto);
+            $newproducto = $this->ModeloProducto->obtenerProducto($newproducto);
+            if($newproducto == null){
+                $this->MoleloProducto->agregarProducto($newproducto);
+            }else{
+                echo"el usuario ya existe";
+            }
         //$prmProducto es un producto con la informacion a agregar
         //hacer validaciones
         $this->ModeloProducto->agregarProducto($prmProducto);
@@ -47,5 +61,11 @@ class GestionProducto extends CI_Controller
         $this->ModeloProducto->actualizarProducto($prmProducto);
         //tu codigo posiblemente aqui
     }
+
+
+    
+
+
+    
 }
 ?>

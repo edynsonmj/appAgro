@@ -22,38 +22,28 @@
             <button style="background-color: blue; border: cornsilk; position: relative; top: -40%; color: white;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul style="position:absolute; top: 3%;" class="navbar-nav">
-                    <li class="nav-item active">
-                        <button style = " background:rgb(54, 54, 216);color: white; border: white solid;" class="nav-link" href="#">productos Canasta</button>
-                    </li>
-                    <li class="nav-item">
-                        <a style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Organizaciones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Ofertas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Inversionistas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Eventos</a>
-                    </li>
-                </ul>
-            </div>
-            <ul style="position:relative; top: -43%;" class="nav justify-content-end">
-
+            <div  class="collapse navbar-collapse justify-content-center"  id="collapsibleNavbar">
+              <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Inicio Sesion</a>
+                  <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_principal.html">Productos Agricolas</a> </button>
                 </li>
-            </ul>
-
-            
-            <ul style="position:absolute; top: 70%;" class="navbar-nav>
                 <li class="nav-item">
-                  <a style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link active" href="#">Mirar Carrito</a>
+                    <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_organizaciones.html">Organizacion</a> </button>
                 </li>
-            </ul>
+                <li class="nav-item">
+                    <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_ofertas.html">Ofertas</a></button>
+                </li>    
+                <li class="nav-item">
+                    <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_inversionistas.html">Inversionistas</a></button>
+                </li>  
+                <li class="nav-item">
+                    <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_eventos.html">Eventos</a></button>
+                </li>  
+                <li class="nav-item">
+                    <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href=" <?php echo base_url();?>index.php/Principal/cargarLogin">Iniciar sesion</a></button>
+                </li>  
+              </ul>
+            </div>  
             
         </nav>
     </body>
@@ -99,20 +89,24 @@
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-xl-5 col-md-8">
-                  <form class="bg-white  rounded-5 shadow-5-strong p-5">
+                  <form method="POST" action="<?php echo base_url();?>index.php/GestionUsuario/crearUsuario" class="bg-white  rounded-5 shadow-5-strong p-5">
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="form1Example1">Ingrese su nombre de usuario</label>
-                      <input type="email" id="form1Example1" class="form-control" />
+                        <label class="form-label" for="form1Example1">Ingrese su nombre</label>
+                      <input type="nombre" id="form1Example1" class="form-control" />
 
                     </div>
                     <div class="form-outline mb-4">
-                        <label class="form-label" for="form1Example1">Ingrese su correo</label>
-                      <input type="email" id="form1Example1" class="form-control" />
+                        <label class="form-label" for="form1Example1">Ingrese su nombre de usuario</label>
+                      <input type="userName" id="form1Example1" class="form-control" />
 
                     </div>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form1Example2">Ingrese su contraseña</label>
                       <input type="password" id="form1Example2" class="form-control" />
+                    </div>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form1Example2">Ingrese admin o noAdmin</label>
+                      <input type="rol" id="form1Example2" class="form-control" />
 
                     </div>
                     <div class="row mb-4">
