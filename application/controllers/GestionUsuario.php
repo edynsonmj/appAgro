@@ -46,5 +46,43 @@ class GestionUsuario extends CI_Controller
         $this->ModeloUsuario->obtenerUsuarioPorId($prmId);
         //tu codigo posiblemente aqui
     }
+    public function autenticacion()
+    {
+        $nombreUsuario = $this->input->post("userName");
+        $contraseñaUsuario = $this->input->post("contraseña");
+        $usuario = new clsUsuario();
+        $usuario = $this->ModeloUsuario->obtenerUsuario($nombreUsuario);
+        if ($usuario == null) {
+            //cambiar esto para que se maneje por la interfaz
+        }
+        else {
+            if ($contraseñaUsuario == $usuario->getPassword()) {
+                $this->sesionAux->fijarSesion($usuario);
+                echo "sesion Iniciada";
+                $this->load->view ("vistasCrud/vista_principal");
+            }else{
+                echo "la contraseña es erronea";
+            }
+        }
+        echo "error al ejecutar el metodo";
+    }
+    public function crearUsuario(){
+        $nuevoNombre = $this->input->post("nombre");
+        $userName = $this->input->post("userName");
+        $nuevaContraseña = $this->input->post("password");
+        $nuevoRol = $this->input->post("rol");
+        $newUser = new clsUsuario();
+        $newUser->setNombre($nuevoNombre);
+        $newUser->setUsername($userName);
+        $newUser->setPassword($nuevaContraseña);
+        $newUser->setRole($nuevoRol); 
+        $newUsuario = $this->ModeloUsuario->obtenerUsuario($nuevoNombre);  
+        if($newUsuario == null){
+            $this->ModeloUsuario->crearUsuario($newUser);
+        }else{
+            echo "el usuario ya existe";
+        }
+
+    }
 }
 ?>

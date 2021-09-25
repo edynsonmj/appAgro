@@ -62,5 +62,20 @@ class GestionSesion extends CI_Controller
             echo "error al mostar sesion ".$e->getMessage();
         }
     }
+    public function validarFormularioSesion(){
+        if($this->existeSesion() == false){
+            echo "no existe sesion";
+            $this->load->view("vistasCrud/vista_inicio_sesion");
+            
+        }else {
+            $this->retirarSesion();
+            echo "existe sesion";
+            $this->load->view("vistasCrud/vista_principal");
+        }
+
+    }
+    public function crearUsuario(){
+        $this->load->view("vistasCrud/vista_crear_usuario");
+    }
 }
 ?>

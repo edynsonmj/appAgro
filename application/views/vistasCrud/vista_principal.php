@@ -25,23 +25,29 @@
         <div  class="collapse navbar-collapse justify-content-center"  id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">productos Canasta</button>
+              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_principal.html">Productos Agricolas</a> </button>
             </li>
             <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="vista_organizaciones.html">Organizaciones</button>
+                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_organizaciones.html">Organizacion</a> </button>
             </li>
             <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="vista_ofertas">Ofertas</button>
+                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_ofertas.html">Ofertas</a></button>
             </li>    
             <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Inversionistas</button>
+                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_inversionistas.html">Inversionistas</a></button>
             </li>  
             <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Eventos</button>
+                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_eventos.html">Eventos</a></button>
             </li>  
+            
             <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Iniciar sesion</button>
+                <form action="<?php echo base_url(); ?>index.php/Principal/cargarLogin">
+                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link">
+                    iniciar sesion 
+                </button>
+            </form>
             </li>  
+ 
           </ul>
         </div>  
       </nav>

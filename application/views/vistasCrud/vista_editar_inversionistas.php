@@ -25,23 +25,23 @@
         <div  class="collapse navbar-collapse justify-content-center"  id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">productos Canasta</button>
+              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_principal.html">Productos Agricolas</a> </button>
             </li>
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Organizaciones</button>
-            </li>
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Ofertas</button>
-            </li>    
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Inversionistas</button>
-            </li>  
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Eventos</button>
-            </li>  
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Iniciar sesion</button>
-            </li>  
+          <li class="nav-item">
+              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_organizacion.html">Organizacion</a> </button>
+          </li>
+          <li class="nav-item">
+              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_ofertas.html">Ofertas</a></button>
+          </li>    
+          <li class="nav-item">
+              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_inversionistas.html">Inversionistas</a></button>
+          </li>  
+          <li class="nav-item">
+              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_eventos.html">Eventos</a></button>
+          </li>  
+          <li class="nav-item">
+              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Cerrar sesion</button>
+          </li>    
           </ul>
         </div>  
       </nav>
@@ -50,10 +50,10 @@
     </body>
     <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
-          Vista Admin editar Oferta
+          Vista Admin editar inversionita
         </h3>
         <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal">
-          Agregar Producto
+          Agregar Inversionistas
         </button>
       
         <!-- The Modal -->
@@ -63,21 +63,21 @@
             
               <!-- Modal Header -->
               <div class="modal-header">
-                <h4 class="modal-title">Agregar nueva oferta</h4>
+                <h4 class="modal-title">Agregar nuevo inversionista</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
               
               <!-- Modal body -->
               <div class="modal-body">
                   <form class="form-inline" action="/action_page.php">
-                      <label for="email" class="mr-sm-2">Nombre del producto:</label>
-                      <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto" id="email">
-                      <label for="pwd" class="mr-sm-2">Precio/L</label>
-                      <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Precio" id="pwd">
-                      <label for="pwd" class="mr-sm-2">Cantidad/L</label>
-                      <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Cantidad" ps="pwd">
-                      <label for="pwd" class="mr-sm-2">Descuento</label>
-                      <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Descuento" ps="pwd">
+                      <label for="email" class="mr-sm-2">Nombre inversionita:</label>
+                      <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Nombre del inversionita" id="email">
+                      <label for="pwd" class="mr-sm-2">Imagen</label>
+                      <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Ruta imagen" id="pwd">
+                      <label for="pwd" class="mr-sm-2">Descripcion </label>
+                      <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Description" ps="pwd">
+                      <label for="pwd" class="mr-sm-2">Correo</label>
+                      <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Correo" ps="pwd">
                   
                       <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0 mb-2">Guardar</button>
                     </form>
@@ -103,18 +103,18 @@
             <table class="table table-bordered table-responsive-md table-striped text-center">
               <thead>
                 <tr>
-                  <th class="text-center">Nombre del producto</th>
-                  <th class="text-center">Precio/L</th>
-                  <th class="text-center">Cantidad/L</th>
-                  <th class="text-center">Descuento</th>
+                  <th class="text-center">Nombre del inversionita</th>
+                  <th class="text-center">Imagen</th>
+                  <th class="text-center">Descripcion</th>
+                  <th class="text-center">Correo</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="pt-3-half" contenteditable="true">Rabanos</td>
-                  <td class="pt-3-half" contenteditable="true">1500</td>
-                  <td class="pt-3-half" contenteditable="true">15</td>
-                  <td class="pt-3-half" contenteditable="true">50%</td>
+                  <td class="pt-3-half" contenteditable="true">Juan Pablo Ortiz</td>
+                  <td class="pt-3-half" contenteditable="true">../ruta imagen</td>
+                  <td class="pt-3-half" contenteditable="true">El inversionitas mayor de agrocauca</td>
+                  <td class="pt-3-half" contenteditable="true">juanpa123@agrocauca.edu.co/td>
 
                   <td class="pt-3-half">
                     <span class="table-up"
@@ -127,37 +127,37 @@
                     ></span>
                   </td>
                   <td>
-                    <span class="table-remove">
+            <span class="table-remove">
                       <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
                         Eliminar
                       </button>
-                      <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal">
+                      <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal2">
                         Editar
                       </button>
                     
                       <!-- The Modal -->
-                      <div class="modal" id="myModal">
+                      <div class="modal" id="myModal2">
                         <div class="modal-dialog">
                           <div class="modal-content">
                           
                             <!-- Modal Header -->
                             <div class="modal-header">
-                              <h4 class="modal-title">Editar oferta</h4>
+                              <h4 class="modal-title">Editar inversionita</h4>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <form class="form-inline" action="/action_page.php">
-                                    <label for="email" class="mr-sm-2">Nombre del producto:</label>
-                                    <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto" id="email">
-                                    <label for="pwd" class="mr-sm-2">Precio/L</label>
-                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Precio" id="pwd">
-                                    <label for="pwd" class="mr-sm-2">Cantidad/L</label>
-                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Cantidad" ps="pwd">
-                                    <label for="email" class="mr-sm-2">Descuento:</label>
-                                    <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto" id="email">
-                                    
+                                    <label for="email" class="mr-sm-2">Nombre inversionita:</label>
+                                    <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Nombre del inversionita" id="email">
+                                    <label for="pwd" class="mr-sm-2">Imagen</label>
+                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Ruta imagen" id="pwd">
+                                    <label for="pwd" class="mr-sm-2">Descripcion </label>
+                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Description" ps="pwd">
+                                    <label for="pwd" class="mr-sm-2">Correo</label>
+                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Correo" ps="pwd">
+                                
                                     <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                                   </form>
                 
@@ -177,10 +177,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="pt-3-half" contenteditable="true">Pepino</td>
-                  <td class="pt-3-half" contenteditable="true">4500</td>
-                  <td class="pt-3-half" contenteditable="true">28</td>
-                  <td class="pt-3-half" contenteditable="true">40%</td>
+                  <td class="pt-3-half" contenteditable="true">Sara Tapia Patiño</td>
+                  <td class="pt-3-half" contenteditable="true">../ruta imagen</td>
+                  <td class="pt-3-half" contenteditable="true">Empresaria egresada de la universidad del cauca</td>
+                  <td class="pt-3-half" contenteditable="true">sartia@agrocauca.gov.co</td>
 
                   <td class="pt-3-half">
                     <span class="table-up"
@@ -197,18 +197,18 @@
                       <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
                         Eliminar
                       </button>
-                      <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal">
+                      <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal2">
                         Editar
                       </button>
                     
                       <!-- The Modal -->
-                      <div class="modal" id="myModal">
+                      <div class="modal" id="myModal2">
                         <div class="modal-dialog">
                           <div class="modal-content">
                           
                             <!-- Modal Header -->
                             <div class="modal-header">
-                              <h4 class="modal-title">Editar Oferta</h4>
+                              <h4 class="modal-title">Editar Inversionista</h4>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             
@@ -216,15 +216,15 @@
                             <div class="modal-body">
                                 <form class="form-inline" action="/action_page.php">
                                                                         
-                                    <label for="email" class="mr-sm-2">Nombre del producto:</label>
-                                    <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto" id="email">
-                                    <label for="pwd" class="mr-sm-2">Precio/L</label>
-                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Precio" id="pwd">
-                                    <label for="pwd" class="mr-sm-2">Cantidad/L</label>
-                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Cantidad" ps="pwd">
-                                    <label for="email" class="mr-sm-2">Descuento:</label>
-                                    <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Descuento" id="email">
-                                    
+                                    <label for="email" class="mr-sm-2">Nombre inversionita:</label>
+                                    <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Nombre del inversionita" id="email">
+                                    <label for="pwd" class="mr-sm-2">Imagen</label>
+                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Ruta imagen" id="pwd">
+                                    <label for="pwd" class="mr-sm-2">Descripcion </label>
+                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Description" ps="pwd">
+                                    <label for="pwd" class="mr-sm-2">Correo</label>
+                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Correo" ps="pwd">
+                                
                                     <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                                   </form>
                 
@@ -245,10 +245,10 @@
                 </tr>
                 <!-- This is our clonable table line -->
                 <tr>
-                  <td class="pt-3-half" contenteditable="true">Papaya</td>
-                  <td class="pt-3-half" contenteditable="true">3000</td>
-                  <td class="pt-3-half" contenteditable="true">24</td>
-                  <td class="pt-3-half" contenteditable="true">30%</td>
+                  <td class="pt-3-half" contenteditable="true">Jhon Alexander Tiago</td>
+                  <td class="pt-3-half" contenteditable="true">../ruta imagen</td>
+                  <td class="pt-3-half" contenteditable="true">Inversionita menor pero con gran influencia </td>
+                  <td class="pt-3-half" contenteditable="true">jhonale@agrocauca.gov.co</td>
                   <td class="pt-3-half">
                     <span class="table-up"
                       ><a href="#!" class="indigo-text"
@@ -264,30 +264,32 @@
                       <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
                         Eliminar
                       </button>
-                      <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal">
+                      <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal2">
                         Editar
                       </button>
                     
                       <!-- The Modal -->
-                      <div class="modal" id="myModal">
+                      <div class="modal" id="myModal2">
                         <div class="modal-dialog">
                           <div class="modal-content">
                           
                             <!-- Modal Header -->
                             <div class="modal-header">
-                              <h4 class="modal-title">Editar un Producto</h4>
+                              <h4 class="modal-title">Editar inversionita</h4>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <form class="form-inline" action="/action_page.php">
-                                    <label for="email" class="mr-sm-2">Nombre del producto:</label>
-                                    <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto" id="email">
-                                    <label for="pwd" class="mr-sm-2">Precio/L</label>
-                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Precio" id="pwd">
-                                    <label for="pwd" class="mr-sm-2">Cantidad/L</label>
-                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Cantidad" ps="pwd">
+                                    <label for="email" class="mr-sm-2">Nombre inversionita</label>
+                                    <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Nombre del inversionita" id="email">
+                                    <label for="pwd" class="mr-sm-2">Imagen</label>
+                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Ruta imagen" id="pwd">
+                                    <label for="pwd" class="mr-sm-2">Descripcion </label>
+                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Description" ps="pwd">
+                                    <label for="pwd" class="mr-sm-2">Correo</label>
+                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Correo" ps="pwd">
                                 
                                     <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                                   </form>

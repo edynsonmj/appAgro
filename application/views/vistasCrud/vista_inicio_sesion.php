@@ -25,22 +25,29 @@
         <div  class="collapse navbar-collapse justify-content-center"  id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">productos Canasta</button>
+              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_principal.html">Productos Agricolas</a> </button>
             </li>
             <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Organizaciones</button>
+                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_organizaciones.html">Organizacion</a> </button>
             </li>
             <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Ofertas</button>
+                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_ofertas.html">Ofertas</a></button>
             </li>    
             <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Inversionistas</button>
+                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_inversionistas.html">Inversionistas</a></button>
             </li>  
             <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Eventos</button>
+                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_eventos.html">Eventos</a></button>
             </li>  
             <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Iniciar sesion</button>
+                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_inicio_sesion.html">Iniciar sesion</a></button>
+            </li> 
+            <li class="nav-item">
+                <form href = "<?php echo base_url(); ?>index.php/Principal/cargarLogin">
+                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link">
+                    Crear Cuenta 
+                </button>
+            </form>
             </li>  
           </ul>
         </div>  
@@ -90,23 +97,19 @@
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-xl-5 col-md-8">
-                  <form class="bg-white  rounded-5 shadow-5-strong p-5">
+                  <form method="POST" action="<?php echo base_url();?>index.php/GestionUsuario/autenticacion" class="bg-white  rounded-5 shadow-5-strong p-5">
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form1Example1">User name</label>
-                      <input type="email" id="form1Example1" class="form-control" />
+                      <input name="userName" type="text" id="form1Example0" class="form-control" />
                     </div>
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form1Example2">Ingrese su contraseña</label>
-                      <input type="password" id="form1Example2" class="form-control" />
-
+                      <input name="contraseña" type="password" id="form1Example2" class="form-control" />
                     </div>
                     <div class="row mb-4">
                       <div class="col d-flex justify-content-center">
                       </div>
                     <button type="submit" class="btn btn-primary btn-block">Iniciar sesion </button>
-                    <p>                                   </p>
-                    <button type="submit" class="btn btn-primary btn-block">Crear cuenta </button>
-               
                   </form>
                 </div>
                 
