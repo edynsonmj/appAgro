@@ -92,6 +92,7 @@ class Prueba extends CI_Controller
         }
     }
     public function pruebasModelo(){
+        $this->pruebaVistaPrincipal();
         //PRUEBAS USUARIO
         //PRUEBA 1
         //$this->pruebaObtenerUsuario("loco");
@@ -137,7 +138,7 @@ class Prueba extends CI_Controller
         //$this->pActualizarOrganizacion();
         //$this->pListarOrganizacion();
         //$this->pObtenerOrganizacion();
-        $this->pEliminarOrganizacion();
+        //$this->pEliminarOrganizacion();
 
         //PRUEBAS CARRITO
         //$this->pListarCarrito();
@@ -589,5 +590,11 @@ class Prueba extends CI_Controller
     }
     public function pTotal(){
         $this->ModeloCarrito->total(7);
+    }
+    public function pruebaVistaPrincipal(){
+        $data['existeSesion']=false;
+        $data['productos']=$this->ModeloProducto->listarProductos();
+        //var_dump($data);
+        $this->load->view("principal",$data);
     }
 }

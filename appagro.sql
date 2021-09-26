@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-09-2021 a las 04:36:18
+-- Tiempo de generación: 26-09-2021 a las 02:19:27
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.3.22
 
@@ -74,18 +74,6 @@ INSERT INTO `evento` (`eveId`, `eveNombre`, `eveUbicacion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `imagen`
---
-
-CREATE TABLE `imagen` (
-  `proId` int(11) NOT NULL,
-  `imaFoto` longblob NOT NULL,
-  `imaId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `inversionista`
 --
 
@@ -93,8 +81,17 @@ CREATE TABLE `inversionista` (
   `invId` int(11) NOT NULL,
   `invNombre` varchar(50) NOT NULL,
   `invImagen` longblob DEFAULT NULL,
-  `invDescripcion` varchar(200) DEFAULT NULL
+  `invDescripcion` varchar(200) DEFAULT NULL,
+  `invTelefono` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `inversionista`
+--
+
+INSERT INTO `inversionista` (`invId`, `invNombre`, `invImagen`, `invDescripcion`, `invTelefono`) VALUES
+(4, 'inverson edynson', NULL, NULL, NULL),
+(5, 'inversor yeison', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -129,15 +126,17 @@ CREATE TABLE `organizacion` (
   `orgId` int(11) NOT NULL,
   `orgNombre` varchar(50) NOT NULL,
   `orgImagen` longblob DEFAULT NULL,
-  `orgUbicacion` varchar(50) NOT NULL
+  `orgUbicacion` varchar(50) NOT NULL,
+  `orgTelefono` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `organizacion`
 --
 
-INSERT INTO `organizacion` (`orgId`, `orgNombre`, `orgImagen`, `orgUbicacion`) VALUES
-(1, 'oragnizaicon modificado', NULL, 'descripcionanado');
+INSERT INTO `organizacion` (`orgId`, `orgNombre`, `orgImagen`, `orgUbicacion`, `orgTelefono`) VALUES
+(1, 'oragnizaicon modificado', NULL, 'descripcionanado', '00000000'),
+(5, 'organizacion 1', NULL, 'descripcionanado', '12345678');
 
 -- --------------------------------------------------------
 
@@ -149,46 +148,24 @@ CREATE TABLE `producto` (
   `proId` int(50) NOT NULL,
   `proNombre` varchar(50) NOT NULL,
   `proCantidad` int(50) NOT NULL,
-  `proPrecio` int(50) NOT NULL
+  `proPrecio` int(50) NOT NULL,
+  `proImagen` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`proId`, `proNombre`, `proCantidad`, `proPrecio`) VALUES
-(2, 'esteban', 234, 1000),
-(3, 'esteban', 234, 1000),
-(5, 'coco', 456, 3456),
-(6, 'lenteja', 3, 3000),
-(8, 'esteban', 234, 1000),
-(9, 'esteban', 234, 1000),
-(10, 'esteban', 234, 1000),
-(11, 'esteban', 234, 1000);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `telefonoinv`
---
-
-CREATE TABLE `telefonoinv` (
-  `telId` int(11) NOT NULL,
-  `invId` int(11) NOT NULL,
-  `telNumero` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `telefonoorg`
---
-
-CREATE TABLE `telefonoorg` (
-  `telId` int(11) NOT NULL,
-  `orgId` int(11) NOT NULL,
-  `telNumero` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `producto` (`proId`, `proNombre`, `proCantidad`, `proPrecio`, `proImagen`) VALUES
+(2, 'esteban', 234, 1000, NULL),
+(3, 'esteban', 234, 1000, NULL),
+(5, 'coco', 456, 3456, NULL),
+(6, 'lenteja', 3, 3000, NULL),
+(8, 'esteban', 234, 1000, NULL),
+(9, 'esteban', 234, 1000, NULL),
+(10, 'esteban', 234, 1000, NULL),
+(11, 'esteban', 234, 1000, NULL),
+(12, 'interfaz', 10000, 10000, 0x70657266696c2e6a7067);
 
 -- --------------------------------------------------------
 
@@ -233,13 +210,6 @@ ALTER TABLE `evento`
   ADD PRIMARY KEY (`eveId`);
 
 --
--- Indices de la tabla `imagen`
---
-ALTER TABLE `imagen`
-  ADD PRIMARY KEY (`imaId`),
-  ADD KEY `proId` (`proId`);
-
---
 -- Indices de la tabla `inversionista`
 --
 ALTER TABLE `inversionista`
@@ -262,20 +232,6 @@ ALTER TABLE `organizacion`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`proId`);
-
---
--- Indices de la tabla `telefonoinv`
---
-ALTER TABLE `telefonoinv`
-  ADD PRIMARY KEY (`telId`),
-  ADD KEY `invId` (`invId`);
-
---
--- Indices de la tabla `telefonoorg`
---
-ALTER TABLE `telefonoorg`
-  ADD PRIMARY KEY (`telId`),
-  ADD KEY `orgId` (`orgId`);
 
 --
 -- Indices de la tabla `usuario`
@@ -301,16 +257,10 @@ ALTER TABLE `evento`
   MODIFY `eveId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT de la tabla `imagen`
---
-ALTER TABLE `imagen`
-  MODIFY `imaId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT de la tabla `inversionista`
 --
 ALTER TABLE `inversionista`
-  MODIFY `invId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `invId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `oferta`
@@ -322,25 +272,13 @@ ALTER TABLE `oferta`
 -- AUTO_INCREMENT de la tabla `organizacion`
 --
 ALTER TABLE `organizacion`
-  MODIFY `orgId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `orgId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `proId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT de la tabla `telefonoinv`
---
-ALTER TABLE `telefonoinv`
-  MODIFY `telId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `telefonoorg`
---
-ALTER TABLE `telefonoorg`
-  MODIFY `telId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `proId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -358,24 +296,6 @@ ALTER TABLE `usuario`
 ALTER TABLE `carrito`
   ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`usuId`) REFERENCES `usuario` (`usuId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`proId`) REFERENCES `producto` (`proId`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `imagen`
---
-ALTER TABLE `imagen`
-  ADD CONSTRAINT `imagen_ibfk_1` FOREIGN KEY (`proId`) REFERENCES `producto` (`proId`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `telefonoinv`
---
-ALTER TABLE `telefonoinv`
-  ADD CONSTRAINT `telefonoinv_ibfk_1` FOREIGN KEY (`invId`) REFERENCES `inversionista` (`invId`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `telefonoorg`
---
-ALTER TABLE `telefonoorg`
-  ADD CONSTRAINT `telefonoorg_ibfk_1` FOREIGN KEY (`orgId`) REFERENCES `organizacion` (`orgId`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
