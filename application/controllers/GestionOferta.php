@@ -47,14 +47,22 @@ class GestionOferta extends CI_Controller
      */
     public function addOferta(clsOferta $prmOferta){
         //posiblemente tu codigo aqui
+        $nombreOfer = $this->input->post("nombre");
+        $cantidadOfer = $this->input->post("");
+        $precioOfer =  $this->input->post("");
+        $imagenOfer =  $this->input->post("");
+        $descuentoOfer =  $this->input->post("");
+        $newOfer = new clsOferta();
+        $newOfer->setNombre($nombreOfer);
+        $newOfer->setCantidad($cantidadOfer);
+        $newOfer->setPrecio($precioOfer);
+        $newOfer->setImagen($imagenOfer);
+        $newOfer->setDescuento($descuento);
+        $this->ModeloOferta->obtenerOferta->getId();
+         if()
         //EJEMPLO DE USO DEL MODELO
         //llamado al modelo
-        $this->ModeloOferta->agregarOferta($prmOferta);
-        //posiblemente tu codigo aqui
-    }
-    /**
-     * para actualizar una oferta
-     */
+
     public function updateOferta(clsOferta $prmOferta){
         //posiblemente tu codigo aqui
         //EJEMPLO DE USO DEL MODELO
