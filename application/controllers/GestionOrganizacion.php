@@ -46,6 +46,21 @@ class GestionOrganizacion extends CI_Controller
      */
     public function addOrganizacion(clsOrganizacion $prmOrganizacion){
         //posiblemente tu codigo aqui
+        $nombreOrg = $this->input->post("");
+        $imagenOrg = $this->input->post("");
+        $ubicacionOrg = $this->input->post("");
+        $telefonoOrg = $this->input->post("");
+        $newOrg = new clsOrganizacion();
+        $newOrg->setNombre($nombreOrg);
+        $newOrg->setImagen($imagenOrg);
+        $newOrg->setUbicacion($ubicacionOrg);
+        $newOrg->setTelefono($telefonoOrg);
+        $this->ModeloOrganizacion->agregarOrganizacion() 
+        if( == null){
+            $this->ModeloInversionista->obtenerInversionista($newOrg);
+        }else{
+            echo "el usuario ya existe";
+        }
         //EJEMPLO DE USO DEL MODELO
         //llamado al modelo
         $this->ModeloOrganizacion->agregarOrganizacion($prmOrganizacion);

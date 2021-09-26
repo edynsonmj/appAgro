@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <nav style="height: 20em; background-image: url('../../imagenes/Vegetales.jpg') !important;
+    <nav style="height: 8em; background-image: url('../../imagenes/Vegetales.jpg') !important;
     background-position: center;" class="navbar navbar-expand-md bg-primary navbar-dark">
         <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="navbar-brand" href="#">AgroCauca</button>
         <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -55,7 +55,6 @@
     <section class=" section">
         <!-- Container Start -->
         
-
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -64,137 +63,34 @@
                         <h2>                       </h2>
                     </div>
                     <div class="row">
-                        <!-- Category list -->
-                        <div style = "border:solid  rgb(56, 55, 58);" class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                            <div style= 'position: relative; left: 80px;'class="category-block">
-                                <div class="header">
-                                    <img style = "width: 100px; height: 100px;" src="../../imagenes/Zanahoria.jpg">
-                                    <i class="fa fa-laptop icon-bg-1"></i> 
-                                    <h4>Zanahoria</h4>
+                    <?php if(count($productos) > 0): ?>
+                    <?php foreach ($productos as $producto): ?>
+                            <div style = "border:solid  rgb(56, 55, 58);" class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+                                <div style= 'position: relative; left: 80px;'class="category-block">
+                                    <div class="header">
+                                        <img style = "width: 100px; height: 100px;" src="../../imagenes/Zanahoria.jpg">
+                                        <i class="fa fa-laptop icon-bg-1"></i> 
+                                        <h4><?php $producto->getNombre();?> </h4>
+                                    </div>
+                                    <ul class="category-list" >
+                                        <li><a>Cantidad <span><?php $producto->getCantidad();?> </span></a></li>
+                                        <li><a></a>Precio <span><?php $producto->getPrecio();?>/L</span></a></li>
+                                        <button style="position: relative; right: 40px; background-color: rgb(20, 63, 20); color:white" href="category.html">Agregar al carrito</button>
+                                    </ul>
                                 </div>
-                                <ul class="category-list" >
-                                    <li><a>Cantidad <span>150</span></a></li>
-                                    <li><a></a>Precio <span>2000/L</span></a></li>
-                                    <button style="position: relative; right: 40px; background-color: rgb(20, 63, 20); color:white" href="category.html">Agregar al carrito</button>
-                                </ul>
                             </div>
-                        </div> <!-- /Category List -->
-                        <!-- Category list -->
-                        <div style = "border:solid  rgb(56, 55, 58);" class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                            <div style= 'position: relative; left: 90px;' class="category-block">
-                                <div class="header">
-                                    <i class="fa fa-apple icon-bg-2"></i> 
-                                    <img style = "width: 100px; height: 100px;" src="../../imagenes/Tomate.Jfif">
-                                    <h4>Tomate</h4>
-                                </div>
-                                <ul class="category-list" >
-                                    <li><a>Cantidad <span>150</span></a></li>
-                                    <li><a></a>Precio <span>2000/L</span></a></li>
-                                    <button style="position: relative; right: 40px; background-color: rgb(20, 63, 20); color:white" href="category.html">Agregar al carrito</button>
-                                </ul>
-                            </div>
-                        </div> <!-- /Category List -->
-                        <!-- Category list -->
-                        <div style = "border:solid  rgb(56, 55, 58);"  class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                            <div style= 'position: relative; left: 90px;' class="category-block">
-                                <div class="header">
-                                    <img style =  "width: 100px; height: 100px;" src="../../imagenes/Brocoli.jpg">
-                                    <i class="fa fa-home icon-bg-3"></i> 
-                                    <h4>Brocoli</h4>
-                                </div>
-                                <ul class="category-list" >
-                                    <li><a>Cantidad <span>150</span></a></li>
-                                    <li><a></a>Precio <span>2000/L</span></a></li>
-                                    <button style="position: relative; right: 40px; background-color: rgb(20, 63, 20); color:white" href="category.html">Agregar al carrito</button>
-                                </ul>
-                            </div>
-                        </div> <!-- /Category List -->
-                        <!-- Category list -->
-                        <div style = "border:solid  rgb(56, 55, 58);"  class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                            <div style= 'position: relative; left: 90px;' class="category-block">
-                                <div class="header">
-                                    <img style = "width: 100px; height: 100px;" src="../../imagenes/Cebolla.jpg">
-                                    <i class="fa fa-shopping-basket icon-bg-4"></i> 
-                                    <h4>Cebolla</h4>
-                                </div>
-                                <ul class="category-list" >
-                                    <li><a>Cantidad <span>150</span></a></li>
-                                    <li><a></a>Precio <span>2000/L</span></a></li>
-                                    <button style="position: relative; right: 40px; background-color: rgb(20, 63, 20); color:white" href="category.html">Agregar al carrito</button>
-                                </ul>
-                            </div>
-                        </div> <!-- /Category List -->
-                        <!-- Category list -->
-                        <div style = "border:solid  rgb(56, 55, 58);"  class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                            <div style= 'position: relative; left: 90px;' class="category-block">
-                                <div class="header">
-                                    <img style = "width: 100px; height: 100px;" src="../../imagenes/Repollo.jpg">
-                                    <i class="fa fa-briefcase icon-bg-5"></i> 
-                                    <h4>Ropollo</h4>
-                                </div>
-                                <ul class="category-list" >
-                                    <li><a>Cantidad <span>150</span></a></li>
-                                    <li><a></a>Precio <span>2000/L</span></a></li>
-                                    <button style="position: relative; right: 40px; background-color: rgb(20, 63, 20); color:white" href="category.html">Agregar al carrito</button>
-                                </ul>
-                            </div>
-                        </div> <!-- /Category List -->
-                        <!-- Category list -->
-                        <div style = "border:solid  rgb(56, 55, 58);" class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                            <div style= 'position: relative; left: 90px;' class="category-block">
-                                <div class="header">
-                                    <img style = "width: 100px; height: 100px;" src="../../imagenes/Pepino.jpg">
-                                    <i class="fa fa-car icon-bg-6"></i> 
-                                    <h4>Pepino</h4>
-                                </div>
-                                <ul class="category-list" >
-                                    <li><a>Cantidad <span>150</span></a></li>
-                                    <li><a></a>Precio <span>2000/L</span></a></li>
-                                    <button style="position: relative; right: 40px; background-color: rgb(20, 63, 20); color:white" href="category.html">Agregar al carrito</button>
-                                </ul>
-                            </div>
-                        </div> <!-- /Category List -->
-                        <!-- Category list -->
-                        <div style = "border:solid  rgb(56, 55, 58);"  class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                            <div style= 'position: relative; left: 90px;' class="category-block">
-                                <div class="header">
-                                    <img style = "width: 100px; height: 100px;" src="../../imagenes/Aji.jpg">
-                                    <i class="fa fa-paw icon-bg-7"></i> 
-                                    <h4>Aji</h4>
-                                </div>
-                                <ul class="category-list" >
-                                    <li><a>Cantidad <span>150</span></a></li>
-                                    <li><a></a>Precio <span>2000/L</span></a></li>
-                                    <button style="position: relative; right: 40px; background-color: rgb(20, 63, 20); color:white" href="category.html">Agregar al carrito</button>
-                                </ul>
-                            </div>
-                        </div> <!-- /Category List -->
-                        <!-- Category list -->
-                        <div style = "border:solid  rgb(56, 55, 58);"  class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-                            <div style= 'position: relative; left: 90px;' class="category-block">     
-                                <div class="header">
-                                    <img style = "width: 100px; height: 100px;" src="../../imagenes/kiwi.jpg">
-                                    <i class="fa fa-laptop icon-bg-8"></i> 
-                                    <h4>Kiwi</h4>
-                                </div>
-                                <ul class="category-list" >
-                                    <li><a>Cantidad <span>150</span></a></li>
-                                    <li><a></a>Precio <span>2000/L</span></a></li>
-                                    <button style="position: relative; right: 40px; background-color: rgb(20, 63, 20); color:white" href="category.html">Agregar al carrito</button>
-                                </ul>
-                            </div>
-                        </div> <!-- /Category List -->
-                        
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>no hay nada</p>
+                    <?php endif; ?>
                         
                     </div>
                 </div>
             </div>
-            <br>
             <button style="float:right;background:rgb(54, 54, 216)"type="button" class="btn btn-primary">Mirar Carrito</button>
         </div>
         <!-- Container End -->
     </section>
-    
 </body>
 
 </html>

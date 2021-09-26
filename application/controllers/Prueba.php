@@ -137,7 +137,7 @@ class Prueba extends CI_Controller
         //$this->pActualizarOrganizacion();
         //$this->pListarOrganizacion();
         //$this->pObtenerOrganizacion();
-        $this->pEliminarOrganizacion();
+        //$this->pEliminarOrganizacion();
 
         //PRUEBAS CARRITO
         //$this->pListarCarrito();

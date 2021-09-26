@@ -46,6 +46,23 @@ class GestionEvento extends CI_Controller
      */
     public function addEvento(clsEvento $prmEvento){
         //posiblemente tu codigo aqui
+        $nuevoNombre = $this->input->post("nombre");
+        $userName = $this->input->post("userName");
+        $nuevaContraseña = $this->input->post("password");
+        $nuevoRol = $this->input->post("rol");
+        $newUser = new clsUsuario();
+        $newUser->setNombre($nuevoNombre);
+        $newUser->setUsername($userName);
+        $newUser->setPassword($nuevaContraseña);
+        $newUser->setRole($nuevoRol); 
+        $newUsuario = $this->ModeloUsuario->obtenerUsuario($nuevoNombre);  
+        if($newUsuario == null){
+            $this->ModeloUsuario->crearUsuario($newUser);
+        }else{
+            echo "el usuario ya existe";
+        }
+
+    }
         //EJEMPLO DE USO DEL MODELO
         //llamado al modelo
         $this->ModeloEvento->agregarEvento($prmEvento);

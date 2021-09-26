@@ -1,11 +1,14 @@
 <?php
+require_once '/xampp/htdocs/appAgro/application/controllers/GestionSesion.php';
 require_once '/xampp/htdocs/appAgro/application/negocio/clsUsuario.php';
 class GestionUsuario extends CI_Controller
 {
+    private  $sesionAux;
     public function __construct()
     {
         parent::__construct();
         $this->load->model('ModeloUsuario');
+        $this->sesionAux = new GestionSesion();
     }
 
     public function agregarUsuario(clsUsuario $prmUsuario){
@@ -58,8 +61,12 @@ class GestionUsuario extends CI_Controller
         else {
             if ($contraseñaUsuario == $usuario->getPassword()) {
                 $this->sesionAux->fijarSesion($usuario);
-                echo "sesion Iniciada";
-                $this->load->view ("vistasCrud/vista_principal");
+                $productos = array(); //Toca mirar donde dejar ese array: esto es temporal
+                if($usuario->getRole() == "admin"){
+                    $this->load->view("vistasCrud/vista_editar_principal.php", compact("productos"));
+                }else{
+                    $this->load->view("vistasCrud/vista_principal.php", compact("productos"));
+                }
             }else{
                 echo "la contraseña es erronea";
             }

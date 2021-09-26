@@ -8,7 +8,7 @@ class GestionProducto extends CI_Controller
         $this->load->model('ModeloProducto');
     }
 
-    public function agregarProducto(clsProducto $prmProducto){
+    public function agregarProducto(){
         //tu codigo posiblemente aqui
             $idPro = $this->input->post("id");
             $nombreProducto =$this->input->post("nombrePro");
@@ -43,6 +43,7 @@ class GestionProducto extends CI_Controller
         //listar producto retorna un array de tipo clsProducto, con la informacion necesaria
         //hacer validaciones
         $resultado = $this->ModeloProducto->listarProductos();
+        return $resultado;
         //tu codigo posiblemente aqui
     }
 
