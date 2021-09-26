@@ -129,53 +129,53 @@
                     ></span>
                   </td>
                   <td>
-                    <span class="table-remove">
-                      <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                        Eliminar
-                      </button>
-                      <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal">
-                        Editar
-                      </button>
-                    
-                      <!-- The Modal -->
-                      <div class="modal" id="myModal">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                          
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                              <h4 class="modal-title">Editar oferta</h4>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
+                      <span class="table-remove">
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
+                          Eliminar
+                        </button>
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal">
+                          Editar
+                        </button>
+                      
+                        <!-- The Modal -->
+                        <div class="modal" id="myModal">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
                             
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOferta/updateOferta">
-                                    <label for="email" class="mr-sm-2">Nombre del producto:</label>
-                                    <input name="nameOferta" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
-                                    <label for="pwd" class="mr-sm-2">Precio/L</label>
-                                    <input name="priceOferta" type="number" class="form-control mb-2 mr-sm-2" placeholder="Precio">
-                                    <label for="pwd" class="mr-sm-2">Cantidad/L</label>
-                                    <input name="amountOferta" type="number" class="form-control mb-2 mr-sm-2" placeholder="Cantidad" >
-                                    <label for="email" class="mr-sm-2">Descuento:</label>
-                                    <input name="DescuentoOferta" type="number" class="form-control mb-2 mr-sm-2" placeholder="Descuento">
-                                    
-                                    <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
-                                  </form>
-                
+                              <!-- Modal Header -->
+                              <div class="modal-header">
+                                <h4 class="modal-title">Editar oferta</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+                              
+                              <!-- Modal body -->
+                              <div class="modal-body">
+                                  <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOferta/updateOferta">
+                                      <label for="email" class="mr-sm-2">Nombre del producto:</label>
+                                      <input name="nameOferta" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
+                                      <label for="pwd" class="mr-sm-2">Precio/L</label>
+                                      <input name="priceOferta" type="number" class="form-control mb-2 mr-sm-2" placeholder="Precio">
+                                      <label for="pwd" class="mr-sm-2">Cantidad/L</label>
+                                      <input name="amountOferta" type="number" class="form-control mb-2 mr-sm-2" placeholder="Cantidad" >
+                                      <label for="email" class="mr-sm-2">Descuento:</label>
+                                      <input name="DescuentoOferta" type="number" class="form-control mb-2 mr-sm-2" placeholder="Descuento">
+                                      
+                                      <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                    </form>
+                  
+                              </div>
+                              
+                              <!-- Modal footer -->
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              </div>
+                              
                             </div>
-                            
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                            
                           </div>
                         </div>
+                        
                       </div>
-                      
-                    </div>
-                      </span>
+                        </span>
                   </td>
                 </tr>
                 <?php endforeach; ?>

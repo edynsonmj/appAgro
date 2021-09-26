@@ -59,7 +59,9 @@ class GestionOferta extends CI_Controller
         $newOfer->setImagen($imagenOfer);
         $newOfer->setDescuento($descuento);
         $this->ModeloOferta->obtenerOferta->getId();
-         if()
+         if( ==null){
+             $this->Modelo
+         }
         //EJEMPLO DE USO DEL MODELO
         //llamado al modelo
 
