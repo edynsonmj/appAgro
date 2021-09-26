@@ -53,7 +53,7 @@
             Vista Admin editar Organizacion
         </h3>
         <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal1">
-            agragar organizacion
+            agregar organizacion
         </button>
 
         <!-- The Modal -->
@@ -69,38 +69,30 @@
 
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form class="form-inline" action="/action_page.php">
+                        <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOrganizacion/addOrganizacion">
                             <label for="email" class="mr-sm-2">Agregar nombre Organizacion</label>
-                            <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto"
-                                id="email">
+                            <input name="nameProd" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
                             <label for="pwd" class="mr-sm-2">imagen</label>
-                            <input type="password" class="form-control mb-2 mr-sm-2" placeholder="ruta imagen" id="pwd">
+                            <input name="pathImage" type="text" class="form-control mb-2 mr-sm-2" placeholder="ruta imagen" >
                             <label for="pwd" class="mr-sm-2">ubicacion</label>
-                            <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Add ubicacion"
-                                ps="pwd">
+                            <input name="ubication" type="text" class="form-control mb-2 mr-sm-2" placeholder="Add ubicacion" >
                             <label for="pwd" class="mr-sm-2">Telefono</label>
-                            <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Add telefono"
-                                ps="pwd">
-
+                            <input name="phone" type="number" class="form-control mb-2 mr-sm-2" placeholder="Add telefono" >
                             <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0 mb-2">Guardar</button>
                         </form>
-
                     </div>
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
     <div class="card-body">
         <div id="table" class="table-editable">
-            <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x"
-                        aria-hidden="true"></i></a></span>
+            <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
             <table class="table table-bordered table-responsive-md table-striped text-center">
                 <thead>
                     <tr>
@@ -111,11 +103,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php if (count($organizaciones) > 0): ?>
+                <?php foreach ($organizaciones as $organizacion): ?>
                     <tr>
-                        <td class="pt-3-half" contenteditable="true">AgroCaucaSA</td>
-                        <td class="pt-3-half" contenteditable="true">../../imagenes/Organizacion.jpg</td>
-                        <td class="pt-3-half" contenteditable="true">Cra 23 # 3-22</td>
-                        <td class="pt-3-half" contenteditable="true">82388888</td>
+                        <td class="pt-3-half" contenteditable="true"><?php $organizacion->getNombre(); ?></td>
+                        <td class="pt-3-half" contenteditable="true"><?php $organizacion->getImagen(); ?></td>
+                        <td class="pt-3-half" contenteditable="true"><?php $organizacion->getUbicacion(); ?></td>
+                        <td class="pt-3-half" contenteditable="true"><?php $organizacion->getTelefono(); ?></td>
 
                         <td class="pt-3-half">
                             <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
@@ -147,23 +141,17 @@
 
                                             <!-- Modal body -->
                                             <div class="modal-body">
-                                                <form class="form-inline" action="/action_page.php">
-                                                    <label for="email" class="mr-sm-2">Agregar nombre
-                                                        Organizacion</label>
-                                                    <input type="email" class="form-control mb-2 mr-sm-2"
-                                                        placeholder="Nombre Producto" id="email">
+                                                <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOrganizacion/updateOrganizacion">
+                                                    <label for="email" class="mr-sm-2">Agregar nombre Organizacion</label>
+                                                    <input name="nameProd" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
                                                     <label for="pwd" class="mr-sm-2">imagen</label>
-                                                    <input type="password" class="form-control mb-2 mr-sm-2"
-                                                        placeholder="ruta imagen" id="pwd">
+                                                    <input name="pathImage" type="image" class="form-control mb-2 mr-sm-2" placeholder="ruta imagen">
                                                     <label for="pwd" class="mr-sm-2">ubicacion</label>
-                                                    <input type="password" class="form-control mb-2 mr-sm-2"
-                                                        placeholder="Add ubicacion" ps="pwd">
+                                                    <input name="ubication" type="text" class="form-control mb-2 mr-sm-2" placeholder="Add ubicacion">
                                                     <label for="pwd" class="mr-sm-2">Telefono</label>
-                                                    <input type="password" class="form-control mb-2 mr-sm-2"
-                                                        placeholder="Add telefono" ps="pwd">
+                                                    <input name="phone" type="number" class="form-control mb-2 mr-sm-2" placeholder="Add telefono">
 
-                                                    <button type="submit"
-                                                        class="btn btn-primary mb-2">Actualizar</button>
+                                                    <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                                                 </form>
 
                                             </div>
@@ -178,159 +166,19 @@
                                     </div>
                                 </div>
 
+                            </div>
+                        </span>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td> no hay Organizaciones</td>
+                    </tr>
+                <?php endif; ?>
+                </tbody>
+            </table>
         </div>
-        </span>
-        </td>
-        </tr>
-        <tr>
-            <td class="pt-3-half" contenteditable="true">Cuy Sabor</td>
-            <td class="pt-3-half" contenteditable="true">../../imagenes/Organizacion1.jpg</td>
-            <td class="pt-3-half" contenteditable="true">Cll 22 # 3-22</td>
-            <td class="pt-3-half" contenteditable="true">82358554</td>
-
-            <td class="pt-3-half">
-                <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                            aria-hidden="true"></i></a></span>
-                <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
-                            aria-hidden="true"></i></a></span>
-            </td>
-            <td>
-                <span class="table-remove">
-                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                        Eliminar
-                    </button>
-                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal"
-                        data-target="#myModal">
-                        Editar
-                    </button>
-
-                    <!-- The Modal -->
-                    <div class="modal" id="myModal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Editar un Producto</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                    <form class="form-inline" action="/action_page.php">
-                                        <label for="email" class="mr-sm-2">Agregar nombre Organizacion</label>
-                                        <input type="email" class="form-control mb-2 mr-sm-2"
-                                            placeholder="Nombre Producto" id="email">
-                                        <label for="pwd" class="mr-sm-2">imagen</label>
-                                        <input type="password" class="form-control mb-2 mr-sm-2"
-                                            placeholder="ruta imagen" id="pwd">
-                                        <label for="pwd" class="mr-sm-2">ubicacion</label>
-                                        <input type="password" class="form-control mb-2 mr-sm-2"
-                                            placeholder="Add ubicacion" ps="pwd">
-                                        <label for="pwd" class="mr-sm-2">Telefono</label>
-                                        <input type="password" class="form-control mb-2 mr-sm-2"
-                                            placeholder="Add telefono" ps="pwd">
-
-                                        <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
-                                    </form>
-
-                                </div>
-
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
     </div>
-    </span>
-    </td>
-    </tr>
-    <!-- This is our clonable table line -->
-    <tr>
-        <td class="pt-3-half" contenteditable="true">Agro Sur</td>
-        <td class="pt-3-half" contenteditable="true">../../imagenes/Organizacion3.jpg</td>
-        <td class="pt-3-half" contenteditable="true">Cll 24 # 3-54</td>
-        <td class="pt-3-half" contenteditable="true">82354668</td>
-
-        <td class="pt-3-half">
-            <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                        aria-hidden="true"></i></a></span>
-            <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
-                        aria-hidden="true"></i></a></span>
-        </td>
-        <td>
-            <span class="table-remove">
-                <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                    Eliminar
-                </button>
-                <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal"
-                    data-target="#myModal">
-                    Editar
-                </button>
-
-                <!-- The Modal -->
-                <div class="modal" id="myModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Editar un Producto</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <form class="form-inline" action="/action_page.php">
-                                    <label for="email" class="mr-sm-2">Agregar nombre Organizacion</label>
-                                    <input type="email" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto"
-                                        id="email">
-                                    <label for="pwd" class="mr-sm-2">imagen</label>
-                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="ruta imagen"
-                                        id="pwd">
-                                    <label for="pwd" class="mr-sm-2">ubicacion</label>
-                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Add ubicacion"
-                                        ps="pwd">
-                                    <label for="pwd" class="mr-sm-2">Telefono</label>
-                                    <input type="password" class="form-control mb-2 mr-sm-2" placeholder="Add telefono"
-                                        ps="pwd">
-
-                                    <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
-                                </form>
-
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                </div>
-            </span>
-        </td>
-    </tr>
-    <!-- This is our clonable table line -->
-    <tr class="hide">
-        <td class="pt-3-half">
-            <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                        aria-hidden="true"></i></a></span>
-            <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
-                        aria-hidden="true"></i></a></span>
-        </td>
-    </tr>
-    </tbody>
-    </table>
-    </span>
-    </div>
-    </div>
-    </div>
-
+</body>
 </html>

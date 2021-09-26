@@ -45,7 +45,22 @@ class GestionInversionista extends CI_Controller
      * para agregar un Inversionista
      */
     public function addInversionista(clsInversionista $prmInversionista){
-        //posiblemente tu codigo aqui
+            //posiblemente tu codigo aqui
+            $nombreInver = $this->input->post("nombre");
+            $imagenInver = $this->input->post("imagen");
+            $descripcionInver = $this->input->post("descripcion");
+            $correoInver = $this->input->post("correo");
+            $newInver = new clsInversionista();
+            $newInver->setNombre($nombreInver);
+            $newInver->setImagen($imagenInver);
+            $newInver->setDescripcion($descripcionInver);
+            $newInver->setTelefono($correoInver);
+            $this->ModeloInversionista->obtenerInversionista($getId); 
+            if($getId == null){
+                $this->ModeloInversionista->obtenerInversionista($newInver);
+            }else{
+                echo "el usuario ya existe";
+            }
         //EJEMPLO DE USO DEL MODELO
         //llamado al modelo
         $this->ModeloInversionista->agregarInversionista($prmInversionista);
@@ -61,4 +76,5 @@ class GestionInversionista extends CI_Controller
         $this->ModeloInversionista->actualizarInversionista($prmInversionista);
         //posiblemente tu codigo aqui
     }
+    
 }

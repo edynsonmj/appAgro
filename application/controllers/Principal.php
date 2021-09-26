@@ -9,6 +9,7 @@ class Principal extends CI_Controller
         $this->sesion = new GestionSesion();
     }
     public function index(){
+        $productos = array();
         if($this->sesion->existeSesion()){
             echo "hay sesion";
             //validar roll
@@ -16,20 +17,18 @@ class Principal extends CI_Controller
             //vista admin
             //rol usuario
             //vista usuario con datos de sesion.
-            $this->load->view("vistasCrud/vista_principal.php");
+            
+            $this->load->view("vistasCrud/vista_editar_principal.php", compact('productos'));
         }
         else {
-            echo"No existe sesion";
             //ventana usuario generico.
             echo "no hay sesion";
-            $this->load->view("vistasCrud/vista_principal.php");
+            $this->load->view("vistasCrud/vista_principal.php", compact('productos'));
         }
     }
     public function cargarLogin()
     {
         $this->load->view("vistasCrud/vista_inicio_sesion.php");
-    }
-    
-    
+    }    
 }
 ?>

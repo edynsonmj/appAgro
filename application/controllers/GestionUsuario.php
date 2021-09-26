@@ -1,4 +1,5 @@
 <?php
+require_once '/xampp/htdocs/appAgro/application/controllers/GestionSesion.php';
 require_once '/xampp/htdocs/appAgro/application/negocio/clsUsuario.php';
 require_once '/xampp/htdocs/appAgro/application/controllers/GestionSesion.php';
 require_once '/xampp/htdocs/appAgro/application/controllers/Frontal.php';

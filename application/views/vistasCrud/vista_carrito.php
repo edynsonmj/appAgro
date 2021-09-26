@@ -67,10 +67,12 @@
                 </tr>
               </thead>
               <tbody>
+              <?php if (count($compras) > 0): ?>
+              <?php foreach ($compras as $compra): ?>
                 <tr>
-                  <td class="pt-3-half" contenteditable="true">Rabanos</td>
-                  <td class="pt-3-half" contenteditable="true">1500</td>
-                  <td class="pt-3-half" contenteditable="true">15</td>
+                  <td class="pt-3-half" contenteditable="true"><?php $compra->getNombre(); ?></td>
+                  <td class="pt-3-half" contenteditable="true"><?php $compra->getPrecio(); ?></td>
+                  <td class="pt-3-half" contenteditable="true"><?php $compra->getCantidad(); ?></td>
 
                   <td class="pt-3-half">
                     <span class="table-up"
@@ -90,65 +92,12 @@
                     >
                   </td>
                 </tr>
+              <?php endforeach; ?>
+              <?php else: ?>
                 <tr>
-                  <td class="pt-3-half" contenteditable="true">Pepino</td>
-                  <td class="pt-3-half" contenteditable="true">4500</td>
-                  <td class="pt-3-half" contenteditable="true">28</td>
-
-                  <td class="pt-3-half">
-                    <span class="table-up"
-                      ><a href="#!" class="indigo-text"
-                        ><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a
-                    ></span>
-                    <span class="table-down"
-                      ><a href="#!" class="indigo-text"
-                        ><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a
-                    ></span>
-                  </td>
-                  <td>
-                    <span class="table-remove"
-                      ><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                        Eliminar producto
-                      </button></span
-                    >
-                  </td>
+                  <td> no hay Compras</td>
                 </tr>
-                <!-- This is our clonable table line -->
-                <tr>
-                  <td class="pt-3-half" contenteditable="true">Papaya</td>
-                  <td class="pt-3-half" contenteditable="true">3000</td>
-                  <td class="pt-3-half" contenteditable="true">24</td>
-                  <td class="pt-3-half">
-                    <span class="table-up"
-                      ><a href="#!" class="indigo-text"
-                        ><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a
-                    ></span>
-                    <span class="table-down"
-                      ><a href="#!" class="indigo-text"
-                        ><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a
-                    ></span>
-                  </td>
-                  <td>
-                    <span class="table-remove"
-                      ><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                        Eliminar Producto
-                      </button></span
-                    >
-                  </td>
-                </tr>
-                <!-- This is our clonable table line -->
-                <tr class="hide">
-                  <td class="pt-3-half">
-                    <span class="table-up"
-                      ><a href="#!" class="indigo-text"
-                        ><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a
-                    ></span>
-                    <span class="table-down"
-                      ><a href="#!" class="indigo-text"
-                        ><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a
-                    ></span>
-                  </td>
-                </tr>
+              <?php endif; ?>
               </tbody>
             </table>
             <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">

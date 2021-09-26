@@ -23,6 +23,7 @@
                             </article>
                         </div>
                     <?php } ?>
+                    
                 </div>
             </div>
         </div>

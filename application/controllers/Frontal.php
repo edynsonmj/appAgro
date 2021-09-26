@@ -19,7 +19,7 @@ class Frontal extends CI_Controller
             $data['usuario'] = $datosGuardados['username'];
             $data['role'] = $datosGuardados['role'];
             if($data['role']=='admin'){
-                //vista de admin
+                
             }
             $this->load->view("principal",$data);
         }
