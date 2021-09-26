@@ -1,14 +1,18 @@
 <?php
 require_once '/xampp/htdocs/appAgro/application/controllers/GestionSesion.php';
 require_once '/xampp/htdocs/appAgro/application/negocio/clsUsuario.php';
+require_once '/xampp/htdocs/appAgro/application/controllers/GestionSesion.php';
+require_once '/xampp/htdocs/appAgro/application/controllers/Frontal.php';
 class GestionUsuario extends CI_Controller
 {
-    private  $sesionAux;
+    private $sesionAux;
+    private $controladorFrontal;
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('ModeloUsuario');
-        $this->sesionAux = new GestionSesion();
+        $this->load->model('ModeloUsuario');        
+        $this->sesionAux = new GestionSesion();        
+        //$this->controladorFrontal = new Frontal();
     }
 
     public function agregarUsuario(clsUsuario $prmUsuario){
@@ -55,23 +59,18 @@ class GestionUsuario extends CI_Controller
         $contraseñaUsuario = $this->input->post("contraseña");
         $usuario = new clsUsuario();
         $usuario = $this->ModeloUsuario->obtenerUsuario($nombreUsuario);
+        var_dump($usuario);
         if ($usuario == null) {
-            //cambiar esto para que se maneje por la interfaz
+            echo "es nulo";
         }
         else {
             if ($contraseñaUsuario == $usuario->getPassword()) {
                 $this->sesionAux->fijarSesion($usuario);
-                $productos = array(); //Toca mirar donde dejar ese array: esto es temporal
-                if($usuario->getRole() == "admin"){
-                    $this->load->view("vistasCrud/vista_editar_principal.php", compact("productos"));
-                }else{
-                    $this->load->view("vistasCrud/vista_principal.php", compact("productos"));
-                }
+                header('Location:'.base_url()."index.php");
             }else{
                 echo "la contraseña es erronea";
             }
         }
-        echo "error al ejecutar el metodo";
     }
     public function crearUsuario(){
         $nuevoNombre = $this->input->post("nombre");

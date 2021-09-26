@@ -28,7 +28,7 @@ class GestionSesion extends CI_Controller
         }
         try{
             $usu = array(   'username' => $prmUsuario->getUsername(),
-                            'nombre:' => $prmUsuario->getNombre(),
+                            'nombre' => $prmUsuario->getNombre(),
                             'role' => $prmUsuario->getRole());
             $this->session->set_userdata($usu);
             return true;
@@ -50,7 +50,6 @@ class GestionSesion extends CI_Controller
      * verifica si existe una sesion instanciada, no ace el proceso de autenticacion
      */
     public function existeSesion(){
-        echo "entro";
         return isset($_SESSION['username']);
     }
     /**
@@ -63,6 +62,7 @@ class GestionSesion extends CI_Controller
             echo "error al mostar sesion ".$e->getMessage();
         }
     }
+    //no es necesario si trabajo boton de sesion fuera de la barra de navegacion
     public function validarFormularioSesion(){
         if($this->existeSesion() == false){
             echo "no existe sesion";
@@ -75,8 +75,12 @@ class GestionSesion extends CI_Controller
         }
 
     }
+    //este crear usuario no deberia estar aqui
     public function crearUsuario(){
         $this->load->view("vistasCrud/vista_crear_usuario");
+    }
+    public function datosSesion(){
+        return $_SESSION;
     }
 }
 ?>
