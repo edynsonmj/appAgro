@@ -10,7 +10,6 @@ class Frontal extends CI_Controller
         $this->sesion = new GestionSesion();
     }
     public function index(){
-        echo "paso";
         $data['existeSesion']=$this->sesion->existeSesion();
         $data['productos']=$this->ModeloProducto->listarProductos();
         if($data['existeSesion']){
@@ -19,14 +18,13 @@ class Frontal extends CI_Controller
             $data['usuario'] = $datosGuardados['username'];
             $data['role'] = $datosGuardados['role'];
             if($data['role']=='admin'){
-                
+                $this->load->view("estructura/barraOpciones",$data);
+                $this->load->view("estructura/vista_editar_principal",$data);
+            }else{
+                $this->load->view("principal",$data);
             }
-            $this->load->view("principal",$data);
         }
         else {
-            echo"No existe sesion";
-            //ventana usuario generico.
-            echo "no hay sesion";
             $this->load->view("principal",$data);
         }
     }

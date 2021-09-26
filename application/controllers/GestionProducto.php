@@ -55,12 +55,26 @@ class GestionProducto extends CI_Controller
         //tu codigo posiblemente aqui
     }
 
-    public function actualizarProducto(clsProducto $prmProducto){
+    public function actualizarProducto(){
         //tu codigo posiblemente aqui
         //el parametro enviado es un producto con la informaicon a actualizar
-        //hacer validaciones
+        echo "llego";
+        $id = $this->input->post("idProducto");
+        $nombre =$this->input->post("nameProducto");
+        $precio =$this->input->post("priceProducto");
+        $cantidad = $this->input->post("amountProducto");
+        $imagen=$this->input->post("imagen");
+        echo $nombre."-".$precio."-".$cantidad."-".$imagen;
+        $prmProducto = new clsProducto();
+        $prmProducto->setId($id);
+        $prmProducto->setNombre($nombre);
+        $prmProducto->setPrecio($precio);
+        $prmProducto->setCantidad($cantidad);
+        $prmProducto->setImagen($imagen);
         $this->ModeloProducto->actualizarProducto($prmProducto);
-        //tu codigo posiblemente aqui
+        //validacion del resultado que genere el modelo.
+        //di si fue un exito o un fracaso
+        header('Location:'.base_url()."index.php"); //muesra ventana principal, pero es tu decicion que mostar a continuacion
     }
 
 
