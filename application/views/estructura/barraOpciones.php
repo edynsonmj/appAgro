@@ -26,19 +26,19 @@
         <div id="MenuNavegacion" class="collapse navbar-collapse">
           <ul class="navbar-nav ms-3">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Productos</a>
+              <a class="nav-link active" href="<?php echo base_url(); ?>index.php">Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Organizaciones</a>
+              <a class="nav-link" href="<?php echo base_url(); ?>index.php/Frontal/Organizacion">Organizaciones</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Ofertas</a>
+              <a class="nav-link" href="<?php echo base_url(); ?>index.php/Frontal/Ofertas">Ofertas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Inversionistas</a>
+              <a class="nav-link" href="<?php echo base_url(); ?>index.php/Frontal/Inversionistas">Inversionistas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Eventos</a>
+              <a class="nav-link" href="<?php echo base_url(); ?>index.php/Frontal/Eventos">Eventos</a>
             </li>
 
             <?php if ($existeSesion) { ?>

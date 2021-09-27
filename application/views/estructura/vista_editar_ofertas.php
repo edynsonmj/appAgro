@@ -16,48 +16,19 @@
 </head>
 
 <body>
-    <nav style="height: 20em; background-image: url('../../imagenes/Vegetales.jpg') !important;
-    background-position: center;" class="navbar navbar-expand-md bg-primary navbar-dark">
-        <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="navbar-brand" href="#">AgroCauca</button>
-        <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div  class="collapse navbar-collapse justify-content-center"  id="collapsibleNavbar">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_principal.html">Productos Agricolas</a> </button>
-            </li>
-          <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_organizacion.html">Organizacion</a> </button>
-          </li>
-          <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_ofertas.html">Ofertas</a></button>
-          </li>    
-          <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_inversionistas.html">Inversionistas</a></button>
-          </li>  
-          <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_eventos.html">Eventos</a></button>
-          </li>  
-          <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Cerrar sesion</button>
-          </li>  
-          </ul>
-        </div>  
-      </nav>
-    </div>
+<?php $this->load->view("estructura/barraOpciones", $existeSesion);  ?>
     <section class=" section">
     </body>
     <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
           Vista Admin editar Oferta
         </h3>
-        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal1">
+        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal">
           Agregar Producto
         </button>
       
         <!-- The Modal -->
-        <div class="modal" id="myModal1">
+        <div class="modal" id="myModal">
           <div class="modal-dialog">
             <div class="modal-content">
             
@@ -71,13 +42,15 @@
               <div class="modal-body">
                   <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOferta/addOferta">
                       <label for="email" class="mr-sm-2">Nombre del producto:</label>
-                      <input name="nameProd" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
+                      <input name="nameOfer" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
                       <label for="pwd" class="mr-sm-2">Precio/L</label>
-                      <input name="price" type="number" class="form-control mb-2 mr-sm-2" placeholder="Precio" >
+                      <input name="priceOfer" type="number" class="form-control mb-2 mr-sm-2" placeholder="Precio" >
                       <label for="pwd" class="mr-sm-2">Cantidad/L</label>
-                      <input name="amount" type="number" class="form-control mb-2 mr-sm-2" placeholder="Cantidad">
+                      <input name="amountOfer" type="number" class="form-control mb-2 mr-sm-2" placeholder="Cantidad">
                       <label for="pwd" class="mr-sm-2">Descuento</label>
-                      <input name="discount" type="number" class="form-control mb-2 mr-sm-2" placeholder="Descuento" >
+                      <input name="discountOfer" type="number" class="form-control mb-2 mr-sm-2" placeholder="Descuento" >
+                      <label for="pwd" class="mr-sm-2">Descuento</label>
+                      <input name="imgOfer" type="file" class="form-control mb-2 mr-sm-2" placeholder="Imagen" >
                   
                       <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0 mb-2">Guardar</button>
                     </form>
@@ -110,35 +83,28 @@
                 </tr>
               </thead>
               <tbody>
+              <?php $var=0; ?>
               <?php if (count($ofertas) > 0): ?>
               <?php foreach ($ofertas as $oferta): ?>
                 <tr>
-                  <td class="pt-3-half" contenteditable="true"><?php $ofertas->getNombre();  ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php $ofertas->getPrecio();  ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php $ofertas->getCantidad();  ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php $ofertas->getDescuento();  ?></td>
-
-                  <td class="pt-3-half">
-                    <span class="table-up"
-                      ><a href="#!" class="indigo-text"
-                        ><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a
-                    ></span>
-                    <span class="table-down"
-                      ><a href="#!" class="indigo-text"
-                        ><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a
-                    ></span>
-                  </td>
+                  <td class="pt-3-half" contenteditable="true"><?php echo $oferta->getNombre();  ?></td>
+                  <td class="pt-3-half" contenteditable="true"><?php  echo $oferta->getPrecio();  ?></td>
+                  <td class="pt-3-half" contenteditable="true"><?php  echo $oferta->getCantidad();  ?></td>
+                  <td class="pt-3-half" contenteditable="true"><?php echo $oferta->getDescuento();  ?></td>
                   <td>
                       <span class="table-remove">
-                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                          Eliminar
-                        </button>
-                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal">
+                        <form method="POST" action="<?php echo base_url(); ?>index.php/GestionOferta/deleteOferta">
+                          <input name="idOferta" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getId(); ?>>
+                          <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0">
+                            Eliminar
+                          </button>
+                        </form>
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal<?php echo $var+=1; ?>">
                           Editar
                         </button>
                       
                         <!-- The Modal -->
-                        <div class="modal" id="myModal">
+                        <div class="modal" id="myModal<?php echo $var; ?>">
                           <div class="modal-dialog">
                             <div class="modal-content">
                             
@@ -151,15 +117,17 @@
                               <!-- Modal body -->
                               <div class="modal-body">
                                   <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOferta/updateOferta">
+                                      <input name="idOferta" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getId(); ?>>
                                       <label for="email" class="mr-sm-2">Nombre del producto:</label>
-                                      <input name="nameOferta" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
+                                      <input name="nameOferta" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getNombre(); ?>>
                                       <label for="pwd" class="mr-sm-2">Precio/L</label>
-                                      <input name="priceOferta" type="number" class="form-control mb-2 mr-sm-2" placeholder="Precio">
+                                      <input name="priceOferta" type="number" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getPrecio(); ?> >
                                       <label for="pwd" class="mr-sm-2">Cantidad/L</label>
-                                      <input name="amountOferta" type="number" class="form-control mb-2 mr-sm-2" placeholder="Cantidad" >
+                                      <input name="amountOferta" type="number" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getCantidad(); ?> >
                                       <label for="email" class="mr-sm-2">Descuento:</label>
-                                      <input name="DescuentoOferta" type="number" class="form-control mb-2 mr-sm-2" placeholder="Descuento">
-                                      
+                                      <input name="DescuentoOferta" type="number" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getDescuento(); ?> >
+                                      <label for="pwd" class="mr-sm-2">Imagen:</label>
+                                      <input name="imgOfer" type="file" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getImagen(); ?> >
                                       <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                                     </form>
                   

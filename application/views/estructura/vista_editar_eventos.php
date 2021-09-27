@@ -17,49 +17,19 @@
 </head>
 
 <body>
-  <nav style="height: 20em; background-image: url('../../imagenes/Vegetales.jpg') !important;
-    background-position: center;" class="navbar navbar-expand-md bg-primary navbar-dark">
-    <button style=" background:rgb(54, 54, 216);color: white; border: white solid" class="navbar-brand"
-      href="#">AgroCauca</button>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_principal.html">Productos Agricolas</a> </button>
-        </li>
-      <li class="nav-item">
-          <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_organizacion.html">Organizacion</a> </button>
-      </li>
-      <li class="nav-item">
-          <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_ofertas.html">Ofertas</a></button>
-      </li>    
-      <li class="nav-item">
-          <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_inversionistas.html">Inversionistas</a></button>
-      </li>  
-      <li class="nav-item">
-          <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_eventos.html">Eventos</a></button>
-      </li>  
-      <li class="nav-item">
-          <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Cerrar sesion</button>
-      </li>  
-      </ul>
-    </div>
-  </nav>
-  </div>
+<?php $this->load->view("estructura/barraOpciones", $existeSesion);  ?>
+
   <section class=" section">
-</body>
 <div class="card">
   <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
     Vista Admin editar Eventos
   </h3>
-  <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal1">
+  <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal">
     Agregar Evento
   </button>
 
   <!-- The Modal -->
-  <div class="modal" id="myModal1">
+  <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
 
@@ -74,8 +44,8 @@
           <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionEvento/addEvento">
             <label for="email" class="mr-sm-2">Nombre del evento:</label>
             <input name="nameEvento" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre evento" >
-            <label for="pwd" class="mr-sm-2">Ubicacion</label>
-            <input name="ubicationEvento" type="password" class="form-control mb-2 mr-sm-2" placeholder="Ubicacion">
+            <label for="text" class="mr-sm-2">Ubicacion</label>
+            <input name="ubicationEvento" type="text" class="form-control mb-2 mr-sm-2" placeholder="Ubicacion">
             <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0 mb-2">Guardar</button>
           </form>
 
@@ -103,29 +73,27 @@
         </tr>
       </thead>
       <tbody>
+      <?php $var=0; ?>
       <?php if (count($eventos) > 0): ?>
       <?php foreach ($eventos as $evento): ?>
         <tr>
-          <td class="pt-3-half" contenteditable="true"><?php $evento->getNombre(); ?></td>
-          <td class="pt-3-half" contenteditable="true"><?php $inversionista->getUbicacion(); ?></td>
-          <td class="pt-3-half">
-            <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                  aria-hidden="true"></i></a></span>
-            <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
-                  aria-hidden="true"></i></a></span>
-          </td>
+          <td class="pt-3-half" contenteditable="true"><?php echo $evento->getNombre(); ?></td>
+          <td class="pt-3-half" contenteditable="true"><?php echo $evento->getUbicacion(); ?></td>
           <td>
             <span class="table-remove">
-              <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                Eliminar
-              </button>
+              <form method="POST" action="<?php echo base_url(); ?>index.php/GestionEvento/deleteEvento">
+                <input name="idEvento" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $evento->getId(); ?>>
+                <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0">
+                  Eliminar
+                </button>
+              </form>
               <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal"
-                data-target="#myModal">
+                data-target="#myModal<?php echo $var+=1; ?>">
                 Editar
               </button>
 
               <!-- The Modal -->
-              <div class="modal" id="myModal">
+              <div class="modal" id="myModal<?php echo $var; ?>">
                 <div class="modal-dialog">
                   <div class="modal-content">
 
@@ -138,10 +106,11 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                       <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionEvento/updateEvento">
-                        <label for="email" class="mr-sm-2">Nombre del Evento:</label>
-                        <input name="nameEvento" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre del evento">
-                        <label for="pwd" class="mr-sm-2">Ubicacion</label>
-                        <input name="ubicationEvento" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nueva ubicacion">
+                        <input name="idEvento" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $evento->getId(); ?>>
+                        <label for="text" class="mr-sm-2">Nombre del Evento:</label>
+                        <input name="nameEvento" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $evento->getNombre(); ?>>
+                        <label for="text" class="mr-sm-2">Ubicacion</label>
+                        <input name="ubicationEvento" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $evento->getUbicacion(); ?>>
                         <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                       </form>
 

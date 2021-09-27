@@ -16,36 +16,7 @@
 </head>
 
 <body>
-    <nav style="height: 20em; background-image: url('../../imagenes/Vegetales.jpg') !important;
-    background-position: center;" class="navbar navbar-expand-md bg-primary navbar-dark">
-        <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="navbar-brand" href="#">AgroCauca</button>
-        <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div  class="collapse navbar-collapse justify-content-center"  id="collapsibleNavbar">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_principal.html">Productos Agricolas</a> </button>
-            </li>
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_organizaciones.html">Organizacion</a> </button>
-            </li>
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_ofertas.html">Ofertas</a></button>
-            </li>    
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_inversionistas.html">Inversionistas</a></button>
-            </li>  
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_eventos.html">Eventos</a></button>
-            </li>  
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_inicio_sesion.html">Iniciar sesion</a></button>
-            </li> 
-          </ul>
-        </div>  
-      </nav>
-    </div>
+    <?php $this->load->view("estructura/barraOpciones", $existeSesion);  ?>
     <section class=" section">
     <div class="container mt-5">
 
@@ -68,9 +39,10 @@
               position:absolute;
             }
           </style>
-
+          <?php if (count($organizaciones) > 0): ?>
+          <?php foreach ($organizaciones as $organizacion): ?>
           <div class="row">
-    
+            
             <!-- Grid column -->
             <div style="display: flex; flex-wrap: wrap; width: 550px;" class="col-lg-5 mb-lg-0 pb-lg-3 mb-4">
     
@@ -78,8 +50,9 @@
                 <div class="card-body">
                     <img style ='width: 500px; height: 500px;' src = '../../imagenes/Organizacion.jpg'>
                 </div>
-                <a style = "text-align: center;">Agrocauca </a>
-                <a style ="text-align: center;">3125864584</a>
+                <a style = "text-align: center;"><?php echo $organizacion->getNombre(); ?> </a>
+                <a style = "text-align: center;"><?php echo $organizacion->getImagen()?> </a>
+                <a style ="text-align: center;"><?php echo $organizacion->getTelefono(); ?></a>
               </div>
             </div>
 
@@ -101,10 +74,12 @@
               </div>
     
             </div>
-            <!-- Grid column -->
-    
-          </div>
-          <!-- Grid row -->
+          <?php endforeach; ?>
+          <?php else: ?>
+            <tr>
+              <td> no hay Organizaciones</td>
+            </tr>
+          <?php endif; ?>
 </body>
 
 </html>

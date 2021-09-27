@@ -35,41 +35,46 @@ class GestionOferta extends CI_Controller
     /**
      * para eliminar una oferta
      */
-    public function deleteOferta($prmId){
-        //posiblemente tu codigo aqui
-        //EJEMPLO DE USO DEL MODELO
-        //llamado al modelo
-        $this->ModeloOferta->eliminarOferta($prmId);
-        //posiblemente tu codigo aqui
+    public function deleteOferta(){
+        $idOfer = $this->input->post("idOferta");
+        $this->ModeloOferta->eliminarOferta($idOfer);
+        header('Location:'.base_url()."index.php/Frontal/Ofertas");
     }
     /**
      * para agregar una oferta
      */
-    public function addOferta(clsOferta $prmOferta){
+    public function addOferta(){
         //posiblemente tu codigo aqui
-        $nombreOfer = $this->input->post("nombre");
-        $cantidadOfer = $this->input->post("");
-        $precioOfer =  $this->input->post("");
-        $imagenOfer =  $this->input->post("");
-        $descuentoOfer =  $this->input->post("");
+        $nombreOfer = $this->input->post("nameOfer");
+        $cantidadOfer = $this->input->post("amountOfer");
+        $precioOfer =  $this->input->post("priceOfer");
+        $imagenOfer =  $this->input->post("imgOfer");
+        $descuentoOfer =  $this->input->post("discountOfer");
         $newOfer = new clsOferta();
         $newOfer->setNombre($nombreOfer);
         $newOfer->setCantidad($cantidadOfer);
         $newOfer->setPrecio($precioOfer);
         $newOfer->setImagen($imagenOfer);
-        $newOfer->setDescuento($descuento);
-        $this->ModeloOferta->obtenerOferta->getId();
-         if( ==null){
-             $this->Modelo
-         }
-        //EJEMPLO DE USO DEL MODELO
-        //llamado al modelo
+        $newOfer->setDescuento($descuentoOfer);
+        $this->ModeloOferta->agregarOferta($newOfer);
+        header('Location:'.base_url()."index.php/Frontal/Ofertas");
+    }
 
-    public function updateOferta(clsOferta $prmOferta){
-        //posiblemente tu codigo aqui
-        //EJEMPLO DE USO DEL MODELO
-        //llamado al modelo
-        $this->ModeloOferta->actualizarOferta($prmOferta);
-        //posiblemente tu codigo aqui
+    public function updateOferta(){
+        $idOfer = $this->input->post("idOferta");
+        $nombreOfer = $this->input->post("nameOferta");
+        $cantidadOfer = $this->input->post("amountOferta");
+        $precioOfer =  $this->input->post("priceOferta");
+        $imagenOfer =  $this->input->post("imgOfer");
+        $descuentoOfer =  $this->input->post("DescuentoOferta");
+        $newOfer = new clsOferta();
+        $newOfer->setId($idOfer);
+        $newOfer->setNombre($nombreOfer);
+        $newOfer->setCantidad($cantidadOfer);
+        $newOfer->setPrecio($precioOfer);
+        $newOfer->setImagen($imagenOfer);
+        $newOfer->setDescuento($descuentoOfer);
+        $this->ModeloOferta->actualizarOferta($newOfer);
+        header('Location:'.base_url()."index.php/Frontal/Ofertas");
     }
 }

@@ -70,11 +70,11 @@
                                     <div class="header">
                                         <img style = "width: 100px; height: 100px;" src="../../imagenes/Zanahoria.jpg">
                                         <i class="fa fa-laptop icon-bg-1"></i> 
-                                        <h4><?php $producto->getNombre();?> </h4>
+                                        <h4><?php echo $producto->getNombre();?> </h4>
                                     </div>
                                     <ul class="category-list" >
-                                        <li><a>Cantidad <span><?php $producto->getCantidad();?> </span></a></li>
-                                        <li><a></a>Precio <span><?php $producto->getPrecio();?>/L</span></a></li>
+                                        <li><a>Cantidad <span><?php echo $producto->getCantidad();?> </span></a></li>
+                                        <li><a></a>Precio <span><?php echo $producto->getPrecio();?>/L</span></a></li>
                                         <button style="position: relative; right: 40px; background-color: rgb(20, 63, 20); color:white" href="category.html">Agregar al carrito</button>
                                     </ul>
                                 </div>

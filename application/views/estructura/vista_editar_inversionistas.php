@@ -16,36 +16,8 @@
 </head>
 
 <body>
-    <nav style="height: 20em; background-image: url('../../imagenes/Vegetales.jpg') !important;
-    background-position: center;" class="navbar navbar-expand-md bg-primary navbar-dark">
-        <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="navbar-brand" href="#">AgroCauca</button>
-        <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div  class="collapse navbar-collapse justify-content-center"  id="collapsibleNavbar">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_principal.html">Productos Agricolas</a> </button>
-            </li>
-          <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_organizacion.html">Organizacion</a> </button>
-          </li>
-          <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_ofertas.html">Ofertas</a></button>
-          </li>    
-          <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_inversionistas.html">Inversionistas</a></button>
-          </li>  
-          <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_eventos.html">Eventos</a></button>
-          </li>  
-          <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Cerrar sesion</button>
-          </li>    
-          </ul>
-        </div>  
-      </nav>
-    </div>
+<?php $this->load->view("estructura/barraOpciones", $existeSesion);  ?>
+
     <section class=" section">
     </body>
     <div class="card">
@@ -73,7 +45,7 @@
                       <label for="email" class="mr-sm-2">Nombre inversionita:</label>
                       <input name="nameInversionista" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre del inversionita" >
                       <label for="pwd" class="mr-sm-2">Imagen</label>
-                      <input name="imageInversionista" type="image" class="form-control mb-2 mr-sm-2" placeholder="Ruta imagen" >
+                      <input name="imageInversionista" type="file" class="form-control mb-2 mr-sm-2" placeholder="Ruta imagen" >
                       <label for="pwd" class="mr-sm-2">Descripcion </label>
                       <input name="descripcionInversionista" type="text" class="form-control mb-2 mr-sm-2" placeholder="Description">
                       <label for="pwd" class="mr-sm-2">Correo</label>
@@ -110,35 +82,28 @@
                 </tr>
               </thead>
               <tbody>
+              <?php $var=0; ?>
               <?php if (count($inversionistas) > 0): ?>
               <?php foreach ($inversionistas as $inversionista): ?>
                 <tr>
-                  <td class="pt-3-half" contenteditable="true"><?php $inversionista->getNombre(); ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php $inversionista->getImagen(); ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php $inversionista->getDescripcion(); ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php $inversionista->getCorreo(); ?></td>
-
-                  <td class="pt-3-half">
-                    <span class="table-up"
-                      ><a href="#!" class="indigo-text"
-                        ><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a
-                    ></span>
-                    <span class="table-down"
-                      ><a href="#!" class="indigo-text"
-                        ><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a
-                    ></span>
-                  </td>
+                  <td class="pt-3-half" contenteditable="true"><?php echo $inversionista->getNombre(); ?></td>
+                  <td class="pt-3-half" contenteditable="true"><?php echo $inversionista->getImagen(); ?></td>
+                  <td class="pt-3-half" contenteditable="true"><?php echo $inversionista->getDescripcion(); ?></td>
+                  <td class="pt-3-half" contenteditable="true"><?php echo $inversionista->getTelefono(); ?></td>
                   <td>
-            <span class="table-remove">
-                      <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                        Eliminar
-                      </button>
-                      <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal2">
+                    <span class="table-remove">
+                      <form method="POST" action="<?php echo base_url(); ?>index.php/GestionInversionista/deleteInversionista">
+                        <input name="idInversionista" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getId(); ?>>
+                        <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0">
+                          Eliminar
+                        </button>
+                      </form>
+                      <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal<?php echo $var+=1; ?>">
                         Editar
                       </button>
                     
                       <!-- The Modal -->
-                      <div class="modal" id="myModal2">
+                      <div class="modal" id="myModal<?php echo $var; ?>">
                         <div class="modal-dialog">
                           <div class="modal-content">
                           
@@ -151,14 +116,16 @@
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionInversionista/updateInversionista">
+                                    <label for="email" class="mr-sm-2">Id:</label>
+                                    <input name="idInversionista" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getId(); ?>>
                                     <label for="email" class="mr-sm-2">Nombre inversionita:</label>
-                                    <input name="nameInversionista" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre del inversionita">
+                                    <input name="nameInversionista" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getNombre(); ?>>
                                     <label for="pwd" class="mr-sm-2">Imagen</label>
-                                    <input name="imageInversionista" type="image" class="form-control mb-2 mr-sm-2" placeholder="Ruta imagen">
+                                    <input name="imageInversionista" type="file" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getImagen(); ?>>
                                     <label for="pwd" class="mr-sm-2">Descripcion </label>
-                                    <input name="descriptionInversionista" type="text" class="form-control mb-2 mr-sm-2" placeholder="Description" >
+                                    <input name="descriptionInversionista" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getDescripcion(); ?> >
                                     <label for="pwd" class="mr-sm-2">Correo</label>
-                                    <input name="emailInversionista" type="email" class="form-control mb-2 mr-sm-2" placeholder="Correo">
+                                    <input name="emailInversionista" type="email" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getTelefono(); ?>>
                                 
                                     <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                                   </form>

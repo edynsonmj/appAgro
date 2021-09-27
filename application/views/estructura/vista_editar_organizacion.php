@@ -17,47 +17,17 @@
 </head>
 
 <body>
-    <nav style="height: 20em; background-image: url('../../imagenes/Vegetales.jpg') !important;
-    background-position: center;" class="navbar navbar-expand-md bg-primary navbar-dark">
-        <button style=" background:rgb(54, 54, 216);color: white; border: white solid" class="navbar-brand"
-            href="#">AgroCauca</button>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                  <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_principal.html">Productos Agricolas</a> </button>
-                </li>
-              <li class="nav-item">
-                  <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_organizacion.html">Organizacion</a> </button>
-              </li>
-              <li class="nav-item">
-                  <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_ofertas.html">Ofertas</a></button>
-              </li>    
-              <li class="nav-item">
-                  <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_inversionistas.html">Inversionistas</a></button>
-              </li>  
-              <li class="nav-item">
-                  <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#"><a style = "color: white; text-decoration: none;" href = "vista_editar_eventos.html">Eventos</a></button>
-              </li>  
-              <li class="nav-item">
-                  <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Cerrar sesion</button>
-              </li>  
-              </ul>
-            </div>  
-          </nav>
-        </div>
+    <?php $this->load->view("estructura/barraOpciones", $existeSesion);  ?>
     <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
             Vista Admin editar Organizacion
         </h3>
-        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal1">
+        <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal" data-target="#myModal">
             agregar organizacion
         </button>
 
         <!-- The Modal -->
-        <div class="modal" id="myModal1">
+        <div class="modal" id="myModal">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -71,13 +41,13 @@
                     <div class="modal-body">
                         <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOrganizacion/addOrganizacion">
                             <label for="email" class="mr-sm-2">Agregar nombre Organizacion</label>
-                            <input name="nameProd" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
+                            <input name="nameOrg" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
                             <label for="pwd" class="mr-sm-2">imagen</label>
-                            <input name="pathImage" type="text" class="form-control mb-2 mr-sm-2" placeholder="ruta imagen" >
+                            <input name="pathImageOrg" type="text" class="form-control mb-2 mr-sm-2" placeholder="ruta imagen" >
                             <label for="pwd" class="mr-sm-2">ubicacion</label>
-                            <input name="ubication" type="text" class="form-control mb-2 mr-sm-2" placeholder="Add ubicacion" >
+                            <input name="ubicationOrg" type="text" class="form-control mb-2 mr-sm-2" placeholder="Add ubicacion" >
                             <label for="pwd" class="mr-sm-2">Telefono</label>
-                            <input name="phone" type="number" class="form-control mb-2 mr-sm-2" placeholder="Add telefono" >
+                            <input name="phoneOrg" type="number" class="form-control mb-2 mr-sm-2" placeholder="Add telefono" >
                             <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0 mb-2">Guardar</button>
                         </form>
                     </div>
@@ -103,32 +73,29 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php $var=0; ?>
                 <?php if (count($organizaciones) > 0): ?>
                 <?php foreach ($organizaciones as $organizacion): ?>
                     <tr>
-                        <td class="pt-3-half" contenteditable="true"><?php $organizacion->getNombre(); ?></td>
-                        <td class="pt-3-half" contenteditable="true"><?php $organizacion->getImagen(); ?></td>
-                        <td class="pt-3-half" contenteditable="true"><?php $organizacion->getUbicacion(); ?></td>
-                        <td class="pt-3-half" contenteditable="true"><?php $organizacion->getTelefono(); ?></td>
-
-                        <td class="pt-3-half">
-                            <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
-                                        aria-hidden="true"></i></a></span>
-                            <span class="table-down"><a href="#!" class="indigo-text"><i
-                                        class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
-                        </td>
+                        <td class="pt-3-half" contenteditable="false"><?php echo $organizacion->getNombre(); ?></td>
+                        <td class="pt-3-half" contenteditable="false"><?php echo $organizacion->getImagen(); ?></td>
+                        <td class="pt-3-half" contenteditable="false"><?php echo $organizacion->getUbicacion(); ?></td>
+                        <td class="pt-3-half" contenteditable="false"><?php echo $organizacion->getTelefono(); ?></td>
                         <td>
                             <span class="table-remove">
-                                <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
-                                    Eliminar
-                                </button>
+                                <form method="POST" action="<?php echo base_url(); ?>index.php/GestionOrganizacion/deleteOrganizacion">
+                                    <input name="idOrg" type="hidden" value="<?php echo $organizacion->getId(); ?>" >
+                                    <button type="submit" class="btn btn-warning btn-rounded btn-sm my-0">
+                                        Eliminar
+                                    </button>
+                                </form>
                                 <button type="button" class="btn btn-danger btn-rounded btn-sm my-0" data-toggle="modal"
-                                    data-target="#myModal">
+                                    data-target="#myModal<?php echo $var+=1; ?>">
                                     Editar
                                 </button>
 
                                 <!-- The Modal -->
-                                <div class="modal" id="myModal">
+                                <div class="modal" id="myModal<?php echo $var; ?>">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
 
@@ -142,14 +109,15 @@
                                             <!-- Modal body -->
                                             <div class="modal-body">
                                                 <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOrganizacion/updateOrganizacion">
+                                                    <input name="idOrganizacion" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $organizacion->getId(); ?>>
                                                     <label for="email" class="mr-sm-2">Agregar nombre Organizacion</label>
-                                                    <input name="nameProd" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
+                                                    <input name="nameProd" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $organizacion->getNombre(); ?> >
                                                     <label for="pwd" class="mr-sm-2">imagen</label>
-                                                    <input name="pathImage" type="image" class="form-control mb-2 mr-sm-2" placeholder="ruta imagen">
+                                                    <input name="pathImage" type="image" class="form-control mb-2 mr-sm-2" value=<?php echo $organizacion->getImagen(); ?>>
                                                     <label for="pwd" class="mr-sm-2">ubicacion</label>
-                                                    <input name="ubication" type="text" class="form-control mb-2 mr-sm-2" placeholder="Add ubicacion">
+                                                    <input name="ubication" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $organizacion->getUbicacion(); ?>>
                                                     <label for="pwd" class="mr-sm-2">Telefono</label>
-                                                    <input name="phone" type="number" class="form-control mb-2 mr-sm-2" placeholder="Add telefono">
+                                                    <input name="phone" type="number" class="form-control mb-2 mr-sm-2" value=<?php echo $organizacion->getTelefono(); ?>>
 
                                                     <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                                                 </form>

@@ -16,36 +16,8 @@
 </head>
 
 <body>
-    <nav style="height: 20em; background-image: url('../../imagenes/Vegetales.jpg') !important;
-    background-position: center;" class="navbar navbar-expand-md bg-primary navbar-dark">
-        <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="navbar-brand" href="#">AgroCauca</button>
-        <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div  class="collapse navbar-collapse justify-content-center"  id="collapsibleNavbar">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">productos Canasta</button>
-            </li>
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Organizaciones</button>
-            </li>
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Ofertas</button>
-            </li>    
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Inversionistas</button>
-            </li>  
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Eventos</button>
-            </li>  
-            <li class="nav-item">
-                <button style = " background:rgb(54, 54, 216);color: white; border: white solid" class="nav-link" href="#">Iniciar sesion</button>
-            </li>  
-          </ul>
-        </div>  
-      </nav>
-    </div>
+<?php $this->load->view("estructura/barraOpciones", $existeSesion);  ?>
+
     <section class=" section">
     </body>
     <div class="card">

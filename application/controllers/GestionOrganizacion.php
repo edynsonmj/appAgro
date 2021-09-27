@@ -29,52 +29,48 @@ class GestionOrganizacion extends CI_Controller
         $Organizaciones = array();
         //llamado al modelo
         $Organizaciones = $this->ModeloOrganizacion->listarOrganizaciones();
-        //posiblemente tu codigo aqui
     }
     /**
      * para eliminar una Organizacion
      */
-    public function deleteOrganizacion($prmId){
-        //posiblemente tu codigo aqui
-        //EJEMPLO DE USO DEL MODELO
-        //llamado al modelo
-        $this->ModeloOrganizacion->eliminarOrganizacion($prmId);
-        //posiblemente tu codigo aqui
+    public function deleteOrganizacion(){
+        $idOrg = $this->input->post("idOrg");
+        $this->ModeloOrganizacion->eliminarOrganizacion($idOrg);
+        header('Location:'.base_url()."index.php/Frontal/Organizacion");
     }
     /**
      * para agregar una Organizacion
      */
-    public function addOrganizacion(clsOrganizacion $prmOrganizacion){
-        //posiblemente tu codigo aqui
-        $nombreOrg = $this->input->post("");
-        $imagenOrg = $this->input->post("");
-        $ubicacionOrg = $this->input->post("");
-        $telefonoOrg = $this->input->post("");
+    public function addOrganizacion(){
+        $nombreOrg = $this->input->post("nameOrg");
+        $imagenOrg = $this->input->post("pathImageOrg");
+        $ubicacionOrg = $this->input->post("ubicationOrg");
+        $telefonoOrg = $this->input->post("phoneOrg");
         $newOrg = new clsOrganizacion();
         $newOrg->setNombre($nombreOrg);
         $newOrg->setImagen($imagenOrg);
         $newOrg->setUbicacion($ubicacionOrg);
         $newOrg->setTelefono($telefonoOrg);
-        $this->ModeloOrganizacion->agregarOrganizacion() 
-        if( == null){
-            $this->ModeloInversionista->obtenerInversionista($newOrg);
-        }else{
-            echo "el usuario ya existe";
-        }
-        //EJEMPLO DE USO DEL MODELO
-        //llamado al modelo
-        $this->ModeloOrganizacion->agregarOrganizacion($prmOrganizacion);
-        //posiblemente tu codigo aqui
+        $this->ModeloOrganizacion->agregarOrganizacion($newOrg);
+        header('Location:'.base_url()."index.php/Frontal/Organizacion");
     }
     /**
      * para actualizar una Organizacion
      */
-    public function updateOrganizacion(clsOrganizacion $prmOrganizacion){
-        //posiblemente tu codigo aqui
-        //EJEMPLO DE USO DEL MODELO
-        //llamado al modelo
-        $this->ModeloOrganizacion->actualizarOrganizacion($prmOrganizacion);
-        //posiblemente tu codigo aqui
+    public function updateOrganizacion(){
+        $idOrg = $this->input->post("idOrganizacion");
+        $nombreOrg = $this->input->post("nameProd");
+        $imagenOrg = $this->input->post("pathImage");
+        $ubicacionOrg = $this->input->post("ubication");
+        $telefonoOrg = $this->input->post("phone");
+        $newOrg = new clsOrganizacion();
+        $newOrg->setId($idOrg);
+        $newOrg->setNombre($nombreOrg);
+        $newOrg->setImagen($imagenOrg);
+        $newOrg->setUbicacion($ubicacionOrg);
+        $newOrg->setTelefono($telefonoOrg);
+        $this->ModeloOrganizacion->actualizarOrganizacion($newOrg);
+        header('Location:'.base_url()."index.php/Frontal/Organizacion");
     }
 }
 ?>
