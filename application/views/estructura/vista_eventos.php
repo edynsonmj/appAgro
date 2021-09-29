@@ -46,7 +46,7 @@
             <!-- Grid column -->
             <div style="display: flex; flex-wrap: wrap; ;" class="col-lg-5 mb-lg-0 pb-lg-3 mb-4">
               <div style = "text-align: center;" class="card">
-                <button > <?php echo $evento->getNombre(); ?></button>
+                <button> <?php echo $evento->getNombre(); ?></button>
               </div>
             </div>
 
@@ -66,7 +66,6 @@
                   <p>MAPA</6p>
                 </div>
               </div>
-    
             </div>
             <?php endforeach; ?>
             <?php else: ?>

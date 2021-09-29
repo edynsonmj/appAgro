@@ -1,5 +1,6 @@
 <?php
 require_once '/xampp/htdocs/appAgro/application/negocio/clsOrganizacion.php';
+require_once "/xampp/htdocs/appAgro/application/controllers/GestionSesion.php";
 class GestionOrganizacion extends CI_Controller
 {
     public function __construct()
@@ -23,16 +24,23 @@ class GestionOrganizacion extends CI_Controller
      * para obtener todas las Organizaciones
      */
     public function allOrganizaciones(){
-        //posiblemente tu codigo aqui
-        //EJEMPLO DE USO DEL MODELO
-        //recupera las Organizacions en un rray para ello, ejemplo
-        $Organizaciones = array();
-        //llamado al modelo
-        $Organizaciones = $this->ModeloOrganizacion->listarOrganizaciones();
-    }
-    /**
-     * para eliminar una Organizacion
-     */
+            $sesion = new GestionSesion();
+            $data['existeSesion']=$sesion->existeSesion();
+            $data['organizaciones']=$this->ModeloOrganizacion->listarOrganizaciones();
+            if($data['existeSesion']){
+                $datosGuardados = $sesion->datosSesion();
+                $data['nombre'] = $datosGuardados['nombre'];
+                $data['usuario'] = $datosGuardados['username'];
+                $data['role'] = $datosGuardados['role'];
+                if ($data['role'] == 'admin') {
+                    $this->load->view("estructura/Vista_editar_organizacion",$data);
+                }else {
+                    $this->load->view("estructura/Vista_organizaciones",$data);
+                }
+            }else{
+                $this->load->view("estructura/Vista_organizaciones",$data);
+            }   
+        }
     public function deleteOrganizacion(){
         $idOrg = $this->input->post("idOrg");
         $this->ModeloOrganizacion->eliminarOrganizacion($idOrg);

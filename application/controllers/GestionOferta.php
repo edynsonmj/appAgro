@@ -1,5 +1,6 @@
 <?php
 require_once "/xampp/htdocs/appAgro/application/negocio/clsOferta.php";
+require_once "/xampp/htdocs/appAgro/application/controllers/GestionSesion.php";
 class GestionOferta extends CI_Controller
 {
     public function __construct()
@@ -24,17 +25,23 @@ class GestionOferta extends CI_Controller
      * para obtener todas las ofertas
      */
     public function allOfertas(){
-        //posiblemente tu codigo aqui
-        //EJEMPLO DE USO DEL MODELO
-        //recupera las ofertas en un rray para ello, ejemplo
-        $ofertas = array();
-        //llamado al modelo
-        $ofertas = $this->ModeloOferta->listarOfertas();
-        //posiblemente tu codigo aqui
-    }
-    /**
-     * para eliminar una oferta
-     */
+            $sesion = new GestionSesion();
+            $data['existeSesion']=$sesion->existeSesion();
+            $data['ofertas']=$this->ModeloOferta->listarOfertas();
+            if($data['existeSesion']){
+                $datosGuardados = $sesion->datosSesion();
+                $data['nombre'] = $datosGuardados['nombre'];
+                $data['usuario'] = $datosGuardados['username'];
+                $data['role'] = $datosGuardados['role'];
+                if ($data['role'] == 'admin') {
+                    $this->load->view("estructura/Vista_editar_ofertas",$data);
+                }else {
+                    $this->load->view("estructura/Vista_oferta",$data);
+                }
+            }else{
+                $this->load->view("estructura/Vista_oferta",$data);
+            }   
+        }
     public function deleteOferta(){
         $idOfer = $this->input->post("idOferta");
         $this->ModeloOferta->eliminarOferta($idOfer);

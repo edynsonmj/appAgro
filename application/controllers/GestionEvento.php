@@ -1,5 +1,7 @@
 <?php
+use MongoDB\Driver\Session;
 require_once "/xampp/htdocs/appAgro/application/negocio/clsEvento.php";
+require_once "/xampp/htdocs/appAgro/application/controllers/GestionSesion.php";
 class GestionEvento extends CI_Controller
 {
     public function __construct()
@@ -23,14 +25,24 @@ class GestionEvento extends CI_Controller
      * para obtener todos los Eventos
      */
     public function allEventos(){
-        //posiblemente tu codigo aqui
-        //EJEMPLO DE USO DEL MODELO
-        //recupera los Eventos en un rray para ello, ejemplo
-        $Eventos = array();
-        //llamado al modelo
-        $Eventos = $this->ModeloEvento->listarEventos();
-        //posiblemente tu codigo aqui
+            $sesion = new GestionSesion();
+            $data['existeSesion']=$sesion->existeSesion();
+            $data['eventos']=$this->ModeloEvento->listarEventos();
+            if($data['existeSesion']){
+                $datosGuardados = $sesion->datosSesion();
+                $data['nombre'] = $datosGuardados['nombre'];
+                $data['usuario'] = $datosGuardados['username'];
+                $data['role'] = $datosGuardados['role'];
+                if ($data['role'] == 'admin') {
+                    $this->load->view("estructura/Vista_editar_eventos",$data);
+                }else {
+                    $this->load->view("estructura/Vista_eventos",$data);
+                }
+            }else{
+                $this->load->view("estructura/Vista_eventos",$data);
+            }   
     }
+    
     /**
      * para eliminar un Evento
      */
@@ -66,4 +78,5 @@ class GestionEvento extends CI_Controller
         $this->ModeloEvento->actualizarEvento($newEvent);
         header('Location:'.base_url()."index.php/Frontal/Eventos");
     }
+    
 }

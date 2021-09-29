@@ -1,5 +1,6 @@
 <?php
 require_once "/xampp/htdocs/appAgro/application/negocio/clsInversionista.php";
+require_once "/xampp/htdocs/appAgro/application/controllers/GestionSesion.php";
 class GestionInversionista extends CI_Controller
 {
     public function __construct()
@@ -23,19 +24,24 @@ class GestionInversionista extends CI_Controller
     /**
      * para obtener todas las Inversionistaes
      */
-    public function allInversionistas()
-    {
-        //posiblemente tu codigo aqui
-        //EJEMPLO DE USO DEL MODELO
-        //recupera los Inversionistas en un rray para ello, ejemplo
-        $Inversionistas = array();
-        //llamado al modelo
-        $Inversionistas = $this->ModeloInversionista->listarInversionistas();
-    //posiblemente tu codigo aqui
+    public function allInversionistas(){
+        $sesion = new GestionSesion();        
+        $data['existeSesion']=$sesion->existeSesion();
+        $data['inversionistas']=$this->ModeloInversionista->listarInversionistas();
+        if($data['existeSesion']){
+            $datosGuardados = $sesion->datosSesion();
+            $data['nombre'] = $datosGuardados['nombre'];
+            $data['usuario'] = $datosGuardados['username'];
+            $data['role'] = $datosGuardados['role'];
+            if ($data['role'] == 'admin') {
+                $this->load->view("estructura/Vista_editar_inversionistas",$data);
+            }else {
+                $this->load->view("estructura/Vista_inversionistas",$data);
+            }
+        }else{
+            $this->load->view("estructura/Vista_inversionistas",$data);
+        }   
     }
-    /**
-     * para eliminar un Inversionista
-     */
     public function deleteInversionista()
     {
         $idInver = $this->input->post("idInversionista");

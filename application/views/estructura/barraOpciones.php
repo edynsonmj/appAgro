@@ -29,17 +29,26 @@
               <a class="nav-link active" href="<?php echo base_url(); ?>index.php">Productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>index.php/Frontal/Organizacion">Organizaciones</a>
+              <a class="nav-link" href="<?php echo base_url(); ?>index.php/GestionOrganizacion/allOrganizaciones">Organizaciones</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>index.php/Frontal/Ofertas">Ofertas</a>
+              <a class="nav-link" href="<?php echo base_url(); ?>index.php/GestionOferta/allOfertas">Ofertas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>index.php/Frontal/Inversionistas">Inversionistas</a>
+              <a class="nav-link" href="<?php echo base_url(); ?>index.php/GestionInversionista/allInversionistas">Inversionistas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo base_url(); ?>index.php/Frontal/Eventos">Eventos</a>
+              <a class="nav-link" href="<?php echo base_url(); ?>index.php/GestionEvento/allEventos">Eventos</a>
             </li>
+
+            <?php if ($existeSesion) { ?>
+            <li class="nav-item ">
+              <a class="nav-link" href="<?php echo base_url(); ?>index.php/GestionCarrito/allItemsCarrito">
+                Carrito
+              </a>
+              
+            </li>
+            <?php } ?>
 
             <?php if ($existeSesion) { ?>
             <li class="nav-item dropdown">
@@ -53,6 +62,7 @@
               </ul>
             </li>
             <?php } ?>
+
 
           </ul>
           <ul class="navbar-nav ms-3">

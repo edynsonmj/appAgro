@@ -10,30 +10,37 @@ class GestionCarrito extends CI_Controller
     /**
      * para obtener todos los producto de un carrito
      */
-    public function AllItemsCarrito($prmUsuarioId){
-        //posiblemente tu codigo aqui
-        //el metodo retorna un array de parejas del tipo [idCarrito,producto]
-        //donde idCarrito es un valor entero que representa al item en el carrito
-        //producto es un objeto de la clase clsProducto que encapsula la informacion del producto.
-        $this->ModeloCarrito->listarCarrito($prmUsuarioId);
-        //posiblemente tu codigo aqui
+    public function AllItemsCarrito(){
+        $sesion = new GestionSesion();
+        $data['existeSesion']=$sesion->existeSesion();
+        $data['carrito']=$this->ModeloCarrito->listarCarrito();
+        if($data['existeSesion']){
+            $datosGuardados = $sesion->datosSesion();
+            $data['nombre'] = $datosGuardados['nombre'];
+            $data['usuario'] = $datosGuardados['username'];
+            $data['role'] = $datosGuardados['role'];
+            if ($data['role'] == 'admin') {
+                $this->load->view("estructura/vista_carrito",$data);
+            }else {
+                $this->load->view("estructura/vista_carrito",$data);
+            }
+        }else{
+            $this->load->view("estructura/vista_carrito",$data);
+        }   
     }
     /**
      * para agregar un producto al carrito
      */
     public function addItemCarrito($prmUsuarioId, $prmProductoId){
-        //psodiblemtne tu codigo aqui
-        $this->ModeloCarrito->agregarProductoCarrito($prmUsuarioId,$prmProductoId);
-        //posiblemente tu codigo aqui
+
     }
     /**
      * para retirar un producto del carrito
      */
     public function deleteItemCarrito($prmCarId){
-        //posiblemnete codigo quei
-        //$prmCarId representa el identificador del item dentro del carrito, NO es el identificador del producto.
-        $this->ModeloCarrito->retirarProductoCarrito($prmCarId);
-        //posiblemnete codigo quei
+        $carId = $this->input->post("carId");
+        $this->ModeloCarrito->retirarProductoCarrito(carId);
+        header('Location:'.base_url()."index.php/Frontal/carrito");
     }
     /**
      * para obtener el precio total de los producto en el carrito de u usuario
