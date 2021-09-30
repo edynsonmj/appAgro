@@ -80,7 +80,14 @@ class GestionSesion extends CI_Controller
         $this->load->view("vistasCrud/vista_crear_usuario");
     }
     public function datosSesion(){
-        return $_SESSION;
+        $request = array();
+        $nombreusuario = $_SESSION ['username'];
+        array_push($request, $nombreusuario);
+        $nombre = $_SESSION ['nombre'];
+        array_push($request, $nombre);
+        $rol = $_SESSION ['role'];
+        array_push($request, $rol);
+        return $request;
     }
 }
 ?>

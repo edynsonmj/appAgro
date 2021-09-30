@@ -59,6 +59,7 @@ class ModeloCarrito extends CI_model
      */
     public function agregarProductoCarrito($prmUsuarioId, $prmProductoId){
         try{
+            echo "agregar producto carrito ".$prmProductoId."dos".$prmUsuarioId;
             if(($this->ModeloProducto->obtenerProducto($prmProductoId))==null){
                 return 3;
             }

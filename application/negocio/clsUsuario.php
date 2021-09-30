@@ -9,7 +9,7 @@ class clsUsuario{
     {
     }
     public function setId($prmId){
-        $this->Id=$prmId;
+        $this->id=$prmId;
     }
     public function setNombre($prmNombre){
         $this->nombre=$prmNombre;

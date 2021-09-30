@@ -19,9 +19,9 @@ class Frontal extends CI_Controller
         $data['productos']=$this->ModeloProducto->listarProductos();
         if($data['existeSesion']){
             $datosGuardados = $this->sesion->datosSesion();
-            $data['nombre'] = $datosGuardados['nombre'];
-            $data['usuario'] = $datosGuardados['username'];
-            $data['role'] = $datosGuardados['role'];
+            $data['nombre'] = $datosGuardados[1];
+            $data['usuario'] = $datosGuardados[0];
+            $data['role'] = $datosGuardados[2];
             if($data['role']=='admin'){
                 $this->load->view("estructura/barraOpciones",$data);
                 $this->load->view("estructura/vista_editar_principal",$data);
