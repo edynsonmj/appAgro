@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<?php $this->load->view("estructura/barraOpciones", $existeSesion);  ?>
+
 
     <section class=" section">
     </body>
@@ -39,12 +39,12 @@
                 </tr>
               </thead>
               <tbody>
-              <?php if (count($compras) > 0): ?>
+              <?php if(count($compras) > 0): ?>
               <?php foreach ($compras as $compra): ?>
                 <tr>
-                  <td class="pt-3-half" contenteditable="true"><?php $compra->getNombre(); ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php $compra->getPrecio(); ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php $compra->getCantidad(); ?></td>
+                  <td class="pt-3-half" contenteditable="true"><?php echo $compra[1]->getNombre(); ?></td>
+                  <td class="pt-3-half" contenteditable="true"><?php echo $compra[1]->getPrecio(); ?></td>
+                  <td class="pt-3-half" contenteditable="true"><?php echo $compra[1]->getCantidad(); ?></td>
 
                   <td class="pt-3-half">
                     <span class="table-up"
@@ -66,9 +66,9 @@
                 </tr>
               <?php endforeach; ?>
               <?php else: ?>
-                <tr>
-                  <td> no hay Compras</td>
-                </tr>
+                <td>
+                  no hap elementos
+                </td>
               <?php endif; ?>
               </tbody>
             </table>

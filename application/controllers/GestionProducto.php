@@ -37,9 +37,6 @@ class GestionProducto extends CI_Controller
 
     public function listarProductos()
     {
-        //tu codigo posiblemente aqui
-        //listar producto retorna un array de tipo clsProducto, con la informacion necesaria
-        //hacer validaciones
         $resultado = $this->ModeloProducto->listarProductos();
         return $resultado;
     //tu codigo posiblemente aqui
@@ -69,7 +66,7 @@ class GestionProducto extends CI_Controller
         $prmProducto->setCantidad($cantidad);
         $prmProducto->setImagen($imagen);
         $this->ModeloProducto->actualizarProducto($prmProducto);
-        header('Location:' . base_url() . "index.php"); //muesra ventana principal, pero es tu decicion que mostar a continuacion
+        header('Location:'.base_url()."index.php"); //muesra ventana principal, pero es tu decicion que mostar a continuacion
     }
 }
 ?>

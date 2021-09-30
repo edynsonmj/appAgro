@@ -17,6 +17,11 @@
                                             <h7><?php echo "Cantidad: ".$producto->getCantidad()."<br>" ?></h7>
                                             <h7><?php echo "Precio:".$producto->getPrecio()."<br>" ?></h7>
                                             <h7><?php var_dump($producto->getImagen())."<br>" ?></h7>
+                                            <form method="POST" action="<?php echo base_url(); ?>index.php/GestionCarrito/addItemCarrito">
+                                                <input name="idCarrito" type="hidden" value=<?php echo $producto->getId(); ?>>
+                                                <input name="vista" type="hidden" value="index">
+                                                <button type="submit"> Añadir al carrito</button>
+                                             </form>
                                         </div>
                                     </div>
                                 </div>

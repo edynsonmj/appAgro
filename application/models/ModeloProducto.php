@@ -10,6 +10,7 @@ class ModeloProducto extends CI_model
     public function obtenerProducto($prmId)
     {
         try {
+            echo "par".$prmId;
             $consulta = $this->db->where('proId', $prmId);
             $consulta = $consulta->get('producto');
             $data['objetos'] = $consulta->result();
@@ -24,6 +25,7 @@ class ModeloProducto extends CI_model
                 $producto->setCantidad($obj->proCantidad);
                 $producto->setImagen($obj->proImagen);
             }
+            echo "modelo".$producto;
             return $producto;
         }catch(Exception $e){
             echo "ERROR AL EJECUTAR LA OPERACION OBTENERPRODUCTO DEFINIDO COMO:".$e->getMessage();
