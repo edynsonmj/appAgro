@@ -587,7 +587,7 @@ class Prueba extends CI_Controller
         $this->ModeloCarrito->listarCarrito(7);
     }
     public function pAgregarCarrito(){
-        echo $this->ModeloCarrito->agregarProductoCarrito(5,8);
+        echo $this->ModeloCarrito->agregarProductoCarrito(7,12);
     }
     public function pRetirarDelCarrito(){
         echo $this->ModeloCarrito->retirarProductoCarrito(5);

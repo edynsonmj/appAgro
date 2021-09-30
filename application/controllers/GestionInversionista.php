@@ -28,11 +28,14 @@ class GestionInversionista extends CI_Controller
         $sesion = new GestionSesion();        
         $data['existeSesion']=$sesion->existeSesion();
         $data['inversionistas']=$this->ModeloInversionista->listarInversionistas();
+        if($data['inversionistas']==null){
+            $data['inversionistas']=array();
+        }
         if($data['existeSesion']){
             $datosGuardados = $sesion->datosSesion();
-            $data['nombre'] = $datosGuardados['nombre'];
-            $data['usuario'] = $datosGuardados['username'];
-            $data['role'] = $datosGuardados['role'];
+            $data['nombre'] = $datosGuardados[1];
+            $data['usuario'] = $datosGuardados[0];
+            $data['role'] = $datosGuardados[2];
             if ($data['role'] == 'admin') {
                 $this->load->view("estructura/Vista_editar_inversionistas",$data);
             }else {
@@ -46,7 +49,7 @@ class GestionInversionista extends CI_Controller
     {
         $idInver = $this->input->post("idInversionista");
         $this->ModeloInversionista->eliminarInversionista($idInver);
-        header('Location:'.base_url()."index.php/Frontal/Inversionistas");
+        $this->allInversionistas();
     }
     /**
      * para agregar un Inversionista
@@ -63,7 +66,7 @@ class GestionInversionista extends CI_Controller
         $newInver->setDescripcion($descripcionInver);
         $newInver->setTelefono($correoInver);
         $this->ModeloInversionista->agregarInversionista($newInver);
-        header('Location:'.base_url()."index.php/Frontal/Inversionistas");
+        $this->allInversionistas();
     }
     /**
      * para actualizar un Inversionista
@@ -82,7 +85,7 @@ class GestionInversionista extends CI_Controller
         $newInver->setDescripcion($descripcionInver);
         $newInver->setTelefono($correoInver);
         $this->ModeloInversionista->actualizarInversionista($newInver);
-        header('Location:'.base_url()."index.php/Frontal/Inversionistas");
+        $this->allInversionistas();
     }
 
 

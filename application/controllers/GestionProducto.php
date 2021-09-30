@@ -38,6 +38,9 @@ class GestionProducto extends CI_Controller
     public function listarProductos()
     {
         $resultado = $this->ModeloProducto->listarProductos();
+        if($resultado==null){
+            $resultado=array();
+        }
         return $resultado;
     //tu codigo posiblemente aqui
     }

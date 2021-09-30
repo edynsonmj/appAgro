@@ -28,11 +28,14 @@ class GestionOferta extends CI_Controller
             $sesion = new GestionSesion();
             $data['existeSesion']=$sesion->existeSesion();
             $data['ofertas']=$this->ModeloOferta->listarOfertas();
+            if($data['ofertas']==null){
+                $data['ofertas']=array();
+            }
             if($data['existeSesion']){
                 $datosGuardados = $sesion->datosSesion();
-                $data['nombre'] = $datosGuardados['nombre'];
-                $data['usuario'] = $datosGuardados['username'];
-                $data['role'] = $datosGuardados['role'];
+                $data['nombre'] = $datosGuardados[1];
+                $data['usuario'] = $datosGuardados[0];
+                $data['role'] = $datosGuardados[2];
                 if ($data['role'] == 'admin') {
                     $this->load->view("estructura/Vista_editar_ofertas",$data);
                 }else {
@@ -45,7 +48,7 @@ class GestionOferta extends CI_Controller
     public function deleteOferta(){
         $idOfer = $this->input->post("idOferta");
         $this->ModeloOferta->eliminarOferta($idOfer);
-        header('Location:'.base_url()."index.php/Frontal/Ofertas");
+        $this->allOfertas();
     }
     /**
      * para agregar una oferta
@@ -64,7 +67,7 @@ class GestionOferta extends CI_Controller
         $newOfer->setImagen($imagenOfer);
         $newOfer->setDescuento($descuentoOfer);
         $this->ModeloOferta->agregarOferta($newOfer);
-        header('Location:'.base_url()."index.php/Frontal/Ofertas");
+        $this->allOfertas();
     }
 
     public function updateOferta(){
@@ -82,6 +85,6 @@ class GestionOferta extends CI_Controller
         $newOfer->setImagen($imagenOfer);
         $newOfer->setDescuento($descuentoOfer);
         $this->ModeloOferta->actualizarOferta($newOfer);
-        header('Location:'.base_url()."index.php/Frontal/Ofertas");
+        $this->allOfertas();
     }
 }

@@ -27,11 +27,14 @@ class GestionOrganizacion extends CI_Controller
             $sesion = new GestionSesion();
             $data['existeSesion']=$sesion->existeSesion();
             $data['organizaciones']=$this->ModeloOrganizacion->listarOrganizaciones();
+            if($data['organizaciones']==null){
+                $data['organizaciones']= array();
+            }
             if($data['existeSesion']){
                 $datosGuardados = $sesion->datosSesion();
-                $data['nombre'] = $datosGuardados['nombre'];
-                $data['usuario'] = $datosGuardados['username'];
-                $data['role'] = $datosGuardados['role'];
+                $data['nombre'] = $datosGuardados[1];
+                $data['usuario'] = $datosGuardados[0];
+                $data['role'] = $datosGuardados[2];
                 if ($data['role'] == 'admin') {
                     $this->load->view("estructura/Vista_editar_organizacion",$data);
                 }else {
@@ -44,7 +47,7 @@ class GestionOrganizacion extends CI_Controller
     public function deleteOrganizacion(){
         $idOrg = $this->input->post("idOrg");
         $this->ModeloOrganizacion->eliminarOrganizacion($idOrg);
-        header('Location:'.base_url()."index.php/Frontal/Organizacion");
+        $this->allOrganizaciones();
     }
     /**
      * para agregar una Organizacion
@@ -60,7 +63,7 @@ class GestionOrganizacion extends CI_Controller
         $newOrg->setUbicacion($ubicacionOrg);
         $newOrg->setTelefono($telefonoOrg);
         $this->ModeloOrganizacion->agregarOrganizacion($newOrg);
-        header('Location:'.base_url()."index.php/Frontal/Organizacion");
+        $this->allOrganizaciones();
     }
     /**
      * para actualizar una Organizacion
@@ -78,7 +81,7 @@ class GestionOrganizacion extends CI_Controller
         $newOrg->setUbicacion($ubicacionOrg);
         $newOrg->setTelefono($telefonoOrg);
         $this->ModeloOrganizacion->actualizarOrganizacion($newOrg);
-        header('Location:'.base_url()."index.php/Frontal/Organizacion");
+        $this->allOrganizaciones();
     }
 }
 ?>
