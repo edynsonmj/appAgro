@@ -36,6 +36,10 @@ class Prueba extends CI_Controller
         //$this->pruebaSesion();
         //$this->pruebaImagenProducto();
         $this->pruebasModelo();
+        //$this->pruebasMapa();
+    }
+    public function pruebasMapa(){
+        $this->load->view("pruebaMaps/mapa");
     }
     public function pruebaImagenProducto(){
         $this->load->view("pruebaImagen");
@@ -92,7 +96,7 @@ class Prueba extends CI_Controller
         }
     }
     public function pruebasModelo(){
-        $this->pruebaVistaPrincipal();
+        //$this->pruebaVistaPrincipal();
         //PRUEBAS USUARIO
         //PRUEBA 1
         //$this->pruebaObtenerUsuario("loco");
@@ -144,7 +148,7 @@ class Prueba extends CI_Controller
         //$this->pListarCarrito();
         //$this->pTotal();
         //$this->pRetirarDelCarrito();
-        //$this->pAgregarCarrito();
+        $this->pAgregarCarrito();
     }
 
     //PRUEBAS USUARIO
@@ -156,8 +160,8 @@ class Prueba extends CI_Controller
             echo "vaccio";
         } else {
             echo "usuario encontrado: ";
-            echo $usuario->getId() . '-';
-            echo $usuario->getNombre() . '-';
+            echo "id:".$usuario->getId() . '-';
+            echo "nombre:".$usuario->getNombre() . '-';
             echo $usuario->getUsername() . '-';
             echo $usuario->getPassword() . '-';
             echo $usuario->getRole() . '-';
@@ -227,8 +231,8 @@ class Prueba extends CI_Controller
             echo "vaccio";
         } else {
             echo "producto encontrado:";
-            echo $producto->getId() . '-';
-            echo $producto->getNombre() . '-';
+            echo "id:".$producto->getId() . '-';
+            echo "nombre:".$producto->getNombre() . '-';
             echo $producto->getPrecio() . '-';
             echo $producto->getCantidad() . '-';
         }
