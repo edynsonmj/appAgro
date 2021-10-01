@@ -60,10 +60,12 @@ class GestionEvento extends CI_Controller
     public function addEvento(){
         //posiblemente tu codigo aqui
         $NombreEvento = $this->input->post("nameEvento");
-        $ubicationEvento = $this->input->post("ubicationEvento");
+        $longitud = $this->input->post("longitud");
+        $latitud = $this->input->post("latitud");
         $newEvent = new clsEvento();
         $newEvent->setNombre($NombreEvento);
-        $newEvent->setUbicacion($ubicationEvento);
+        $newEvent->setLongitud($longitud);
+        $newEvent->setLatitud($latitud);
         $this->ModeloEvento->agregarEvento($newEvent);
         $this->allEventos();
     }
@@ -73,11 +75,13 @@ class GestionEvento extends CI_Controller
     public function updateEvento(){
         $idEvento = $this->input->post("idEvento");
         $NombreEvento = $this->input->post("nameEvento");
-        $ubicationEvento = $this->input->post("ubicationEvento");
+        $longitud = $this->input->post("longitud");
+        $latitud = $this->input->post("latitud");
         $newEvent = new clsEvento();
         $newEvent->setId($idEvento);
         $newEvent->setNombre($NombreEvento);
-        $newEvent->setUbicacion($ubicationEvento);
+        $newEvent->setLongitud($longitud);
+        $newEvent->setLatitud($latitud);
         $this->ModeloEvento->actualizarEvento($newEvent);
         $this->allEventos();
     }

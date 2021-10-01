@@ -20,7 +20,8 @@ class ModeloEvento extends CI_model
             foreach ($data['objetos'] as $obj) {
                 $evento->setId($obj->eveId);
                 $evento->setNombre($obj->eveNombre);
-                $evento->setUbicacion($obj->eveUbicacion);
+                $evento->setLongitud($obj->eveLongitud);
+                $evento->setLatitud($obj->eveLatitud);
             }
             return $evento;
         }catch(Exception $e){
@@ -46,7 +47,8 @@ class ModeloEvento extends CI_model
                 $evento = new clsEvento();
                 $evento->setId($obj->eveId);
                 $evento->setNombre($obj->eveNombre);
-                $evento->setUbicacion($obj->eveUbicacion);
+                $evento->setLongitud($obj->eveLongitud);
+                $evento->setLatitud($obj->eveLatitud);
                 array_push($eventos, $evento);
             }
             return $eventos;
@@ -83,7 +85,7 @@ class ModeloEvento extends CI_model
                     return 3;
                 }
             }
-            $this->db->insert("evento",["eveNombre"=> $prmEvento->getNombre(),"eveUbicacion" => $prmEvento->getUbicacion()]);
+            $this->db->insert("evento",["eveNombre"=> $prmEvento->getNombre(),"eveLongitud" => $prmEvento->getLongitud(), "eveLatitud"=>$prmEvento->getLatitud()]);
             return ($this->db->affected_rows() != 1)? 2: 1;
         }catch(Exception $e){
             echo "SE HA PRODUCIDO UN ERRO AL EJECUTAR LA OPERACION AGREGAR".$e->getMessage();
@@ -102,7 +104,7 @@ class ModeloEvento extends CI_model
                 return 2;
             }
             $this->db->where('eveId',$prmEvento->getId());
-            $this->db->update('evento',["eveNombre"=> $prmEvento->getNombre(),"eveUbicacion" => $prmEvento->getUbicacion()]);
+            $this->db->update('evento',["eveNombre"=> $prmEvento->getNombre(),"eveLongitud" => $prmEvento->getLongitud(), "eveLatitud"=>$prmEvento->getLatitud()]);
             return 1;
         }catch(Exception $e){
             echo "SE HA PRODUCIDO UN ERRO AL EJECUTAR LA OPERACION ACTUALIZAR EVENTO".$e->getMessage();
