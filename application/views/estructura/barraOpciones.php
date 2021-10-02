@@ -17,7 +17,7 @@
     <div class="bg-light">
       <nav class="navbar navbar-expand-md navbar-light bg-light border-3 border-bottom border-primary">
         <div class="container-fluid">
-          <a href="#" class="navbar-brand">Agro App</a>
+          <a href="<?php echo base_url(); ?>index.php" class="navbar-brand">Agro App</a>
           <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -52,9 +52,9 @@
                 Info usuario
               </a>
               <ul class="dropdown-menu">
-                <li><label class="dropdown-item" >Nombre</label></li>
-                <li><label class="dropdown-item" >Nombre Usuario</ñ></li>
-                <li><label class="dropdown-item" >Role</label></li>
+                <li><label class="dropdown-item" >Nombre: <?php echo $nombre?></label></li>
+                <li><label class="dropdown-item" >Nombre Usuario: <?php echo $usuario?></ñ></li>
+                <li><label class="dropdown-item" >Role: <?php echo $role?></label></li>
               </ul>
             </li>
             <?php } ?>

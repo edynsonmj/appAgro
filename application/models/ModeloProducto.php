@@ -25,7 +25,7 @@ class ModeloProducto extends CI_model
                 $producto->setCantidad($obj->proCantidad);
                 $producto->setImagen($obj->proImagen);
             }
-            echo "modelo".$producto;
+            var_dump($producto);
             return $producto;
         }catch(Exception $e){
             echo "ERROR AL EJECUTAR LA OPERACION OBTENERPRODUCTO DEFINIDO COMO:".$e->getMessage();

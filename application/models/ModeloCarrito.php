@@ -59,13 +59,18 @@ class ModeloCarrito extends CI_model
      */
     public function agregarProductoCarrito($prmUsuarioId, $prmProductoId){
         try{
-            echo "agregar producto carrito ".$prmProductoId."dos".$prmUsuarioId;
+            $prmUsuarioId = intval($prmUsuarioId);
+            $prmProductoId = intval($prmProductoId);
+            /*echo "agregar producto carrito ".gettype($prmProductoId)."dos".gettype($prmUsuarioId);
+            echo $prmProductoId;
+            echo $prmUsuarioId;
             if(($this->ModeloProducto->obtenerProducto($prmProductoId))==null){
                 return 3;
             }
+            echo "que pasa perro";
             if(($this->ModeloUsuario->obtenerUsuarioPorId($prmUsuarioId))==null){
                 return 3;
-            }
+            }*/
             $this->db->insert("carrito",["usuId" => $prmUsuarioId, "proId" => $prmProductoId]);
             return ($this->db->affected_rows() != 1)? 2: 1;
         }catch(Exception $e){

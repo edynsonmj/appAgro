@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-09-2021 a las 02:19:27
+-- Tiempo de generación: 01-10-2021 a las 02:16:01
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.3.22
 
@@ -33,20 +33,6 @@ CREATE TABLE `carrito` (
   `proId` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `carrito`
---
-
-INSERT INTO `carrito` (`carId`, `usuId`, `proId`) VALUES
-(3, 7, 11),
-(4, 7, 5),
-(6, 5, 6),
-(8, 8, 6),
-(9, 8, 6),
-(12, 5, 8),
-(13, 5, 8),
-(14, 5, 8);
-
 -- --------------------------------------------------------
 
 --
@@ -56,20 +42,18 @@ INSERT INTO `carrito` (`carId`, `usuId`, `proId`) VALUES
 CREATE TABLE `evento` (
   `eveId` int(11) NOT NULL,
   `eveNombre` varchar(20) NOT NULL,
-  `eveUbicacion` varchar(50) NOT NULL
+  `eveLongitud` double DEFAULT NULL,
+  `eveLatitud` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `evento`
 --
 
-INSERT INTO `evento` (`eveId`, `eveNombre`, `eveUbicacion`) VALUES
-(2, 'feria la sierra', 'aqui cerca'),
-(3, 'feria la sierra', 'aqui cerca'),
-(4, 'feria la sierra', 'aqui cerca'),
-(5, 'feria la sierra', 'aqui cerca'),
-(6, 'feria la sierra', 'aqui cerca'),
-(7, 'feria la sierra', 'aqui cerca');
+INSERT INTO `evento` (`eveId`, `eveNombre`, `eveLongitud`, `eveLatitud`) VALUES
+(8, 'loco', -76.610102, 2.43989),
+(9, 'feriesita', -76.636967, 2.460842),
+(10, 'paparacho', -76.601516, 2.445377);
 
 -- --------------------------------------------------------
 
@@ -90,8 +74,7 @@ CREATE TABLE `inversionista` (
 --
 
 INSERT INTO `inversionista` (`invId`, `invNombre`, `invImagen`, `invDescripcion`, `invTelefono`) VALUES
-(4, 'inverson edynson', NULL, NULL, NULL),
-(5, 'inversor yeison', NULL, NULL, NULL);
+(7, 'pablo', '', 'asdflj', 'jflasjdf@aljdfls');
 
 -- --------------------------------------------------------
 
@@ -113,8 +96,7 @@ CREATE TABLE `oferta` (
 --
 
 INSERT INTO `oferta` (`ofeId`, `ofeNombre`, `ofeImagen`, `ofeCantidad`, `ofeDescuento`, `ofePrecio`) VALUES
-(1, 'oferta modificada', NULL, 4356, 106, 10),
-(2, 'oferta 1', NULL, 10, 10, 10000);
+(5, 'mariguana', '', 567567, 12312, 40);
 
 -- --------------------------------------------------------
 
@@ -135,8 +117,7 @@ CREATE TABLE `organizacion` (
 --
 
 INSERT INTO `organizacion` (`orgId`, `orgNombre`, `orgImagen`, `orgUbicacion`, `orgTelefono`) VALUES
-(1, 'oragnizaicon modificado', NULL, 'descripcionanado', '00000000'),
-(5, 'organizacion 1', NULL, 'descripcionanado', '12345678');
+(7, 'cartel del sur', '', '', '134132132');
 
 -- --------------------------------------------------------
 
@@ -157,15 +138,9 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`proId`, `proNombre`, `proCantidad`, `proPrecio`, `proImagen`) VALUES
-(2, 'esteban', 234, 1000, NULL),
-(3, 'esteban', 234, 1000, NULL),
-(5, 'coco', 456, 3456, NULL),
-(6, 'lenteja', 3, 3000, NULL),
-(8, 'esteban', 234, 1000, NULL),
-(9, 'esteban', 234, 1000, NULL),
-(10, 'esteban', 234, 1000, NULL),
-(11, 'esteban', 234, 1000, NULL),
-(12, 'interfaz', 10000, 10000, 0x70657266696c2e6a7067);
+(13, 'maracuya', 100, 1000, NULL),
+(14, 'frijol', 6000, 7000, NULL),
+(15, 'coca', 1000, 80, NULL);
 
 -- --------------------------------------------------------
 
@@ -186,7 +161,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usuId`, `usuNombre`, `usuUsername`, `usuRole`, `usuPassword`) VALUES
-(1, 'administrador', 'admin', 'admin', ''),
+(1, 'administrador', 'admin', 'admin', '123'),
 (5, 'miguel', 'migelillo', 'no_admin', 'miguel'),
 (7, 'esteban', 'loco', 'no_admin', 'esteban'),
 (8, 'esteban', 'loc', 'no_admin', 'esteban');
@@ -248,37 +223,37 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `carId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `carId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `eveId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `eveId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `inversionista`
 --
 ALTER TABLE `inversionista`
-  MODIFY `invId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `invId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `oferta`
 --
 ALTER TABLE `oferta`
-  MODIFY `ofeId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ofeId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `organizacion`
 --
 ALTER TABLE `organizacion`
-  MODIFY `orgId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `orgId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `proId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `proId` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`

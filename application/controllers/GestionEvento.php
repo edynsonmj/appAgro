@@ -28,11 +28,14 @@ class GestionEvento extends CI_Controller
             $sesion = new GestionSesion();
             $data['existeSesion']=$sesion->existeSesion();
             $data['eventos']=$this->ModeloEvento->listarEventos();
+            if($data['eventos']==null){
+                $data['eventos']=array();
+            }
             if($data['existeSesion']){
                 $datosGuardados = $sesion->datosSesion();
-                $data['nombre'] = $datosGuardados['nombre'];
-                $data['usuario'] = $datosGuardados['username'];
-                $data['role'] = $datosGuardados['role'];
+                $data['nombre'] = $datosGuardados[1];
+                $data['usuario'] = $datosGuardados[0];
+                $data['role'] = $datosGuardados[2];
                 if ($data['role'] == 'admin') {
                     $this->load->view("estructura/Vista_editar_eventos",$data);
                 }else {
@@ -49,7 +52,7 @@ class GestionEvento extends CI_Controller
     public function deleteEvento(){
         $idEvento = $this->input->post("idEvento");
         $this->ModeloEvento->eliminarEvento($idEvento);
-        header('Location:'.base_url()."index.php/Frontal/Eventos");
+        $this->allEventos();
     }
     /**
      * para agregar un Evento
@@ -57,12 +60,14 @@ class GestionEvento extends CI_Controller
     public function addEvento(){
         //posiblemente tu codigo aqui
         $NombreEvento = $this->input->post("nameEvento");
-        $ubicationEvento = $this->input->post("ubicationEvento");
+        $longitud = $this->input->post("longitud");
+        $latitud = $this->input->post("latitud");
         $newEvent = new clsEvento();
         $newEvent->setNombre($NombreEvento);
-        $newEvent->setUbicacion($ubicationEvento);
+        $newEvent->setLongitud($longitud);
+        $newEvent->setLatitud($latitud);
         $this->ModeloEvento->agregarEvento($newEvent);
-        header('Location:'.base_url()."index.php/Frontal/Eventos");
+        $this->allEventos();
     }
     /**
      * para actualizar un Evento
@@ -70,13 +75,15 @@ class GestionEvento extends CI_Controller
     public function updateEvento(){
         $idEvento = $this->input->post("idEvento");
         $NombreEvento = $this->input->post("nameEvento");
-        $ubicationEvento = $this->input->post("ubicationEvento");
+        $longitud = $this->input->post("longitud");
+        $latitud = $this->input->post("latitud");
         $newEvent = new clsEvento();
         $newEvent->setId($idEvento);
         $newEvent->setNombre($NombreEvento);
-        $newEvent->setUbicacion($ubicationEvento);
+        $newEvent->setLongitud($longitud);
+        $newEvent->setLatitud($latitud);
         $this->ModeloEvento->actualizarEvento($newEvent);
-        header('Location:'.base_url()."index.php/Frontal/Eventos");
+        $this->allEventos();
     }
     
 }

@@ -44,8 +44,10 @@
           <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionEvento/addEvento">
             <label for="email" class="mr-sm-2">Nombre del evento:</label>
             <input name="nameEvento" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre evento" >
-            <label for="text" class="mr-sm-2">Ubicacion</label>
-            <input name="ubicationEvento" type="text" class="form-control mb-2 mr-sm-2" placeholder="Ubicacion">
+            <label for="text" class="mr-sm-2">Longitud</label>
+            <input name="longitud" type="text" class="form-control mb-2 mr-sm-2" placeholder="Longitud">
+            <label for="text" class="mr-sm-2">Latitud</label>
+            <input name="latitud" type="text" class="form-control mb-2 mr-sm-2" placeholder="Latitud">
             <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0 mb-2">Guardar</button>
           </form>
 
@@ -69,7 +71,8 @@
       <thead>
         <tr>
           <th class="text-center">Nombre del evento</th>
-          <th class="text-center">Ubicacion</th>
+          <th class="text-center">Longitud</th>
+          <th class="text-center">Latitud</th>
         </tr>
       </thead>
       <tbody>
@@ -78,7 +81,8 @@
       <?php foreach ($eventos as $evento): ?>
         <tr>
           <td class="pt-3-half" contenteditable="true"><?php echo $evento->getNombre(); ?></td>
-          <td class="pt-3-half" contenteditable="true"><?php echo $evento->getUbicacion(); ?></td>
+          <td class="pt-3-half" contenteditable="true"><?php echo $evento->getLongitud(); ?></td>
+          <td class="pt-3-half" contenteditable="true"><?php echo $evento->getLatitud();; ?></td>
           <td>
             <span class="table-remove">
               <form method="POST" action="<?php echo base_url(); ?>index.php/GestionEvento/deleteEvento">
@@ -109,8 +113,10 @@
                         <input name="idEvento" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $evento->getId(); ?>>
                         <label for="text" class="mr-sm-2">Nombre del Evento:</label>
                         <input name="nameEvento" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $evento->getNombre(); ?>>
-                        <label for="text" class="mr-sm-2">Ubicacion</label>
-                        <input name="ubicationEvento" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $evento->getUbicacion(); ?>>
+                        <label for="text" class="mr-sm-2">Longitud</label>
+                        <input name="longitud" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $evento->getLongitud(); ?>>
+                        <label for="text" class="mr-sm-2">Latitud</label>
+                        <input name="latitud" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $evento->getLatitud(); ?>>
                         <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                       </form>
 
