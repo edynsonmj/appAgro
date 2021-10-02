@@ -46,7 +46,7 @@
             <input name="cantidadPro" type="number" class="form-control mb-2 mr-sm-2" placeholder="Cantidad">
             <label class="mr-sm-2">Precio</label>
             <input name="precioPro" type="number" class="form-control mb-2 mr-sm-2" placeholder="Precio">
-
+  
             <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0 mb-2">Guardar</button>
           </form>
         </div>
@@ -121,9 +121,9 @@
                             <label for="pwd" class="mr-sm-2">Cantidad/L</label>
                             <input name="amountProducto" type="number" class="form-control mb-2 mr-sm-2" value=<?php echo $producto->getCantidad(); ?>>
                             <label for="email" class="mr-sm-2">Imagen:</label>
-                            <input name="imagen" type="file" class="form-control mb-2 mr-sm-2">
+                            <input name="imagen" type="file" class="form-control mb-2 mr-sm-2" value=<?php echo $producto->getImagen(); ?>>
 
-                            <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                            <button name="actualizar" type="submit" class="btn btn-primary mb-2">Actualizar</button>
                           </form>
 
                         </div>

@@ -58,6 +58,7 @@ class GestionProducto extends CI_Controller
         $precio = $this->input->post("priceProducto");
         $cantidad = $this->input->post("amountProducto");
         $imagen = $this->input->post("imagen");
+        $this->validarImag($imagen);
         echo $nombre . "-" . $precio . "-" . $cantidad . "-" . $imagen;
         $prmProducto = new clsProducto();
         $prmProducto->setId($id);
@@ -67,6 +68,24 @@ class GestionProducto extends CI_Controller
         $prmProducto->setImagen($imagen);
         $this->ModeloProducto->actualizarProducto($prmProducto);
         header('Location:'.base_url()."index.php"); //muesra ventana principal, pero es tu decicion que mostar a continuacion
+    }
+    public function validarImag($imagen){
+    $archivo = $_FILES[$imagen]['name'];
+            if (isset($archivo) && $archivo != "") {
+               $tipo = $_FILES[$imagen]['type'];
+               $tamano = $_FILES[$imagen]['size'];
+               $temp = $_FILES[$imagen]['tmp_name'];
+                 if (move_uploaded_file($temp, 'images/'.$archivo)) {
+                    echo '<p><img src="images/'.$archivo.'"></p>';
+                 }
+                 else {
+                    echo '<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>';
+                 }
+              // }
+           // }
+         }
+         
+         
     }
 }
 ?>
