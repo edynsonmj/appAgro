@@ -48,10 +48,11 @@
     
               <div class="card">
                 <div class="card-body">
-                    <img style ='width: 500px; height: 500px;' src = '../../imagenes/Organizacion.jpg'>
+                    <img style ='width: 400px; height: 400px;' src="data:image/png;base64,<?php echo base64_encode($organizacion->getImagen());?>">
                 </div>
+
                 <a style = "text-align: center;"><?php echo $organizacion->getNombre(); ?> </a>
-                <a style = "text-align: center;"><?php echo $organizacion->getImagen()?> </a>
+                <a style = "text-align: center;"> </a>
                 <a style ="text-align: center;"><?php echo $organizacion->getTelefono(); ?></a>
               </div>
             </div>
@@ -59,7 +60,8 @@
             <div class="col-lg-7">
     
               <!--Google map-->
-              <div id="map-container-section" class="z-depth-1-half map-container-section mb-4" style="height: 400px">
+
+              <div id="map-container-section" class="z-depth-1-half map-container-section mb-4" style="height: 300px">
                 <iframe src="https://maps.google.com/maps?q=Manhatan&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0"
                   style="border:0" allowfullscreen></iframe>
               </div>

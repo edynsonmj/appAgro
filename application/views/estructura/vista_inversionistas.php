@@ -32,7 +32,7 @@
                             <div class="card testimonial-card">
                                 <div class="card-up info-color"></div>
                                 <div class="avatar mx-auto white">
-                                    <img src="../../imagenes/Hombre.jpg" class="rounded-circle img-fluid">
+                                 <img width= "350" src="data:image/png;base64,<?php echo base64_encode($inversionista->getImagen());?>" class="border rounded-circle border-secundary border-3">
                                 </div>
                                 <div class="card-body">
                                     <h4 class="font-weight-bold mb-4"><?php echo $inversionista->getNombre(); ?></h4>

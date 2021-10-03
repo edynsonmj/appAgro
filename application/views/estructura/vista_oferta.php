@@ -39,7 +39,8 @@
                 <div class="card pricing-card white-text">
                   <!-- Price -->
                   <div class="aqua-gradient rounded-top">
-                    <img style = "width: 150px; height: 100px;" src="../../imagenes/pepino1.jpg">
+                    
+                    <img style = "width: 150px; height: 100px;" src="data:image/png;base64,<?php echo base64_encode($oferta->getImagen());?>" class="border rounded-circle border-secundary border-3">
                 </div>
                 <!-- Features -->
                 <div class="card-body striped purple-striped card-background px-5">
@@ -47,7 +48,6 @@
                   <ul>
                         </div>
                           <a style = "text-align: center;"><?php echo $oferta->getNombre(); ?> </a>
-                          <a style ="text-align: center;"><?php echo $oferta->getImagen(); ?></a>
                           <a style ="text-align: center;"><?php echo $oferta->getCantidad(); ?></a>
                           <a style ="text-align: center;"><?php echo $oferta->getPrecio(); ?></a>
                         </div>

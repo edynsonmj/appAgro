@@ -15,10 +15,13 @@ class GestionProducto extends CI_Controller
         $nombreProducto = $this->input->post("nombrePro");
         $cantidaProducto = $this->input->post("cantidadPro");
         $precioProducto = $this->input->post("precioPro");
+        $ruta = "imagen1";
+        $imagen = $this->validarImag($ruta);
         $newproducto = new clsProducto();
         $newproducto->setNombre($nombreProducto);
         $newproducto->setCantidad($cantidaProducto);
         $newproducto->setPrecio($precioProducto);
+        $newproducto->setImagen($imagen);
         //$producto = $this->ModeloProducto->obtenerProducto($idPro);
         //if($producto == null){
         $this->ModeloProducto->agregarProducto($newproducto);
@@ -38,8 +41,8 @@ class GestionProducto extends CI_Controller
     public function listarProductos()
     {
         $resultado = $this->ModeloProducto->listarProductos();
-        if($resultado==null){
-            $resultado=array();
+        if ($resultado == null) {
+            $resultado = array();
         }
         return $resultado;
     //tu codigo posiblemente aqui
@@ -60,9 +63,11 @@ class GestionProducto extends CI_Controller
         $nombre = $this->input->post("nameProducto");
         $precio = $this->input->post("priceProducto");
         $cantidad = $this->input->post("amountProducto");
-        $imagen = $this->input->post("imagen");
-        $this->validarImag($imagen);
-        echo $nombre . "-" . $precio . "-" . $cantidad . "-" . $imagen;
+        $ruta = "imagen";
+        $imagen = $this->validarImag($ruta);
+        if ($imagen == null) {
+            $imagen = "";
+        }
         $prmProducto = new clsProducto();
         $prmProducto->setId($id);
         $prmProducto->setNombre($nombre);
@@ -70,25 +75,18 @@ class GestionProducto extends CI_Controller
         $prmProducto->setCantidad($cantidad);
         $prmProducto->setImagen($imagen);
         $this->ModeloProducto->actualizarProducto($prmProducto);
-        header('Location:'.base_url()."index.php"); //muesra ventana principal, pero es tu decicion que mostar a continuacion
+        header('Location:' . base_url() . "index.php"); //muesra ventana principal, pero es tu decicion que mostar a continuacion
     }
-    public function validarImag($imagen){
-    $archivo = $_FILES[$imagen]['name'];
-            if (isset($archivo) && $archivo != "") {
-               $tipo = $_FILES[$imagen]['type'];
-               $tamano = $_FILES[$imagen]['size'];
-               $temp = $_FILES[$imagen]['tmp_name'];
-                 if (move_uploaded_file($temp, 'images/'.$archivo)) {
-                    echo '<p><img src="images/'.$archivo.'"></p>';
-                 }
-                 else {
-                    echo '<div><b>Ocurrió algún error al subir el fichero. No pudo guardarse.</b></div>';
-                 }
-              // }
-           // }
-         }
-         
-         
+
+    public function validarImag($imagen)
+    {
+        $tamanio = $_FILES[$imagen]['size'];
+        $imagenSubida = fopen($_FILES[$imagen]['tmp_name'],'r');
+        $binariosImagen = fread($imagenSubida,$tamanio);
+        return $binariosImagen;
     }
+
+
 }
+
 ?>

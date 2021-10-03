@@ -40,7 +40,7 @@
               
               <!-- Modal body -->
               <div class="modal-body">
-                  <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOferta/addOferta">
+                  <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOferta/addOferta" enctype="multipart/form-data">
                       <label for="email" class="mr-sm-2">Nombre del producto:</label>
                       <input name="nameOfer" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
                       <label for="pwd" class="mr-sm-2">Precio/L</label>
@@ -50,7 +50,7 @@
                       <label for="pwd" class="mr-sm-2">Descuento</label>
                       <input name="discountOfer" type="number" class="form-control mb-2 mr-sm-2" placeholder="Descuento" >
                       <label for="pwd" class="mr-sm-2">Descuento</label>
-                      <input name="imgOfer" type="file" class="form-control mb-2 mr-sm-2" placeholder="Imagen" >
+                      <input name="imagen5" type="file" class="form-control mb-2 mr-sm-2" placeholder="Imagen" >
                   
                       <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0 mb-2">Guardar</button>
                     </form>
@@ -80,6 +80,7 @@
                   <th class="text-center">Precio/L</th>
                   <th class="text-center">Cantidad/L</th>
                   <th class="text-center">Descuento</th>
+                  <th class="text-center">Imagen</th>
                 </tr>
               </thead>
               <tbody>
@@ -91,6 +92,7 @@
                   <td class="pt-3-half" contenteditable="true"><?php  echo $oferta->getPrecio();  ?></td>
                   <td class="pt-3-half" contenteditable="true"><?php  echo $oferta->getCantidad();  ?></td>
                   <td class="pt-3-half" contenteditable="true"><?php echo $oferta->getDescuento();  ?></td>
+                  <td class="pt-3-half" contenteditable="true"><img width=100 src="data:image/png;base64,<?php echo base64_encode($oferta->getImagen());?>" class="border rounded-circle border-secundary border-3"></td>
                   <td>
                       <span class="table-remove">
                         <form method="POST" action="<?php echo base_url(); ?>index.php/GestionOferta/deleteOferta">
@@ -116,7 +118,7 @@
                               
                               <!-- Modal body -->
                               <div class="modal-body">
-                                  <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOferta/updateOferta">
+                                  <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOferta/updateOferta" enctype="multipart/form-data">
                                       <input name="idOferta" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getId(); ?>>
                                       <label for="email" class="mr-sm-2">Nombre del producto:</label>
                                       <input name="nameOferta" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getNombre(); ?>>
@@ -127,7 +129,7 @@
                                       <label for="email" class="mr-sm-2">Descuento:</label>
                                       <input name="DescuentoOferta" type="number" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getDescuento(); ?> >
                                       <label for="pwd" class="mr-sm-2">Imagen:</label>
-                                      <input name="imgOfer" type="file" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getImagen(); ?> >
+                                      <input name="imagen6" type="file" class="form-control mb-2 mr-sm-2">
                                       <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
                                     </form>
                   

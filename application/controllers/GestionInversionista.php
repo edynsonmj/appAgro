@@ -57,12 +57,13 @@ class GestionInversionista extends CI_Controller
     public function addInversionista()
     {
         $nombreInver = $this->input->post("nameInversionista");
-        $imagenInver = $this->input->post("imageInversionista");
         $descripcionInver = $this->input->post("descripcionInversionista");
         $correoInver = $this->input->post("emailInversionista");
+        $ruta = "imagen3";
+        $imagen = $this->validarImag($ruta);
         $newInver = new clsInversionista();
         $newInver->setNombre($nombreInver);
-        $newInver->setImagen($imagenInver);
+        $newInver->setImagen($imagen);
         $newInver->setDescripcion($descripcionInver);
         $newInver->setTelefono($correoInver);
         $this->ModeloInversionista->agregarInversionista($newInver);
@@ -75,17 +76,25 @@ class GestionInversionista extends CI_Controller
     {
         $idInver = $this->input->post("idInversionista");
         $nombreInver = $this->input->post("nameInversionista");
-        $imagenInver = $this->input->post("imageInversionista");
         $descripcionInver = $this->input->post("descriptionInversionista");
         $correoInver = $this->input->post("emailInversionista");
+        $ruta = "imagen4";
+        $imagen = $this->validarImag($ruta);
         $newInver = new clsInversionista();
         $newInver->setId($idInver);
         $newInver->setNombre($nombreInver);
-        $newInver->setImagen($imagenInver);
+        $newInver->setImagen($imagen);
         $newInver->setDescripcion($descripcionInver);
         $newInver->setTelefono($correoInver);
         $this->ModeloInversionista->actualizarInversionista($newInver);
         $this->allInversionistas();
+    }
+    public function validarImag($imagen)
+    {
+        $tamanio = $_FILES[$imagen]['size'];
+        $imagenSubida = fopen($_FILES[$imagen]['tmp_name'],'r');
+        $binariosImagen = fread($imagenSubida,$tamanio);
+        return $binariosImagen;
     }
 
 
