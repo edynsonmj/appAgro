@@ -39,11 +39,11 @@
 
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOrganizacion/addOrganizacion">
+                        <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOrganizacion/addOrganizacion" enctype="multipart/form-data">
                             <label for="email" class="mr-sm-2">Agregar nombre Organizacion</label>
                             <input name="nameOrg" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
-                            <label for="pwd" class="mr-sm-2">imagen</label>
-                            <input name="pathImageOrg" type="text" class="form-control mb-2 mr-sm-2" placeholder="ruta imagen" >
+                            <label for="email" class="mr-sm-2">imagen</label>
+                            <input name="imagen2" type="file" class="form-control mb-2 mr-sm-2">
                             <label for="pwd" class="mr-sm-2">ubicacion</label>
                             <input name="ubicationOrg" type="text" class="form-control mb-2 mr-sm-2" placeholder="Add ubicacion" >
                             <label for="pwd" class="mr-sm-2">Telefono</label>
@@ -78,7 +78,7 @@
                 <?php foreach ($organizaciones as $organizacion): ?>
                     <tr>
                         <td class="pt-3-half" contenteditable="false"><?php echo $organizacion->getNombre(); ?></td>
-                        <td class="pt-3-half" contenteditable="false"><?php echo $organizacion->getImagen(); ?></td>
+                        <td class="pt-3-half" contenteditable="false"><img width=100 src="data:image/png;base64,<?php echo base64_encode($organizacion->getImagen());?>" class="border rounded-circle border-secundary border-3"></td>
                         <td class="pt-3-half" contenteditable="false"><?php echo $organizacion->getUbicacion(); ?></td>
                         <td class="pt-3-half" contenteditable="false"><?php echo $organizacion->getTelefono(); ?></td>
                         <td>
@@ -108,12 +108,12 @@
 
                                             <!-- Modal body -->
                                             <div class="modal-body">
-                                                <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOrganizacion/updateOrganizacion">
+                                                <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOrganizacion/updateOrganizacion" enctype="multipart/form-data">
                                                     <input name="idOrganizacion" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $organizacion->getId(); ?>>
                                                     <label for="email" class="mr-sm-2">Agregar nombre Organizacion</label>
                                                     <input name="nameProd" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $organizacion->getNombre(); ?> >
                                                     <label for="pwd" class="mr-sm-2">imagen</label>
-                                                    <input name="pathImage" type="image" class="form-control mb-2 mr-sm-2" value=<?php echo $organizacion->getImagen(); ?>>
+                                                    <input name="nameProd" type="file" class="form-control mb-2 mr-sm-2">
                                                     <label for="pwd" class="mr-sm-2">ubicacion</label>
                                                     <input name="ubication" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $organizacion->getUbicacion(); ?>>
                                                     <label for="pwd" class="mr-sm-2">Telefono</label>

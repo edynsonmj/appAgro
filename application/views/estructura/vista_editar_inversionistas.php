@@ -41,11 +41,11 @@
               
               <!-- Modal body -->
               <div class="modal-body">
-                  <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionInversionista/addInversionista">
+                  <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionInversionista/addInversionista" enctype="multipart/form-data">
                       <label for="email" class="mr-sm-2">Nombre inversionita:</label>
                       <input name="nameInversionista" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre del inversionita" >
                       <label for="pwd" class="mr-sm-2">Imagen</label>
-                      <input name="imageInversionista" type="file" class="form-control mb-2 mr-sm-2" placeholder="Ruta imagen" >
+                      <input name="imagen3" type="file" class="form-control mb-2 mr-sm-2" placeholder="Ruta imagen" >
                       <label for="pwd" class="mr-sm-2">Descripcion </label>
                       <input name="descripcionInversionista" type="text" class="form-control mb-2 mr-sm-2" placeholder="Description">
                       <label for="pwd" class="mr-sm-2">Correo</label>
@@ -87,7 +87,7 @@
               <?php foreach ($inversionistas as $inversionista): ?>
                 <tr>
                   <td class="pt-3-half" contenteditable="true"><?php echo $inversionista->getNombre(); ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php echo $inversionista->getImagen(); ?></td>
+                  <td class="pt-3-half" contenteditable="true"><img width=100 src="data:image/png;base64,<?php echo base64_encode($inversionista->getImagen());?>" class="border rounded-circle border-secundary border-3"></td>
                   <td class="pt-3-half" contenteditable="true"><?php echo $inversionista->getDescripcion(); ?></td>
                   <td class="pt-3-half" contenteditable="true"><?php echo $inversionista->getTelefono(); ?></td>
                   <td>
@@ -115,13 +115,13 @@
                             
                             <!-- Modal body -->
                             <div class="modal-body">
-                                <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionInversionista/updateInversionista">
+                                <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionInversionista/updateInversionista" enctype="multipart/form-data">
                                     <label for="email" class="mr-sm-2">Id:</label>
                                     <input name="idInversionista" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getId(); ?>>
                                     <label for="email" class="mr-sm-2">Nombre inversionita:</label>
                                     <input name="nameInversionista" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getNombre(); ?>>
                                     <label for="pwd" class="mr-sm-2">Imagen</label>
-                                    <input name="imageInversionista" type="file" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getImagen(); ?>>
+                                    <input name="imagen4" type="file" class="form-control mb-2 mr-sm-2">
                                     <label for="pwd" class="mr-sm-2">Descripcion </label>
                                     <input name="descriptionInversionista" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getDescripcion(); ?> >
                                     <label for="pwd" class="mr-sm-2">Correo</label>

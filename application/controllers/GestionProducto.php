@@ -15,14 +15,14 @@ class GestionProducto extends CI_Controller
         $nombreProducto = $this->input->post("nombrePro");
         $cantidaProducto = $this->input->post("cantidadPro");
         $precioProducto = $this->input->post("precioPro");
-        $tamanio = $_FILES['imagen']['size'];
-        $imagenSubida = fopen($_FILES['imagen']['tmp_name'],'r');
-        $binariosImagen = fread($imagenSubida,$tamanio);
+
+        $ruta = "imagen1";
+        $imagen = $this->validarImag($ruta);
         $newproducto = new clsProducto();
         $newproducto->setNombre($nombreProducto);
         $newproducto->setCantidad($cantidaProducto);
         $newproducto->setPrecio($precioProducto);
-        $newproducto->setImagen($binariosImagen);
+        $newproducto->setImagen($imagen);
         //$producto = $this->ModeloProducto->obtenerProducto($idPro);
         //if($producto == null){
         $this->ModeloProducto->agregarProducto($newproducto);
@@ -42,8 +42,8 @@ class GestionProducto extends CI_Controller
     public function listarProductos()
     {
         $resultado = $this->ModeloProducto->listarProductos();
-        if($resultado==null){
-            $resultado=array();
+        if ($resultado == null) {
+            $resultado = array();
         }
         return $resultado;
     //tu codigo posiblemente aqui
@@ -64,8 +64,11 @@ class GestionProducto extends CI_Controller
         $nombre = $this->input->post("nameProducto");
         $precio = $this->input->post("priceProducto");
         $cantidad = $this->input->post("amountProducto");
-        $imagen = $this->input->post("imagen");
-        echo $nombre . "-" . $precio . "-" . $cantidad . "-" . $imagen;
+        $ruta = "imagen";
+        $imagen = $this->validarImag($ruta);
+        if ($imagen == null) {
+            $imagen = "";
+        }
         $prmProducto = new clsProducto();
         $prmProducto->setId($id);
         $prmProducto->setNombre($nombre);
@@ -73,7 +76,18 @@ class GestionProducto extends CI_Controller
         $prmProducto->setCantidad($cantidad);
         $prmProducto->setImagen($imagen);
         $this->ModeloProducto->actualizarProducto($prmProducto);
-        header('Location:'.base_url()."index.php"); //muesra ventana principal, pero es tu decicion que mostar a continuacion
+        header('Location:' . base_url() . "index.php"); //muesra ventana principal, pero es tu decicion que mostar a continuacion
     }
+
+    public function validarImag($imagen)
+    {
+        $tamanio = $_FILES[$imagen]['size'];
+        $imagenSubida = fopen($_FILES[$imagen]['tmp_name'],'r');
+        $binariosImagen = fread($imagenSubida,$tamanio);
+        return $binariosImagen;
+    }
+
+
 }
+
 ?>

@@ -115,6 +115,7 @@ class ModeloOferta extends CI_model
             return -1;
         }
     }
+    
 }
 
 ?>

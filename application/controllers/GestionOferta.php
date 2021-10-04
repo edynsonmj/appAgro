@@ -58,13 +58,14 @@ class GestionOferta extends CI_Controller
         $nombreOfer = $this->input->post("nameOfer");
         $cantidadOfer = $this->input->post("amountOfer");
         $precioOfer =  $this->input->post("priceOfer");
-        $imagenOfer =  $this->input->post("imgOfer");
         $descuentoOfer =  $this->input->post("discountOfer");
+        $ruta = "imagen5";
+        $imagen = $this->validarImag($ruta);
         $newOfer = new clsOferta();
         $newOfer->setNombre($nombreOfer);
         $newOfer->setCantidad($cantidadOfer);
         $newOfer->setPrecio($precioOfer);
-        $newOfer->setImagen($imagenOfer);
+        $newOfer->setImagen($imagen);
         $newOfer->setDescuento($descuentoOfer);
         $this->ModeloOferta->agregarOferta($newOfer);
         $this->allOfertas();
@@ -75,16 +76,25 @@ class GestionOferta extends CI_Controller
         $nombreOfer = $this->input->post("nameOferta");
         $cantidadOfer = $this->input->post("amountOferta");
         $precioOfer =  $this->input->post("priceOferta");
-        $imagenOfer =  $this->input->post("imgOfer");
         $descuentoOfer =  $this->input->post("DescuentoOferta");
+        $ruta = "imagen6";
+        $imagen = $this->validarImag($ruta);
         $newOfer = new clsOferta();
         $newOfer->setId($idOfer);
         $newOfer->setNombre($nombreOfer);
         $newOfer->setCantidad($cantidadOfer);
         $newOfer->setPrecio($precioOfer);
-        $newOfer->setImagen($imagenOfer);
+        $newOfer->setImagen($imagen);
         $newOfer->setDescuento($descuentoOfer);
         $this->ModeloOferta->actualizarOferta($newOfer);
         $this->allOfertas();
     }
+    public function validarImag($imagen)
+    {
+        $tamanio = $_FILES[$imagen]['size'];
+        $imagenSubida = fopen($_FILES[$imagen]['tmp_name'],'r');
+        $binariosImagen = fread($imagenSubida,$tamanio);
+        return $binariosImagen;
+    }
+
 }

@@ -94,10 +94,6 @@ class ModeloCarrito extends CI_model
         }
     }
 
-    /**
-     * @param int $prmUserId: propietario del carrito.
-     * @return int exito si valor mayor o igual a 0;
-     */
     public function total($prmUserId){
         try{
             $valor = 0;
