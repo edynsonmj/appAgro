@@ -61,7 +61,8 @@ class GestionUsuario extends CI_Controller
         $usuario = $this->ModeloUsuario->obtenerUsuario($nombreUsuario);
         var_dump($usuario);
         if ($usuario == null) {
-            echo "es nulo";
+             
+
         }
         else {
             if ($contraseñaUsuario == $usuario->getPassword()) {

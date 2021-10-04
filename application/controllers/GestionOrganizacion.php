@@ -56,7 +56,7 @@ class GestionOrganizacion extends CI_Controller
         $nombreOrg = $this->input->post("nameOrg");
         $ruta = "imagen2";
         $ubicacionOrg = $this->input->post("ubicationOrg");
-        $telefonoOrg = $this->input->post("phoneOrg");      
+        $telefonoOrg = $this->input->post("phoneOrg");
         $imagen = $this->validarImag($ruta);
         $newOrg = new clsOrganizacion();
         $newOrg->setNombre($nombreOrg);
@@ -65,6 +65,7 @@ class GestionOrganizacion extends CI_Controller
         $newOrg->setTelefono($telefonoOrg);
         $this->ModeloOrganizacion->agregarOrganizacion($newOrg);
         $this->allOrganizaciones();
+        
     }
     /**
      * para actualizar una Organizacion
@@ -74,7 +75,7 @@ class GestionOrganizacion extends CI_Controller
         $nombreOrg = $this->input->post("nameProd");
         $ubicacionOrg = $this->input->post("ubication");
         $telefonoOrg = $this->input->post("phone");
-        $ruta = "nameProd";
+        $ruta = "imagen9";
         $imagen = $this->validarImag($ruta);
         $newOrg = new clsOrganizacion();
         $newOrg->setId($idOrg);
@@ -87,10 +88,14 @@ class GestionOrganizacion extends CI_Controller
     }
     public function validarImag($imagen)
     {
+        $binariosImagen = "";
         $tamanio = $_FILES[$imagen]['size'];
-        $imagenSubida = fopen($_FILES[$imagen]['tmp_name'],'r');
-        $binariosImagen = fread($imagenSubida,$tamanio);
+        if($tamanio > 0){
+            $imagenSubida = fopen($_FILES[$imagen]['tmp_name'],'r');
+            $binariosImagen = fread($imagenSubida,$tamanio);
+        }
         return $binariosImagen;
     }
+
 }
 ?>

@@ -86,10 +86,10 @@
               <?php if (count($inversionistas) > 0): ?>
               <?php foreach ($inversionistas as $inversionista): ?>
                 <tr>
-                  <td class="pt-3-half" contenteditable="true"><?php echo $inversionista->getNombre(); ?></td>
-                  <td class="pt-3-half" contenteditable="true"><img width=100 src="data:image/png;base64,<?php echo base64_encode($inversionista->getImagen());?>" class="border rounded-circle border-secundary border-3"></td>
-                  <td class="pt-3-half" contenteditable="true"><?php echo $inversionista->getDescripcion(); ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php echo $inversionista->getTelefono(); ?></td>
+                  <td class="pt-3-half" contenteditable="false"><?php echo $inversionista->getNombre(); ?></td>
+                  <td class="pt-3-half" contenteditable="false"><img width=100 src="data:image/png;base64,<?php echo base64_encode($inversionista->getImagen());?>" class="border rounded-circle border-secundary border-3"></td>
+                  <td class="pt-3-half" contenteditable="false"><?php echo $inversionista->getDescripcion(); ?></td>
+                  <td class="pt-3-half" contenteditable="false"><?php echo $inversionista->getTelefono(); ?></td>
                   <td>
                     <span class="table-remove">
                       <form method="POST" action="<?php echo base_url(); ?>index.php/GestionInversionista/deleteInversionista">
