@@ -24,8 +24,9 @@ class ModeloProducto extends CI_model
                 $producto->setPrecio($obj->proPrecio);
                 $producto->setCantidad($obj->proCantidad);
                 $producto->setImagen($obj->proImagen);
+                $producto->setDescuento($obj->proDescuento);
+                $producto->setMedida($obj->proMedida);
             }
-            var_dump($producto);
             return $producto;
         }catch(Exception $e){
             echo "ERROR AL EJECUTAR LA OPERACION OBTENERPRODUCTO DEFINIDO COMO:".$e->getMessage();
@@ -53,7 +54,11 @@ class ModeloProducto extends CI_model
                 $producto->setPrecio($obj->proPrecio);
                 $producto->setCantidad($obj->proCantidad);
                 $producto->setImagen($obj->proImagen);
-                array_push($productos, $producto);
+                $producto->setDescuento($obj->proDescuento);
+                $producto->setMedida($obj->proMedida);
+                if(($producto->getDescuento()==0) && ($producto->getDescuento()!=null)){
+                    array_push($productos, $producto);
+                }                
             }
             return $productos;
         }catch(Exception $e){
@@ -89,7 +94,7 @@ class ModeloProducto extends CI_model
                     return 3;
                 }
             }
-            $this->db->insert("producto",["proNombre"=> $prmProducto->getNombre(),"proPrecio" => $prmProducto->getPrecio(), "proCantidad" => $prmProducto->getCantidad(), "proImagen"=>$prmProducto->getImagen()]);
+            $this->db->insert("producto",["proNombre"=> $prmProducto->getNombre(),"proPrecio" => $prmProducto->getPrecio(), "proCantidad" => $prmProducto->getCantidad(), "proImagen"=>$prmProducto->getImagen(), "proDescuento"=>0, "proMedida"=>$prmProducto->getMedida()]);
             return ($this->db->affected_rows() != 1)? 2: 1;
         }catch(Exception $e){
             echo "SE HA PRODUCIDO UN ERRO AL EJECUTAR LA OPERACION AGREGAR".$e->getMessage();
@@ -108,7 +113,7 @@ class ModeloProducto extends CI_model
                 return 2;
             }
             $this->db->where('proId',$prmProducto->getId());
-            $this->db->update('producto',["proNombre"=> $prmProducto->getNombre(),"proPrecio" => $prmProducto->getPrecio(), "proCantidad" => $prmProducto->getCantidad(), "proImagen"=> $prmProducto->getImagen()]);
+            $this->db->update('producto',["proNombre"=> $prmProducto->getNombre(),"proPrecio" => $prmProducto->getPrecio(), "proCantidad" => $prmProducto->getCantidad(), "proImagen"=> $prmProducto->getImagen(), "proDescuento"=>0, "proMedida"=>$prmProducto->getMedida()]);
             return 1;
         }catch(Exception $e){
             echo "SE HA PRODUCIDO UN ERRO AL EJECUTAR LA OPERACION ACTUALIZAR PRODUCTO".$e->getMessage();

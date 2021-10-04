@@ -12,7 +12,9 @@ class GestionSesion extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
+        if(!$this->load->is_loaded('sesion')){
+            $this->load->library('session');
+        }
     }
 
     /**

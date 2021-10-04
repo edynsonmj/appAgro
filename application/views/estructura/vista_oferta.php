@@ -28,6 +28,7 @@
               los mejores productos con los mejores descuestos
           </p>
           <?php if (count($ofertas) > 0): ?>
+            <?php// var_dump($ofertas); ?>
           <?php foreach ($ofertas as $oferta): ?>
           <!-- Grid row -->
 

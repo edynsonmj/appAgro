@@ -1,18 +1,21 @@
 <?php
 require_once "/xampp/htdocs/appAgro/application/negocio/clsOferta.php";
 require_once "/xampp/htdocs/appAgro/application/controllers/GestionSesion.php";
+require_once "/xampp/htdocs/appAgro/application/negocio/clsProducto.php";
 class GestionOferta extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
         $this->load->model('ModeloOferta');
+        $this->load->model('ModeloProducto');
     }
 
     /**
      * para obtener una oferta
      */
-    public function getOferta($prmId){
+    public function getOferta($prmId)
+    {
         //posiblemente tu codigo aqui
         //EJEMPLO DE USO DEL MODELO
         //crear objeto clsOferta
@@ -24,28 +27,30 @@ class GestionOferta extends CI_Controller
     /**
      * para obtener todas las ofertas
      */
-    public function allOfertas(){
-            $sesion = new GestionSesion();
-            $data['existeSesion']=$sesion->existeSesion();
-            $data['ofertas']=$this->ModeloOferta->listarOfertas();
-            if($data['ofertas']==null){
-                $data['ofertas']=array();
-            }
-            if($data['existeSesion']){
-                $datosGuardados = $sesion->datosSesion();
-                $data['nombre'] = $datosGuardados[1];
-                $data['usuario'] = $datosGuardados[0];
-                $data['role'] = $datosGuardados[2];
-                if ($data['role'] == 'admin') {
-                    $this->load->view("estructura/Vista_editar_ofertas",$data);
-                }else {
-                    $this->load->view("estructura/Vista_oferta",$data);
-                }
-            }else{
-                $this->load->view("estructura/Vista_oferta",$data);
-            }   
+    public function allOfertas()
+    {
+        $sesion = new GestionSesion();
+        $data['existeSesion'] = $sesion->existeSesion();
+        $data['ofertas'] = $this->ModeloOferta->listarOfertas();
+        if ($data['ofertas'] == null) {
+            $data['ofertas'] = array();
         }
-    public function deleteOferta(){
+        if ($data['existeSesion']) {
+            $datosGuardados = $sesion->datosSesion();
+            $data['nombre'] = $datosGuardados[1];
+            $data['usuario'] = $datosGuardados[0];
+            $data['role'] = $datosGuardados[2];
+            if ($data['role'] == 'admin') {
+                $this->load->view("estructura/Vista_editar_ofertas", $data);
+            } else {
+                $this->load->view("estructura/Vista_oferta", $data);
+            }
+        } else {
+            $this->load->view("estructura/Vista_oferta", $data);
+        }
+    }
+    public function deleteOferta()
+    {
         $idOfer = $this->input->post("idOferta");
         $this->ModeloOferta->eliminarOferta($idOfer);
         $this->allOfertas();
@@ -53,33 +58,38 @@ class GestionOferta extends CI_Controller
     /**
      * para agregar una oferta
      */
-    public function addOferta(){
+    public function addOferta()
+    {
         //posiblemente tu codigo aqui
         $nombreOfer = $this->input->post("nameOfer");
         $cantidadOfer = $this->input->post("amountOfer");
+        $medidaOfer = $this->input->post("medida");
         $precioOfer =  $this->input->post("priceOfer");
         $descuentoOfer =  $this->input->post("discountOfer");
         $ruta = "imagen5";
         $imagen = $this->validarImag($ruta);
-        $newOfer = new clsOferta();
+        $newOfer = new clsProducto();
         $newOfer->setNombre($nombreOfer);
         $newOfer->setCantidad($cantidadOfer);
         $newOfer->setPrecio($precioOfer);
         $newOfer->setImagen($imagen);
         $newOfer->setDescuento($descuentoOfer);
+        $newOfer->setMedida($medidaOfer);
         $this->ModeloOferta->agregarOferta($newOfer);
         $this->allOfertas();
     }
 
-    public function updateOferta(){
+    public function updateOferta()
+    {
         $idOfer = $this->input->post("idOferta");
         $nombreOfer = $this->input->post("nameOferta");
         $cantidadOfer = $this->input->post("amountOferta");
+        $medida = $this->input->post("medida");
         $precioOfer =  $this->input->post("priceOferta");
         $descuentoOfer =  $this->input->post("DescuentoOferta");
         $ruta = "imagen6";
         $imagen = $this->validarImag($ruta);
-        $newOfer = new clsOferta();
+        $newOfer = new clsProducto();
         $newOfer->setId($idOfer);
         $newOfer->setNombre($nombreOfer);
         $newOfer->setCantidad($cantidadOfer);
@@ -92,9 +102,8 @@ class GestionOferta extends CI_Controller
     public function validarImag($imagen)
     {
         $tamanio = $_FILES[$imagen]['size'];
-        $imagenSubida = fopen($_FILES[$imagen]['tmp_name'],'r');
-        $binariosImagen = fread($imagenSubida,$tamanio);
+        $imagenSubida = fopen($_FILES[$imagen]['tmp_name'], 'r');
+        $binariosImagen = fread($imagenSubida, $tamanio);
         return $binariosImagen;
     }
-
 }

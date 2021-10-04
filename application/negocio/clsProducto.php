@@ -5,6 +5,8 @@ class clsProducto{
     private $cantidad;
     private $precio;
     private $imagen;
+    private $descuento;
+    private $medida;
     public function __construct()
     {
     }
@@ -23,6 +25,12 @@ class clsProducto{
     public function setImagen($prmImagen){
         $this->imagen=$prmImagen;
     }
+    public function setDescuento($prmDescuento){
+        $this->descuento=$prmDescuento;
+    }
+    public function setMedida($prmMedida){
+        $this->medida = $prmMedida;
+    }
     public function getId(){
         return $this->id;
     }
@@ -37,6 +45,12 @@ class clsProducto{
     }
     public function getImagen(){
         return $this->imagen;
+    }
+    public function getDescuento(){
+        return $this->descuento;
+    }
+    public function getMedida(){
+        return $this->medida;
     }
 }
 ?>
