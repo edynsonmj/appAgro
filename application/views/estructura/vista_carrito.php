@@ -38,9 +38,9 @@
           <?php if (count($compras) > 0) : ?>
             <?php foreach ($compras as $compra) : ?>
               <tr>
-                <td class="pt-3-half" contenteditable="true"><?php echo $compra[1]->getNombre(); ?></td>
-                <td class="pt-3-half" contenteditable="true"><?php echo $compra[1]->getPrecio(); ?></td>
-                <td class="pt-3-half" contenteditable="true"><?php echo $compra[1]->getCantidad(); ?></td>
+                <td class="pt-3-half" contenteditable="false"><?php echo $compra[1]->getNombre(); ?></td>
+                <td class="pt-3-half" contenteditable="false"><?php echo $compra[1]->getPrecio(); ?></td>
+                <td class="pt-3-half" contenteditable="false"><?php echo $compra[1]->getCantidad(); ?></td>
 
                 <td class="pt-3-half">
                   <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>

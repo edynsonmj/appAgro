@@ -10,21 +10,18 @@ class GestionProducto extends CI_Controller
 
     public function agregarProducto()
     {
-        //tu codigo posiblemente aqui
         $idPro = $this->input->post("id");
         $nombreProducto = $this->input->post("nombrePro");
         $cantidaProducto = $this->input->post("cantidadPro");
         $precioProducto = $this->input->post("precioPro");
-
-        $ruta = "imagen1";
+        $ruta = "imagen1";      
         $imagen = $this->validarImag($ruta);
         $newproducto = new clsProducto();
         $newproducto->setNombre($nombreProducto);
         $newproducto->setCantidad($cantidaProducto);
         $newproducto->setPrecio($precioProducto);
         $newproducto->setImagen($imagen);
-        //$producto = $this->ModeloProducto->obtenerProducto($idPro);
-        //if($producto == null){
+
         $this->ModeloProducto->agregarProducto($newproducto);
         //}else{
         //    echo"el usuario ya existe";
@@ -46,7 +43,6 @@ class GestionProducto extends CI_Controller
             $resultado = array();
         }
         return $resultado;
-    //tu codigo posiblemente aqui
     }
 
     public function obtenerProducto($prmId)

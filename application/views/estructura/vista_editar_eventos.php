@@ -127,9 +127,9 @@
             <?php if (count($eventos) > 0) : ?>
               <?php foreach ($eventos as $evento) : ?>
                 <tr>
-                  <td class="pt-3-half" contenteditable="true"><?php echo $evento->getNombre(); ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php echo $evento->getLongitud(); ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php echo $evento->getLatitud();; ?></td>
+                  <td class="pt-3-half" contenteditable="false"><?php echo $evento->getNombre(); ?></td>
+                  <td class="pt-3-half" contenteditable="false"><?php echo $evento->getLongitud(); ?></td>
+                  <td class="pt-3-half" contenteditable="false"><?php echo $evento->getLatitud();; ?></td>
                   <td>
                     <span class="table-remove">
                       <form method="POST" action="<?php echo base_url(); ?>index.php/GestionEvento/deleteEvento">

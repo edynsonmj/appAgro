@@ -56,7 +56,7 @@ class GestionOrganizacion extends CI_Controller
         $nombreOrg = $this->input->post("nameOrg");
         $ruta = "imagen2";
         $ubicacionOrg = $this->input->post("ubicationOrg");
-        $telefonoOrg = $this->input->post("phoneOrg");      
+        $telefonoOrg = $this->input->post("phoneOrg");
         $imagen = $this->validarImag($ruta);
         $newOrg = new clsOrganizacion();
         $newOrg->setNombre($nombreOrg);
@@ -65,6 +65,7 @@ class GestionOrganizacion extends CI_Controller
         $newOrg->setTelefono($telefonoOrg);
         $this->ModeloOrganizacion->agregarOrganizacion($newOrg);
         $this->allOrganizaciones();
+        
     }
     /**
      * para actualizar una Organizacion

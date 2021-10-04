@@ -18,20 +18,55 @@
 <body>
 <?php $this->load->view("estructura/barraOpciones", $existeSesion); ?>
 
-    <section class=" section">
-    <!--Section: Content-->
-    <section class="text-center">
-          <!-- Section heading -->
-          <h3 class="font-weight-bold dark-grey-text pb-2 mb-4">Oferta Agricola</h3>
-          <!-- Section description -->
-          <p class="text-muted w-responsive mx-auto mb-5">Aprovecha de esta gran Oferta
-              los mejores productos con los mejores descuestos
-          </p>
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="row">
+                    <!--columnas dentro de la fila-->
+                    <?php $image = "" ?>
+                    <?php foreach ($ofertas as $oferta) { ?>
+                        <div class="col-12 col-lg-3 p-2">
+                            <article class="card h-100 bg-info text-dark bg-opacity-50">
+                                <div class="card-body">
+                                    <div>
+                                        <img width=100 src="data:image/png;base64,<?php echo base64_encode($oferta->getImagen());?>" class="border rounded-circle border-secundary border-3">
+                                        <div class="ps-lg-3">
+                                        <h2 class="my-4 pb-3 h1"><?php echo $oferta->getDescuento(); ?>%</h2>
+                                        <a><?php echo $oferta->getNombre(); ?> </a>
+                                        <a><?php echo $oferta->getCantidad(); ?></a>
+                                        <a><?php echo $oferta->getPrecio(); ?></a>
+                                            <form method="POST" action="<?php echo base_url(); ?>index.php/GestionCarrito/addItemCarrito">
+                                                <input name="idCarrito" type="hidden" value=<?php echo $oferta->getId(); ?>>
+                                                <input name="vista" type="hidden" value="index">
+                                                <button type="submit"> Añadir al carrito</button>
+                                             </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    <?php } ?>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+<section class=" section">
+    <div class="panelInversionistas">
+        <section class="Inversionistas">
+            <div class="container mt-5">
+                <section class="text-center dark-grey-text">
+                    <h3 class="font-weight-bold mb-4 pb-2">Ofertas</h3>
+                    <p class="text-center w-responsive mx-auto mb-5"> </p>
+                    <div class="row">
           <?php if (count($ofertas) > 0): ?>
           <?php foreach ($ofertas as $oferta): ?>
-          <!-- Grid row -->
-
- 
           <div class = "container">
             <!-- Grid column -->
             <div class="col-lg-4 col-md-12 mb-4">
@@ -55,29 +90,17 @@
 
                   </ul>
               </div>
-              <!-- Pricing card -->
-              
             </div>
-            <!-- Grid column -->
           </div>
-          <!-- Grid row -->
-          <?php
-  endforeach; ?>
-          <?php
-else: ?>
+          <?php endforeach; ?>
+          <?php else: ?>
             <tr>
               <td> no hay ofertas</td>
             </tr>
-          <?php
-endif; ?>
-          
-      
+          <?php endif; ?>
         </section>
-        <!--Section: Content-->
         </section>
 
-    
-    
 </body>
 
 </html>

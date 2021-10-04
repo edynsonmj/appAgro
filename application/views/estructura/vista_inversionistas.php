@@ -38,7 +38,7 @@
                                     <h4 class="font-weight-bold mb-4"><?php echo $inversionista->getNombre(); ?></h4>
                                     <hr>
                                     <p class="dark-grey-text mt-4"><i
-                                            class="fas fa-quote-left pr-2"><?php echo $inversionista->getTelefono(); ?></i></p>
+                                        class="fas fa-quote-left pr-2"><?php echo $inversionista->getTelefono(); ?></i></p>
                                     <p class="dark-grey-text mt-4"><i class="fas fa-quote-left pr-2"><?php echo $inversionista->getDescripcion(); ?></i></p>
                                 </div>
                             </div>

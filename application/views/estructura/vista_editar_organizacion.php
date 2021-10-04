@@ -18,6 +18,7 @@
 
 <body>
     <?php $this->load->view("estructura/barraOpciones", $existeSesion);  ?>
+    
     <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
             Vista Admin editar Organizacion
@@ -39,7 +40,7 @@
 
                     <!-- Modal body -->
                     <div class="modal-body">
-                        <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionOrganizacion/addOrganizacion" enctype="multipart/form-data">
+                        <form method="POST" action="<?php echo base_url();?>index.php/GestionOrganizacion/addOrganizacion" class="form-inline" enctype="multipart/form-data">
                             <label for="email" class="mr-sm-2">Agregar nombre Organizacion</label>
                             <input name="nameOrg" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre Producto">
                             <label for="email" class="mr-sm-2">imagen</label>

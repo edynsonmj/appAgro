@@ -80,6 +80,9 @@ class GestionOferta extends CI_Controller
         $ruta = "imagen6";
         $imagen = $this->validarImag($ruta);
         $newOfer = new clsOferta();
+        if ($imagen == null) {
+            $imagen = "";
+        }
         $newOfer->setId($idOfer);
         $newOfer->setNombre($nombreOfer);
         $newOfer->setCantidad($cantidadOfer);

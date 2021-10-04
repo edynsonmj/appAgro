@@ -88,11 +88,11 @@
               <?php if (count($ofertas) > 0): ?>
               <?php foreach ($ofertas as $oferta): ?>
                 <tr>
-                  <td class="pt-3-half" contenteditable="true"><?php echo $oferta->getNombre();  ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php  echo $oferta->getPrecio();  ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php  echo $oferta->getCantidad();  ?></td>
-                  <td class="pt-3-half" contenteditable="true"><?php echo $oferta->getDescuento();  ?></td>
-                  <td class="pt-3-half" contenteditable="true"><img width=100 src="data:image/png;base64,<?php echo base64_encode($oferta->getImagen());?>" class="border rounded-circle border-secundary border-3"></td>
+                  <td class="pt-3-half" contenteditable="false><?php echo $oferta->getNombre();  ?></td>
+                  <td class="pt-3-half" contenteditable="false"><?php  echo $oferta->getPrecio();  ?></td>
+                  <td class="pt-3-half" contenteditable="false"><?php  echo $oferta->getCantidad();  ?></td>
+                  <td class="pt-3-half" contenteditable="false"><?php echo $oferta->getDescuento();  ?></td>
+                  <td class="pt-3-half" contenteditable="false"><img width=100 src="data:image/png;base64,<?php echo base64_encode($oferta->getImagen());?>" class="border rounded-circle border-secundary border-3"></td>
                   <td>
                       <span class="table-remove">
                         <form method="POST" action="<?php echo base_url(); ?>index.php/GestionOferta/deleteOferta">
