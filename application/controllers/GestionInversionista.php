@@ -91,9 +91,12 @@ class GestionInversionista extends CI_Controller
     }
     public function validarImag($imagen)
     {
+        $binariosImagen = "";
         $tamanio = $_FILES[$imagen]['size'];
-        $imagenSubida = fopen($_FILES[$imagen]['tmp_name'],'r');
-        $binariosImagen = fread($imagenSubida,$tamanio);
+        if($tamanio > 0){
+            $imagenSubida = fopen($_FILES[$imagen]['tmp_name'],'r');
+            $binariosImagen = fread($imagenSubida,$tamanio);
+        }
         return $binariosImagen;
     }
 

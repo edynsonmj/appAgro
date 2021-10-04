@@ -114,7 +114,7 @@
                                                     <label for="email" class="mr-sm-2">Agregar nombre Organizacion</label>
                                                     <input name="nameProd" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $organizacion->getNombre(); ?> >
                                                     <label for="pwd" class="mr-sm-2">imagen</label>
-                                                    <input name="nameProd" type="file" class="form-control mb-2 mr-sm-2">
+                                                    <input name="imagen9" type="file" class="form-control mb-2 mr-sm-2">
                                                     <label for="pwd" class="mr-sm-2">ubicacion</label>
                                                     <input name="ubication" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $organizacion->getUbicacion(); ?>>
                                                     <label for="pwd" class="mr-sm-2">Telefono</label>
