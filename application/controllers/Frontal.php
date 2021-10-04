@@ -54,4 +54,7 @@ class Frontal extends CI_Controller
         $data['usuario'] = $datosGuardados[0];
         $data['role'] = $datosGuardados[2];
     }
+    public function wellcome(){
+        $this->load->view("welcome_message");
+    }
 }

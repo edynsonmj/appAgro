@@ -1,0 +1,32 @@
+#map{
+    width: 400px;
+    height: 300px;
+}
+.marker{
+    background-image: url('/marcador2.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+.mapboxgl-popup {
+    max-width: 200px;
+  }
+  
+  .mapboxgl-popup-content {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+  }
+  #coordenadas {     
+    display: block;
+    position: relative;
+    margin: 0px auto;
+    width: 40%;
+    padding: 5px;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+font-family: Montserrat;
+    text-align: center;
+    color: #000;
+    background: #D6EAF8;
+}

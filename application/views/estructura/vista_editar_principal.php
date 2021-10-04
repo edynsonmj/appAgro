@@ -39,13 +39,15 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-          <form method="POST" action="<?php echo base_url(); ?>index.php/GestionProducto/agregarProducto" class="form-inline">
+          <form enctype="multipart/form-data" method="POST" action="<?php echo base_url(); ?>index.php/GestionProducto/agregarProducto" class="form-inline">
             <label class="mr-sm-2">Nombre del producto</label>
             <input name="nombrePro" type="text" class="form-control mb-2 mr-sm-2" placeholder="Nombre">
             <label class="mr-sm-2">Cantidad</label>
             <input name="cantidadPro" type="number" class="form-control mb-2 mr-sm-2" placeholder="Cantidad">
             <label class="mr-sm-2">Precio</label>
             <input name="precioPro" type="number" class="form-control mb-2 mr-sm-2" placeholder="Precio">
+            <label class="mr-sm-2">Imagen</label>
+            <input name="imagen" type="file" class="form-control mb-2 mr-sm-2">
 
             <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0 mb-2">Guardar</button>
           </form>
@@ -81,7 +83,7 @@
             
             <tr>
               <td class="pt-3-half" contenteditable="false"><?php echo $producto->getNombre(); ?></td>
-              <td class="pt-3-half" contenteditable="false"><?php echo $producto->getImagen(); ?></td>
+              <td class="pt-3-half" contenteditable="false"><img width=100 src="data:image/png;base64,<?php echo base64_encode($producto->getImagen());?>"></td>
               <td class="pt-3-half" contenteditable="false"><?php echo $producto->getCantidad(); ?></td>
               <td class="pt-3-half" contenteditable="false"><?php echo $producto->getPrecio(); ?></td>
 

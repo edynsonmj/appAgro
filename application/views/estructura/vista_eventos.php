@@ -1,75 +1,90 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+?>
 <!DOCTYPE html>
-<html style='overflow-x: hidden;' lang="en">
+<html lang="en">
 
 <head>
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!--mapa mapbox -->
+  <title>Welcome to CodeIgniter</title>
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
-  <link rel="stylesheet" href="./main.css">
+  <!--estilos en la raiz del proyecto-->
+  <link rel="stylesheet" href="main.css">
+  <?php $this->load->view("estructura/barraOpciones"); ?>
 </head>
-<header>
-  <?php $this->load->view("estructura/barraOpciones", $existeSesion);  ?>
-</header>
 
 <body>
   <div class="container">
+    <div class="col-12 col-lg-12">
+      <div class="row">
 
-    <?php if (count($eventos) > 0) : ?>
-      <?php foreach ($eventos as $evento) : ?>
-
-        <div class="row">
-          <div class="col-12 col-lg-12">
-            <div class="row">
-              <!--columnas dentro de la fila-->
-              <div class="col-12 col-lg-9 p-2">
-                <!--mapa-->
-                <div id="map">
-                  <script src="./main.js"></script>
-                  <script>
-                    const marker = new mapboxgl.Marker()
-                      .setLngLat([-76.610102, 2.439890])
-                      .addTo(map);
-                    const marker2 = new mapboxgl.Marker()
-                      .setLngLat([-70.610105, 2.439895])
-                      .addTo(map);
-                    const lngLat = marker.getLngLat();
-                    // Print the marker's longitude and latitude values in the console
-                    console.log(`Longitude: ${lngLat.lng}, Latitude: ${lngLat.lat}`);
-                  </script>
-                </div>
-              </div>
-            </div>
+        <!--primera columna, pertenece al mapa-->
+        <div class="col-12 col-lg-6 p-2">
+          <h2>Mapa de eventos</h2>
+          <!--contenedor del mapa-->
+          <div id='map' style='width: 400px; height: 300px;' class="border rounded-3 border-success">
           </div>
-
-          <div class="col-12 col-lg-3 p-2">
-            <article class="card h-100 bg-info text-dark bg-opacity-50">
-              <div class="card-body">
-                <div>
-                  <div class="ps-lg-3">
-                    <h2><?php echo $evento->getNombre(); ?></h2>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-        <?php endforeach; ?>
-      <?php else : ?>
-        <tr>
-          <td> no hay Eventos</td>
-        </tr>
-      <?php endif; ?>
+          <p>toca un marcador para conocer mas de el...</p>
         </div>
+
+        <!--configuracion del mapa o definicion del mapa-- debe realizarce despues de definir el contenedor del mapa y antes de su modificacion-->
+        <script>
+          //token publico
+          mapboxgl.accessToken = 'pk.eyJ1IjoiZWR5bnNvbm1qIiwiYSI6ImNrdTV6bzBieTBiYm0ycXBhNHd6djkzZXQifQ.yj7fUjvLoQ3Afz94x9fueQ';
+          let map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            //coordenadas de popayan
+            center: [-76.610102, 2.439890],
+            //sum del tamaño del cauca
+            zoom: 6.8
+          });
+        </script>
+
+        <div class="col-12 col-lg-3 p-2">
+          <!--control de datos y obtencion de ellos-->
+          <?php if (count($eventos) > 0) : ?>
+            <h2>Lista eventos</h2>
+            <?php
+            //sera usada esta variable para nombrar a las distintas marcas a generar en el mapa.
+            $numMarcas = 0;
+            ?>
+            <?php foreach ($eventos as $evento) : ?>
+              <div class="p-1">
+                <article class="card bg-info text-dark bg-opacity-50">
+                  <div class="card-body">
+                    <h4><?php echo $evento->getNombre(); ?></h4>
+                  </div>
+                </article>
+              </div>
+              <!--modificacion del mapa, agregacion de marcas con logitud y latitud mas etiquetas sobre las marcas con sus nombres-->
+              <!--hace uso de los estilos main.css que se encuentran en la raiz-->
+              <script>
+                //para añadir una nueva marca, se debe establecer un nuevo nombre para ella
+                //de lo contrario solo se reescribe. acontinuacion se concatena un numero al nombre para que cambie con cada evento a marcar
+                const marker<?php echo $numMarcas; ?> = new mapboxgl.Marker()
+                  .setLngLat([<?php echo $evento->getLongitud(); ?>, <?php echo $evento->getLatitud(); ?>])
+                  .setPopup(
+                    new mapboxgl.Popup({
+                      offset: 25
+                    }) // add popups
+                    .setHTML(`<h3><?php echo $evento->getNombre() ?></h3>`)
+                  )
+                  .addTo(map);
+              </script>
+
+
+              <?php
+              //la variable debe ser incrementada.
+              $numMarcas += 1;
+              ?>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </div>
+
+      </div>
+    </div>
   </div>
 </body>
 

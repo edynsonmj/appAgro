@@ -35,8 +35,9 @@ class Prueba extends CI_Controller
         //prueba de sesion
         //$this->pruebaSesion();
         //$this->pruebaImagenProducto();
-        $this->pruebasModelo();
+        //$this->pruebasModelo();
         //$this->pruebasMapa();
+        $this->load->view("welcome_message");
     }
     public function pruebasMapa(){
         $this->load->view("pruebaMaps/mapa");

@@ -17,7 +17,7 @@
     <div class="bg-light">
       <nav class="navbar navbar-expand-md navbar-light bg-light border-3 border-bottom border-primary">
         <div class="container-fluid">
-          <a href="<?php echo base_url(); ?>index.php" class="navbar-brand">Agro App</a>
+          <a href="<?php echo base_url(); ?>index.php" class="navbar-brand"><h1>Agro App</h1></a>
           <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#MenuNavegacion">
             <span class="navbar-toggler-icon"></span>
           </button>

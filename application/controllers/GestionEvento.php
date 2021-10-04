@@ -1,5 +1,8 @@
 <?php
 use MongoDB\Driver\Session;
+
+use function PHPSTORM_META\type;
+
 require_once "/xampp/htdocs/appAgro/application/negocio/clsEvento.php";
 require_once "/xampp/htdocs/appAgro/application/controllers/GestionSesion.php";
 class GestionEvento extends CI_Controller
@@ -60,12 +63,12 @@ class GestionEvento extends CI_Controller
     public function addEvento(){
         //posiblemente tu codigo aqui
         $NombreEvento = $this->input->post("nameEvento");
-        $longitud = $this->input->post("longitud");
-        $latitud = $this->input->post("latitud");
+        $coordenadas = $this->input->post("coordenadas");
+        $coordenadas = json_decode($coordenadas, true);
         $newEvent = new clsEvento();
         $newEvent->setNombre($NombreEvento);
-        $newEvent->setLongitud($longitud);
-        $newEvent->setLatitud($latitud);
+        $newEvent->setLongitud($coordenadas['lng']);
+        $newEvent->setLatitud($coordenadas['lat']);
         $this->ModeloEvento->agregarEvento($newEvent);
         $this->allEventos();
     }
@@ -75,13 +78,13 @@ class GestionEvento extends CI_Controller
     public function updateEvento(){
         $idEvento = $this->input->post("idEvento");
         $NombreEvento = $this->input->post("nameEvento");
-        $longitud = $this->input->post("longitud");
-        $latitud = $this->input->post("latitud");
+        $coordenadas = $this->input->post("coordenadas");
+        $coordenadas = json_decode($coordenadas, true);
         $newEvent = new clsEvento();
         $newEvent->setId($idEvento);
         $newEvent->setNombre($NombreEvento);
-        $newEvent->setLongitud($longitud);
-        $newEvent->setLatitud($latitud);
+        $newEvent->setLongitud($coordenadas['lng']);
+        $newEvent->setLatitud($coordenadas['lat']);
         $this->ModeloEvento->actualizarEvento($newEvent);
         $this->allEventos();
     }

@@ -15,10 +15,16 @@ class GestionProducto extends CI_Controller
         $nombreProducto = $this->input->post("nombrePro");
         $cantidaProducto = $this->input->post("cantidadPro");
         $precioProducto = $this->input->post("precioPro");
+        $tipoArchivo = $_FILES['imagen']['type'];
+        $nombreImagen = $_FILES['imagen']['name'];
+        $tamanio = $_FILES['imagen']['size'];
+        $imagenSubida = fopen($_FILES['imagen']['tmp_name'],'r');
+        $binariosImagen = fread($imagenSubida,$tamanio);
         $newproducto = new clsProducto();
         $newproducto->setNombre($nombreProducto);
         $newproducto->setCantidad($cantidaProducto);
         $newproducto->setPrecio($precioProducto);
+        $newproducto->setImagen($binariosImagen);
         //$producto = $this->ModeloProducto->obtenerProducto($idPro);
         //if($producto == null){
         $this->ModeloProducto->agregarProducto($newproducto);
