@@ -94,7 +94,7 @@
                   <form method="POST" action="<?php echo base_url(); ?>index.php/GestionProducto/eliminarProducto">
                     <!--sacar id del produto y encapsularlo en algun elemento de html, el nombre que se le de a este elemeto sera recibido en el controlador, viajara por post y se recibira con input-->
                     <input name="idPro" type="hidden" value="<?php echo $producto->getId(); ?>" >
-                    <button type="submit" class="btn btn-warning btn-rounded btn-sm my-0">
+                    <button type="submit" class="btn btn-warning btn-rounded btn-sm my-0" onclick="javascript: return confirm('¿estas seguro de eliminar este item?');">
                       Eliminar
                     </button>
                   </form>
@@ -126,7 +126,7 @@
                             <label for="email" class="mr-sm-2">Imagen:</label>
                             <input name="imagen" type="file" class="form-control mb-2 mr-sm-2">
 
-                            <button name="actualizar" type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                            <button name="actualizar" type="submit" class="btn btn-primary mb-2" onclick="javascript: return confirm('¿estas seguro de actualizar este item?');">Actualizar</button>
                           </form>
 
                         </div>

@@ -134,7 +134,7 @@
                     <span class="table-remove">
                       <form method="POST" action="<?php echo base_url(); ?>index.php/GestionEvento/deleteEvento">
                         <input name="idEvento" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $evento->getId(); ?>>
-                        <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0">
+                        <button onclick="javascript: return confirm('¿estas seguro de eliminar este item?');" type="submit" class="btn btn-danger btn-rounded btn-sm my-0">
                           Eliminar
                         </button>
                       </form>
@@ -195,7 +195,9 @@
                                 <input id='coor<?php echo $var ?>' readonly name="coordenadas" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo '{"lng":' . $evento->getLongitud() . ',"lat":' . $evento->getLatitud() . '}' ?>>
                                 <input name="idEvento" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $evento->getId(); ?>>
                                 <label for="text" class="mr-sm-2">Nombre del Evento:</label>
-                                <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                <button type="submit" class="btn btn-primary mb-2" onclick="javascript: return confirm('¿estas seguro de actualizar este item');">
+                                  Actualizar
+                                </button>
                               </form>
 
                             </div>

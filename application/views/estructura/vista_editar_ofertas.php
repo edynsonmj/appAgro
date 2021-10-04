@@ -97,7 +97,7 @@
                       <span class="table-remove">
                         <form method="POST" action="<?php echo base_url(); ?>index.php/GestionOferta/deleteOferta">
                           <input name="idOferta" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getId(); ?>>
-                          <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0">
+                          <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0" onclick="javascript: return confirm('¿estas seguro de eliminar este item?');">
                             Eliminar
                           </button>
                         </form>
@@ -130,7 +130,7 @@
                                       <input name="DescuentoOferta" type="number" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getDescuento(); ?> >
                                       <label for="pwd" class="mr-sm-2">Imagen:</label>
                                       <input name="imagen6" type="file" class="form-control mb-2 mr-sm-2">
-                                      <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                      <button type="submit" class="btn btn-primary mb-2" onclick="javascript: return confirm('¿estas seguro de actualizar este item?');">Actualizar</button>
                                     </form>
                   
                               </div>

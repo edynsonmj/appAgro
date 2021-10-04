@@ -60,18 +60,18 @@
             <div class="col-lg-7">
     
               <!--Google map-->
-
+<!--
               <div id="map-container-section" class="z-depth-1-half map-container-section mb-4" style="height: 300px">
                 <iframe src="https://maps.google.com/maps?q=Manhatan&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0"
                   style="border:0" allowfullscreen></iframe>
-              </div>
+              </div>-->
               <!-- Buttons-->
               <div class="row text-center">
                 <div class="col-md-4">
                   <a class="btn-floating blue accent-1">
                     <i class="fas fa-map-marker-alt"></i>
                   </a>
-                  <p>MAPA</6p>
+                  <!--<p>MAPA</6p>-->
                 </div>
               </div>
     

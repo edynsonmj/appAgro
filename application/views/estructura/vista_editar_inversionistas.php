@@ -94,7 +94,7 @@
                     <span class="table-remove">
                       <form method="POST" action="<?php echo base_url(); ?>index.php/GestionInversionista/deleteInversionista">
                         <input name="idInversionista" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getId(); ?>>
-                        <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0">
+                        <button onclick="javascript: return confirm('¿estas seguro de eliminar este item?');" type="submit" class="btn btn-danger btn-rounded btn-sm my-0">
                           Eliminar
                         </button>
                       </form>
@@ -116,7 +116,6 @@
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <form method="POST" class="form-inline" action="<?php echo base_url();?>index.php/GestionInversionista/updateInversionista" enctype="multipart/form-data">
-                                    <label for="email" class="mr-sm-2">Id:</label>
                                     <input name="idInversionista" type="hidden" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getId(); ?>>
                                     <label for="email" class="mr-sm-2">Nombre inversionita:</label>
                                     <input name="nameInversionista" type="text" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getNombre(); ?>>
@@ -127,7 +126,7 @@
                                     <label for="pwd" class="mr-sm-2">Correo</label>
                                     <input name="emailInversionista" type="email" class="form-control mb-2 mr-sm-2" value=<?php echo $inversionista->getTelefono(); ?>>
                                 
-                                    <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                    <button type="submit" class="btn btn-primary mb-2" onclick="javascript: return confirm('¿estas seguro de actualizar este item?');">Actualizar</button>
                                   </form>
                 
                             </div>

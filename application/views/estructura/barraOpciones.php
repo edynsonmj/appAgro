@@ -40,7 +40,7 @@
             <li class="nav-item">
               <a class="nav-link" href="<?php echo base_url(); ?>index.php/GestionEvento/allEventos">Eventos</a>
             </li>
-            <?php if ($existeSesion) { ?>
+            <?php if (($existeSesion) && ($role != 'admin')) { ?>
             <li class="nav-item ">
               <a class="nav-link" href="<?php echo base_url(); ?>index.php/GestionCarrito/allItemsCarrito">Carrito</a>
             </li>

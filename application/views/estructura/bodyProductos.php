@@ -20,7 +20,13 @@
                                             <form method="POST" action="<?php echo base_url(); ?>index.php/GestionCarrito/addItemCarrito">
                                                 <input name="idCarrito" type="hidden" value=<?php echo $producto->getId(); ?>>
                                                 <input name="vista" type="hidden" value="index">
-                                                <button type="submit"> Añadir al carrito</button>
+                                                <button type="submit"
+                                                <?php if ($existeSesion == false) { ?>
+                                                    onclick="javascript: return confirm('es necesario iniciar sesion antes de agregar items al carrito');"
+                                                <?php }?>
+                                                > 
+                                                    Añadir al carrito
+                                                </button>
                                              </form>
                                         </div>
                                     </div>

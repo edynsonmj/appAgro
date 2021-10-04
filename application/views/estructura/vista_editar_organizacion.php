@@ -85,7 +85,7 @@
                             <span class="table-remove">
                                 <form method="POST" action="<?php echo base_url(); ?>index.php/GestionOrganizacion/deleteOrganizacion">
                                     <input name="idOrg" type="hidden" value="<?php echo $organizacion->getId(); ?>" >
-                                    <button type="submit" class="btn btn-warning btn-rounded btn-sm my-0">
+                                    <button type="submit" class="btn btn-warning btn-rounded btn-sm my-0" onclick="javascript: return confirm('¿estas seguro de eliminar este item?');">
                                         Eliminar
                                     </button>
                                 </form>
@@ -119,7 +119,7 @@
                                                     <label for="pwd" class="mr-sm-2">Telefono</label>
                                                     <input name="phone" type="number" class="form-control mb-2 mr-sm-2" value=<?php echo $organizacion->getTelefono(); ?>>
 
-                                                    <button type="submit" class="btn btn-primary mb-2">Actualizar</button>
+                                                    <button type="submit" class="btn btn-primary mb-2" onclick="javascript: return confirm('¿estas seguro de actualizar este item?');">Actualizar</button>
                                                 </form>
 
                                             </div>
