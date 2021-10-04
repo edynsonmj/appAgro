@@ -60,6 +60,7 @@ class GestionOferta extends CI_Controller
         $precioOfer =  $this->input->post("priceOfer");
         $descuentoOfer =  $this->input->post("discountOfer");
         $ruta = "imagen5";
+        <script></script>
         $imagen = $this->validarImag($ruta);
         $newOfer = new clsOferta();
         $newOfer->setNombre($nombreOfer);
