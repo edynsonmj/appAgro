@@ -73,7 +73,7 @@ class GestionOferta extends CI_Controller
         $newOfer->setCantidad($cantidadOfer);
         $newOfer->setPrecio($precioOfer);
         $newOfer->setImagen($imagen);
-        $newOfer->setDescuento($descuentoOfer);
+        $newOfer->setDescuento($descuentoOfer/100);
         $newOfer->setMedida($medidaOfer);
         $this->ModeloOferta->agregarOferta($newOfer);
         $this->allOfertas();
@@ -98,7 +98,7 @@ class GestionOferta extends CI_Controller
         $newOfer->setCantidad($cantidadOfer);
         $newOfer->setPrecio($precioOfer);
         $newOfer->setImagen($imagen);
-        $newOfer->setDescuento($descuentoOfer);
+        $newOfer->setDescuento($descuentoOfer/100);
         $this->ModeloOferta->actualizarOferta($newOfer);
         $this->allOfertas();
     }

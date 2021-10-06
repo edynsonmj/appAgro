@@ -25,6 +25,7 @@ class GestionCarrito extends CI_Controller
         $data['nombre'] = $datosGuardados[1];
         $data['usuario'] = $datosGuardados[0];
         $data['role'] = $datosGuardados[2];
+        $data['total'] = $this->total($data['usuario']);
         if ($data['compras'] == null) {
             $data['compras'] = array();
         }
@@ -64,10 +65,20 @@ class GestionCarrito extends CI_Controller
     /**
      * para obtener el precio total de los producto en el carrito de u usuario
      */
-    public function total($prmUserId)
+    public function total($prmUsername)
     {
         //tu codigo posiblemtne aqui
-        $this->ModeloCarrito->total($prmUserId);
+        $auxUsuario = new clsUsuario();
+        $auxUsuario = $this->ModeloUsuario->obtenerUsuario($prmUsername);
+        $total = $this->ModeloCarrito->total($auxUsuario->getId());
         //tu codigo posiblemtne aqui
+        return $total;
+    }
+
+    public function deleteCarrito(){
+        $prmUsername = $this->input->post('usuario');
+        $user = $this->ModeloUsuario->obtenerUsuario($prmUsername);
+        $this->ModeloCarrito->borrarTodo($user->getId());
+        $this->AllItemsCarrito();
     }
 }

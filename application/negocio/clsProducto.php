@@ -7,6 +7,7 @@ class clsProducto{
     private $imagen;
     private $descuento;
     private $medida;
+    private $total;
     public function __construct()
     {
     }
@@ -31,6 +32,14 @@ class clsProducto{
     public function setMedida($prmMedida){
         $this->medida = $prmMedida;
     }
+    public function setTotal(){
+        if(($this->descuento!=0) && ($this->descuento!='0')){
+            $this->total = $this->precio*$this->descuento;
+        }
+        else{
+            $this->total = $this->precio;
+        }
+    }
     public function getId(){
         return $this->id;
     }
@@ -51,6 +60,9 @@ class clsProducto{
     }
     public function getMedida(){
         return $this->medida;
+    }
+    public function getTotal(){
+        return $this->total;
     }
 }
 ?>

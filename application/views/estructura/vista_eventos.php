@@ -31,7 +31,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <!--configuracion del mapa o definicion del mapa-- debe realizarce despues de definir el contenedor del mapa y antes de su modificacion-->
         <script>
           //token publico
-          mapboxgl.accessToken = 'pk.eyJ1IjoiZWR5bnNvbm1qIiwiYSI6ImNrdTV6bzBieTBiYm0ycXBhNHd6djkzZXQifQ.yj7fUjvLoQ3Afz94x9fueQ';
+          mapboxgl.accessToken = 'aqui tu token map box';
           let map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
@@ -42,7 +42,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
           });
         </script>
 
-        <div class="col-12 col-lg-3 p-2">
+        <div class="col-12 col-lg-6 p-2">
           <!--control de datos y obtencion de ellos-->
           <?php if (count($eventos) > 0) : ?>
             <h2>Lista eventos</h2>
@@ -54,7 +54,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
               <div class="p-1">
                 <article class="card bg-info text-dark bg-opacity-50">
                   <div class="card-body">
-                    <h4><?php echo $evento->getNombre(); ?></h4>
+                    <a><?php echo $evento->getNombre(); ?></a>
                   </div>
                 </article>
               </div>

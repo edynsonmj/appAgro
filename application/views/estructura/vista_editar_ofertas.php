@@ -47,9 +47,9 @@
                       <input name="priceOfer" type="number" class="form-control mb-2 mr-sm-2" placeholder="Precio" >
                       <label for="pwd" class="mr-sm-2">Cantidad/L</label>
                       <input name="amountOfer" type="number" class="form-control mb-2 mr-sm-2" placeholder="Cantidad">
-                      <label for="pwd" class="mr-sm-2">Descuento</label>
+                      <label for="pwd" class="mr-sm-2">porcentaje de descuento, escala 0-100</label>
                       <input name="discountOfer" type="number" class="form-control mb-2 mr-sm-2" placeholder="Descuento" >
-                      <label for="pwd" class="mr-sm-2">Descuento</label>
+                      <label for="pwd" class="mr-sm-2">Imagen</label>
                       <input name="imagen5" type="file" class="form-control mb-2 mr-sm-2" placeholder="Imagen" >
                   
                       <button type="submit" class="btn btn-danger btn-rounded btn-sm my-0 mb-2">Guardar</button>
@@ -91,7 +91,7 @@
                   <td class="pt-3-half" contenteditable="false><?php echo $oferta->getNombre();  ?></td>
                   <td class="pt-3-half" contenteditable="false"><?php  echo $oferta->getPrecio();  ?></td>
                   <td class="pt-3-half" contenteditable="false"><?php  echo $oferta->getCantidad();  ?></td>
-                  <td class="pt-3-half" contenteditable="false"><?php echo $oferta->getDescuento();  ?></td>
+                  <td class="pt-3-half" contenteditable="false"><?php echo $oferta->getDescuento()*100;  ?></td>
                   <td class="pt-3-half" contenteditable="false"><img width=100 src="data:image/png;base64,<?php echo base64_encode($oferta->getImagen());?>" class="border rounded-circle border-secundary border-3"></td>
                   <td>
                       <span class="table-remove">
@@ -126,8 +126,8 @@
                                       <input name="priceOferta" type="number" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getPrecio(); ?> >
                                       <label for="pwd" class="mr-sm-2">Cantidad/L</label>
                                       <input name="amountOferta" type="number" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getCantidad(); ?> >
-                                      <label for="email" class="mr-sm-2">Descuento:</label>
-                                      <input name="DescuentoOferta" type="number" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getDescuento(); ?> >
+                                      <label for="email" class="mr-sm-2">Porcentaje descuento, escala 0 a 100:</label>
+                                      <input name="DescuentoOferta" type="number" class="form-control mb-2 mr-sm-2" value=<?php echo $oferta->getDescuento()*100; ?> >
                                       <label for="pwd" class="mr-sm-2">Imagen:</label>
                                       <input name="imagen6" type="file" class="form-control mb-2 mr-sm-2">
                                       <button type="submit" class="btn btn-primary mb-2" onclick="javascript: return confirm('¿estas seguro de actualizar este item?');">Actualizar</button>

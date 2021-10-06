@@ -10,9 +10,9 @@
                     <?php foreach ($productos as $producto) { ?>
                         <div class="col-12 col-lg-3 p-2">
                             <article class="card h-100 bg-info text-dark bg-opacity-50">
+                            <img src="data:image/png;base64,<?php echo base64_encode($producto->getImagen()); ?>" class="border">
                                 <div class="card-body">
                                     <div>
-                                        <img width=100 src="data:image/png;base64,<?php echo base64_encode($producto->getImagen()); ?>" class="border rounded-circle border-secundary border-3">
                                         <div class="ps-lg-3">
                                             <h4><?php echo $producto->getNombre() ?></h4>
                                             <h7><?php echo "Cantidad: " . $producto->getCantidad() . "<br>" ?></h7>

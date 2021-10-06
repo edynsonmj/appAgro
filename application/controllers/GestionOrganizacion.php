@@ -36,12 +36,12 @@ class GestionOrganizacion extends CI_Controller
                 $data['usuario'] = $datosGuardados[0];
                 $data['role'] = $datosGuardados[2];
                 if ($data['role'] == 'admin') {
-                    $this->load->view("estructura/Vista_editar_organizacion",$data);
+                    $this->load->view("estructura/vista_editar_organizacion",$data);
                 }else {
-                    $this->load->view("estructura/Vista_organizaciones",$data);
+                    $this->load->view("estructura/vista_organizaciones",$data);
                 }
             }else{
-                $this->load->view("estructura/Vista_organizaciones",$data);
+                $this->load->view("estructura/vista_organizaciones",$data);
             }   
         }
     public function deleteOrganizacion(){

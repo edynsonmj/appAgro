@@ -10,12 +10,13 @@ class GestionUsuario extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('ModeloUsuario');        
-        $this->sesionAux = new GestionSesion();        
+        $this->load->model('ModeloUsuario');
+        $this->sesionAux = new GestionSesion();
         //$this->controladorFrontal = new Frontal();
     }
 
-    public function agregarUsuario(clsUsuario $prmUsuario){
+    public function agregarUsuario(clsUsuario $prmUsuario)
+    {
         //tu codigo posiblemente aqui
         $this->ModelUsuario->agregarUsuario($prmUsuario);
         //tu codigo posiblemente aqui
@@ -23,31 +24,36 @@ class GestionUsuario extends CI_Controller
     /**
      * @var string $username: cadena que define el nombre de usuario, de un usuario a eliminar
      */
-    public function eliminarUsuario($prmUsername){
+    public function eliminarUsuario($prmUsername)
+    {
         //tu codigo posiblemente aqui
         $this->ModeloUsuario->eliminarUsuario($prmUsername);
         //tu codigo posiblemente aqui
     }
 
-    public function actualizarUsuario(clsUsuario $prmUsuario){
+    public function actualizarUsuario(clsUsuario $prmUsuario)
+    {
         //tu codigo posiblemente aqui
         $this->ModeloUsuario->actualizarUsuario($prmUsuario);
         //tu codigo posiblemente aqui
     }
 
-    public function listarUsuarios(){
+    public function listarUsuarios()
+    {
         //tu codigo posiblemente aqui
         $this->ModeloUsuario->listarUsuarios();
         //tu codigo posiblemente aqui
     }
 
-    public function obtenerUsuario($prmUsername){
+    public function obtenerUsuario($prmUsername)
+    {
         //tu codigo posiblemente aqui
         //este recibe una cadena, username
         $this->ModeloUsuario->obtenerUsuario($prmUsername);
         //tu codigo posiblemente aqui
     }
-    public function obtenerUsuarioPorId($prmId){
+    public function obtenerUsuarioPorId($prmId)
+    {
         //tu codigo posiblemente aqui
         //recibe un entero Id del usuario
         $this->ModeloUsuario->obtenerUsuarioPorId($prmId);
@@ -59,21 +65,27 @@ class GestionUsuario extends CI_Controller
         $contraseñaUsuario = $this->input->post("contraseña");
         $usuario = new clsUsuario();
         $usuario = $this->ModeloUsuario->obtenerUsuario($nombreUsuario);
-        var_dump($usuario);
         if ($usuario == null) {
-             
-
-        }
-        else {
+            $data['logUsuario'] = false;
+            $data['existeSesion'] = $this->sesionAux->existeSesion();
+            $this->load->view("estructura/barraOpciones", $data);
+            $this->load->view("estructura/errorLogin", $data);
+        } else {
             if ($contraseñaUsuario == $usuario->getPassword()) {
                 $this->sesionAux->fijarSesion($usuario);
-                header('Location:'.base_url()."index.php");
-            }else{
-                echo "la contraseña es erronea";
+                $data['logUsuario'] = true;
+                $data['logContra'] = true;
+                header('Location:' . base_url() . "index.php");
+            } else {
+                $data['logContra'] = false;
+                $data['existeSesion'] = $this->sesionAux->existeSesion();
+                $this->load->view("estructura/barraOpciones", $data);
+                $this->load->view("estructura/errorLogin", $data);
             }
         }
     }
-    public function crearUsuario(){
+    public function crearUsuario()
+    {
         $nuevoNombre = $this->input->post("nombre");
         $userName = $this->input->post("userName");
         $nuevaContraseña = $this->input->post("password");
@@ -82,14 +94,12 @@ class GestionUsuario extends CI_Controller
         $newUser->setNombre($nuevoNombre);
         $newUser->setUsername($userName);
         $newUser->setPassword($nuevaContraseña);
-        $newUser->setRole($nuevoRol); 
-        $newUsuario = $this->ModeloUsuario->obtenerUsuario($nuevoNombre);  
-        if($newUsuario == null){
+        $newUser->setRole($nuevoRol);
+        $newUsuario = $this->ModeloUsuario->obtenerUsuario($nuevoNombre);
+        if ($newUsuario == null) {
             $this->ModeloUsuario->crearUsuario($newUser);
-        }else{
+        } else {
             echo "el usuario ya existe";
         }
-
     }
 }
-?>

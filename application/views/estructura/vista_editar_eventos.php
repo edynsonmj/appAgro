@@ -23,7 +23,7 @@
 <body>
   <?php $this->load->view("estructura/barraOpciones", $existeSesion);  ?>
   <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZWR5bnNvbm1qIiwiYSI6ImNrdTV6bzBieTBiYm0ycXBhNHd6djkzZXQifQ.yj7fUjvLoQ3Afz94x9fueQ';
+    mapboxgl.accessToken = 'aqui tu token';
   </script>
   <section class=" section">
     <div class="card">

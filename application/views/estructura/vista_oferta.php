@@ -29,18 +29,18 @@
                     <?php foreach ($ofertas as $oferta) { ?>
                         <div class="col-12 col-lg-3 p-2">
                             <article class="card h-100 bg-info text-dark bg-opacity-50">
+                            <img src="data:image/png;base64,<?php echo base64_encode($oferta->getImagen());?>" class="border">
                                 <div class="card-body">
                                     <div>
-                                        <img width=100 src="data:image/png;base64,<?php echo base64_encode($oferta->getImagen());?>" class="border rounded-circle border-secundary border-3">
                                         <div class="ps-lg-3">
-                                        <h2 class="my-4 pb-3 h1"><?php echo $oferta->getDescuento(); ?>%</h2>
-                                        <a><?php echo $oferta->getNombre(); ?> </a>
-                                        <a><?php echo $oferta->getCantidad(); ?></a>
-                                        <a><?php echo $oferta->getPrecio(); ?></a>
+                                        <h2 class="my-4 pb-3 h1"><?php echo "descuento: ".$oferta->getDescuento()*100; ?>%</h2>
+                                        <a><?php echo "nombre: ".$oferta->getNombre(); ?> <br></a>
+                                        <a><?php echo "cantidad: ".$oferta->getCantidad(); ?><br></a>
+                                        <a><?php echo "precio: ".$oferta->getPrecio(); ?><br></a>
                                             <form method="POST" action="<?php echo base_url(); ?>index.php/GestionCarrito/addItemCarrito">
                                                 <input name="idCarrito" type="hidden" value=<?php echo $oferta->getId(); ?>>
                                                 <input name="vista" type="hidden" value="index">
-                                                <button type="submit"> Añadir al carrito</button>
+                                                <button class="btn-warning" type="submit"> Añadir al carrito</button>
                                              </form>
                                         </div>
                                     </div>
@@ -55,52 +55,6 @@
     </div>
 </body>
 
-
-
-<section class=" section">
-    <div class="panelInversionistas">
-        <section class="Inversionistas">
-            <div class="container mt-5">
-                <section class="text-center dark-grey-text">
-                    <h3 class="font-weight-bold mb-4 pb-2">Ofertas</h3>
-                    <p class="text-center w-responsive mx-auto mb-5"> </p>
-                    <div class="row">
-          <?php if (count($ofertas) > 0): ?>
-            <?php// var_dump($ofertas); ?>
-          <?php foreach ($ofertas as $oferta): ?>
-          <div class = "container">
-            <!-- Grid column -->
-            <div class="col-lg-4 col-md-12 mb-4">
-                <!-- Pricing card -->
-                <div class="card pricing-card white-text">
-                  <!-- Price -->
-                  <div class="aqua-gradient rounded-top">
-                    
-                    <img style = "width: 150px; height: 100px;" src="data:image/png;base64,<?php echo base64_encode($oferta->getImagen());?>" class="border rounded-circle border-secundary border-3">
-                </div>
-                <!-- Features -->
-                <div class="card-body striped purple-striped card-background px-5">
-                  <h2 class="my-4 pb-3 h1"><?php echo $oferta->getDescuento(); ?>%</h2>
-                  <ul>
-                        </div>
-                          <a style = "text-align: center;"><?php echo $oferta->getNombre(); ?> </a>
-                          <a style ="text-align: center;"><?php echo $oferta->getCantidad(); ?></a>
-                          <a style ="text-align: center;"><?php echo $oferta->getPrecio(); ?></a>
-                        </div>
-                      <button style="position: relative; right: 0px; background-color: rgb(21, 187, 21); color:white" href="category.html">Agregar al carrito</button>
-
-                  </ul>
-              </div>
-            </div>
-          </div>
-          <?php endforeach; ?>
-          <?php else: ?>
-            <tr>
-              <td> no hay ofertas</td>
-            </tr>
-          <?php endif; ?>
-        </section>
-        </section>
 
 </body>
 

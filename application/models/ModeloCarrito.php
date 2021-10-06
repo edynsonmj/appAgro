@@ -11,7 +11,7 @@ class ModeloCarrito extends CI_model
     public function listarCarrito($prmUsuarioId)
     {
         try {
-            $this->db->select('carId, producto.proId, producto.proNombre, producto.proPrecio, producto.proCantidad');
+            $this->db->select('carId, producto.proId, producto.proNombre, producto.proPrecio, producto.proCantidad, producto.proDescuento');
             $this->db->from('carrito');
             $this->db->join('producto', 'producto.proId = carrito.proId');
             $this->db->join('usuario', 'usuario.usuId = carrito.usuId');
@@ -28,6 +28,8 @@ class ModeloCarrito extends CI_model
                 $producto->setNombre($obj->proNombre);
                 $producto->setPrecio($obj->proPrecio);
                 $producto->setCantidad($obj->proCantidad);
+                $producto->setDescuento($obj->proDescuento);
+                $producto->setTotal();
                 //se forma una pareja [carId: int, producto: clsProducto]
                 $pareja = [$obj->carId, $producto];
                 /*echo ' CARID: '.$obj->carId."<br>";
@@ -99,6 +101,17 @@ class ModeloCarrito extends CI_model
             return $valor;
         }catch(Exception $e){
             echo "error al obtener el total: ".$e->getMessage();
+            return -1;
+        }
+    }
+
+    public function borrarTodo($prmIdUser){
+        try{
+            $this->db->where('usuId',$prmIdUser);
+            $this->db->delete('carrito');
+            return ($this->db->affected_rows() >=1)? 1: 2;
+        }catch(Exception $e){
+            echo "se ha producido un error al retirar el item del carrito: ".$e->getMessage();
             return -1;
         }
     }
